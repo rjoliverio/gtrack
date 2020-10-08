@@ -1,0 +1,290 @@
+/*!
+ * Start Bootstrap - Clean Blog v5.0.9 (https://startbootstrap.com/themes/clean-blog)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-clean-blog/blob/master/LICENSE)
+ */
+
+body {
+  background-color: rgba(red, green, blue, alpha);
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  line-height: 1.5;
+  margin: 30px 0;
+}
+
+p a {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: #212529;
+  transition: all 0.2s;
+}
+
+a:focus, a:hover {
+  color: #0085A1;
+}
+
+blockquote {
+  font-style: italic;
+  color: #868e96;
+}
+
+.section-heading {
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 60px;
+}
+
+.caption {
+  font-size: 14px;
+  font-style: italic;
+  display: block;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: #0085A1;
+  text-shadow: none;
+}
+
+::selection {
+  color: #fff;
+  background: #0085A1;
+  text-shadow: none;
+}
+
+img::-moz-selection {
+  color: #fff;
+  background: transparent;
+}
+
+img::selection {
+  color: #fff;
+  background: transparent;
+}
+
+img::-moz-selection {
+  color: #fff;
+  background: transparent;
+}
+.site-heading{
+  color: white;
+  font-size: 75px;
+  font-weight: bolder;
+}
+.post-preview > a > .post-title {
+  font-size: 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding: 0 0 0 3%;
+  border-left: 3px solid #0085A1 ;
+}
+@media only screen and (min-width: 320px) and (max-width:375px){
+  .site-heading{
+    font-size:24px;
+  }
+  .post-preview > a > .post-title {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-left: 3px solid #0085A1 ;
+    padding: 0 0 0 3%;
+  }
+
+
+}
+@media only screen and (min-width: 375px) and (max-width:425px){
+  .site-heading{
+    font-size:24px;
+  }
+
+
+}
+@media only screen and (min-width: 425px) and (max-width:768px){
+  .site-heading{
+    font-size:36px;
+  }
+
+
+}
+@media only screen and (min-width: 320px) and (max-width:375px){
+  .display-3{
+    font-size:32px;
+  }
+
+
+}
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+  background-color: #777;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
+.card{
+  border:none;
+}
+.card-footer{
+  border-top: 1px black solid;
+  background: white;
+}
+.genann{
+  border:1px solid #00bfb6;
+  border-radius: 30px;
+}
+.profimg{
+  position: absolute;
+  left: -130px;
+  margin-top: 60px;
+  border: 1px black solid;
+  height: 6em;
+  width: 6em;
+  border-radius:400px;
+}
+.yourcart{
+  padding: 10px;
+  background-color: rgb(177, 177, 177);
+  -webkit-box-shadow: 0px 6px 15px 3px rgba(0,0,0,0.1); 
+  box-shadow: 0px 6px 15px 3px rgba(0,0,0,0.1);
+  text-align: center;
+  
+}
+.yourcart h1{
+  font-weight: bolder;
+}
+.post-preview > a {
+  color: #212529;
+}
+#anno1{
+  
+  background-size: cover;
+}
+.post-preview > a:focus, .post-preview > a:hover {
+  text-decoration: none;
+  color: #0085A1;
+}
+
+
+
+.post-preview > a > .post-subtitle {
+  font-weight: 300;
+  margin: 0 0 10px;
+}
+
+.post-preview > .post-meta {
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 0;
+  color: #868e96;
+}
+
+.post-preview > .post-meta > a {
+  text-decoration: none;
+  color: #212529;
+}
+
+.post-preview > .post-meta > a:focus, .post-preview > .post-meta > a:hover {
+  text-decoration: underline;
+  color: #0085A1;
+}
+
+/* @media only screen and (min-width: 768px) {
+  .anno > .post-preview > a > .post-title {
+    font-size: 36px;
+  }
+  .speech-bubble{
+    max-width: 100%;
+    margin-left: 20%;
+  }
+  .profimg{
+    margin-left: 18%;
+  }
+} */
+
+:root {
+  --jumbotron-padding-y: 3rem;
+}
+
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+
+.btn {
+  font-size: 14px;
+  font-weight: 800;
+  padding: 15px 25px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 0;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.btn-primary {
+  background-color: #0085A1;
+  border-color: #0085A1;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  color: #fff;
+  background-color: #00657b !important;
+  border-color: #00657b !important;
+}
+
+.btn-lg {
+  font-size: 16px;
+  padding: 25px 35px;
+}
