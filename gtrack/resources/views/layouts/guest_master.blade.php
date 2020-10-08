@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href={{asset('css/stylish-portfolio.css')}} rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href={{asset('css/map-css.css')}} rel="stylesheet">
 </head>
 <body id="page-top">
     <a class="menu-toggle rounded" href="#">
@@ -23,7 +27,7 @@
             <a class="js-scroll-trigger" href="/guest/announcements">Announcements</a>
           </li>
           <li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="/guest/trackcollector">Track Collector</a>
+            <a class="js-scroll-trigger" href="/trackcollector">Track Collector</a>
           </li>
           <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="/guest/seminars">Seminars</a>
@@ -67,6 +71,7 @@
       <script src={{asset('js/app.js')}}></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
       <script src={{asset('js/stylish-portfolio.min.js')}}></script>
+      @yield('scripts')
       @include('sweetalert::alert')
 </body>
 </html>
