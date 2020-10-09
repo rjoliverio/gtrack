@@ -23,7 +23,9 @@ What’s new in Chrome 83
             As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
             </h3>
           </a>
-          <img src="{{asset('storage/images/gtrack-logo-2.png')}}" width="160" class="img-fluid "alt="" >
+          <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="{{asset('storage/images/gtrack-logo-2.png')}}">
+              <img class="img-fluid" width="160" alt="" src="{{asset('storage/images/gtrack-logo-2.png')}}" />
+          </a>
           <p class="post-meta">Posted by
             <a href="#">Start Bootstrap</a>
             on September 24, 2019</p>
@@ -61,8 +63,30 @@ What’s new in Chrome 83
             <h3 class="post-subtitle">
             As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
             </h3>
+          </a> <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="{{asset('storage/images/gtrack-logo-2.png')}}">
+              <img class="img-fluid" width="160" alt="" src="{{asset('storage/images/gtrack-logo-2.png')}}" />
           </a>
-          <img src="{{asset('storage/images/gtrack-logo-2.png')}}" width="160" class="img-fluid "alt="" >
+          <p class="post-meta">Posted by
+            <a href="#">Start Bootstrap</a>
+            on September 24, 2019</p>
+        </div>
+            </div>
+            </div>
+            <hr>
+            <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="post-preview speech-bubble">
+          <a href="post.html">
+            <h2 class="post-title">
+              
+What’s new in Chrome 83
+            </h2>
+            <h3 class="post-subtitle">
+            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
+            </h3>
+          </a> <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="{{asset('storage/images/gtrack-logo-2.png')}}">
+              <img class="img-fluid" width="160" alt="" src="{{asset('storage/images/gtrack-logo-2.png')}}" />
+          </a>
           <p class="post-meta">Posted by
             <a href="#">Start Bootstrap</a>
             on September 24, 2019</p>
@@ -82,7 +106,9 @@ What’s new in Chrome 83
             As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
             </h3>
           </a>
-          <img src="{{asset('storage/images/gtrack-logo-2.png')}}" width="160" class="img-fluid "alt="" >
+          <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="{{asset('storage/images/gtrack-logo-2.png')}}">
+              <img class="img-fluid" width="160" alt="" src="{{asset('storage/images/gtrack-logo-2.png')}}" />
+          </a>
           <p class="post-meta">Posted by
             <a href="#">Start Bootstrap</a>
             on September 24, 2019</p>
@@ -101,28 +127,9 @@ What’s new in Chrome 83
             <h3 class="post-subtitle">
             As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
             </h3>
+          </a> <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="{{asset('storage/images/gtrack-logo-2.png')}}">
+              <img class="img-fluid" width="160"alt="" src="{{asset('storage/images/gtrack-logo-2.png')}}" />
           </a>
-          <img src="{{asset('storage/images/gtrack-logo-2.png')}}" width="160" class="img-fluid "alt="" >
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-            </div>
-            </div>
-            <hr>
-            <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 83
-            </h2>
-            <h3 class="post-subtitle">
-            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
-            </h3>
-          </a>
-          <img src="{{asset('storage/images/gtrack-logo-2.png')}}" width="160" class="img-fluid "alt="" >
           <p class="post-meta">Posted by
             <a href="#">Start Bootstrap</a>
             on September 24, 2019</p>

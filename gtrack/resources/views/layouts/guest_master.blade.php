@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title','GTrack')</title>
     <link href={{asset('css/app.css')}} rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    <link href={{asset('css/clean-blog.css')}} rel="stylesheet">
+    <link href={{asset('css/announcement-seminar.css')}} rel="stylesheet">
     <link href={{asset('css/stylish-portfolio.css')}} rel="stylesheet">
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
@@ -69,7 +70,9 @@
       </a>
       <script src={{asset('js/app.js')}}></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src={{asset('js/stylish-portfolio.min.js')}}></script>
+      <script src={{asset('js/gallery.js')}}></script>
       @include('sweetalert::alert')
 </body>
 </html>

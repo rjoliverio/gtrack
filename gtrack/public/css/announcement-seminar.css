@@ -8,7 +8,7 @@ body {
   background-color: rgba(red, green, blue, alpha);
   font-family: 'Roboto', sans-serif;
 }
-
+/* 
 p {
   line-height: 1.5;
   margin: 30px 0;
@@ -83,7 +83,7 @@ img::selection {
 img::-moz-selection {
   color: #fff;
   background: transparent;
-}
+} */
 .site-heading{
   color: white;
   font-size: 75px;
@@ -96,6 +96,15 @@ img::-moz-selection {
   padding: 0 0 0 3%;
   border-left: 3px solid #0085A1 ;
 }
+.display-3{
+  font-size: 75px;
+  font-weight: bolder;
+  color: white;
+}
+.headsem{
+  border-radius: 0px;
+  text-align: center;
+}
 @media only screen and (min-width: 320px) and (max-width:375px){
   .site-heading{
     font-size:24px;
@@ -106,6 +115,9 @@ img::-moz-selection {
     margin-bottom: 10px;
     border-left: 3px solid #0085A1 ;
     padding: 0 0 0 3%;
+  }
+  .display-3{
+    font-size:32px;
   }
 
 
@@ -124,13 +136,7 @@ img::-moz-selection {
 
 
 }
-@media only screen and (min-width: 320px) and (max-width:375px){
-  .display-3{
-    font-size:32px;
-  }
 
-
-}
 .carousel {
   margin-bottom: 4rem;
 }

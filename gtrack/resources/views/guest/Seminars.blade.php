@@ -1,12 +1,12 @@
 @extends('layouts.guest_master')
 
 @section('content')
-<div class="container">
 
     <!-- Jumbotron Header -->
-    <header class="jumbotron my-4" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/nature4.jpg')}}') fixed center center; background-size: cover;">
+    <header class="jumbotron mb-4 headsem" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/nature4.jpg')}}') fixed center center; background-size: cover;">
       <h1 class="display-3">Seminars</h1>
-    </header>
+</header>
+<div class="container">
 <!-- Carousel -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
