@@ -85,18 +85,19 @@ h6 {
   font-weight: 800;
 }
 
-.masthead {
+.masthead{
   min-height: 30rem;
   position: relative;
   display: table;
-  width: 100%;
-  height: auto;
+  height:auto;
+  width:100%;
   padding-top: 8rem;
   padding-bottom: 8rem;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../img/bg-masthead.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
+  background:  url("../storage/images/img/bg2.jpg") no-repeat center center fixed;
   background-size: cover;
+}
+.bg-primary{
+  background-color: #4c9a2a!important;
 }
 
 .masthead h1 {
@@ -363,9 +364,6 @@ a:hover, a:focus, a:active {
   font-weight: 700;
 }
 
-.bg-primary {
-  background-color: #1D809F !important;
-}
 
 .text-primary {
   color: #1D809F !important;

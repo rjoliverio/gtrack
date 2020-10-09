@@ -21,3 +21,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/send', 'ContactController@send');
+
+Route::group([
+    'prefix' => 'guest',
+    'as' => 'guest.',
+    'namespace' => 'Guest',
+],function(){
+    Route::get('/about','AboutController@index');
+});
