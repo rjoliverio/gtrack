@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class IndexController extends Controller
 {
+    //
     public function index()
     {
-        return view('guest.about');
+        return view('guest.index');
     }
 }

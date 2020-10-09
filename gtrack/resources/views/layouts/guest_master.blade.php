@@ -6,14 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title','GTrack')</title>
     <link href={{asset('css/app.css')}} rel="stylesheet">
+    <link href={{asset('css/contact-us.css')}} rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    <link href={{asset('css/clean-blog.css')}} rel="stylesheet">
+    <link href={{asset('css/announcement-seminar.css')}} rel="stylesheet">
     <link href={{asset('css/stylish-portfolio.css')}} rel="stylesheet">
-    <link href={{asset('css/contact-us.css')}} rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href={{asset('css/map-css.css')}} rel="stylesheet">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css' rel='stylesheet' />
+    
 </head>
-
 <body id="page-top">
     <a class="menu-toggle rounded" href="#">
         <i class="fas fa-bars"></i>
@@ -24,45 +30,41 @@
             <a class="js-scroll-trigger" href="/"><img src="{{asset('storage/images/gtrack-logo-2.png')}}" width="160" class="img-fluid "alt="" ></a>
           </li>
           <li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="/guest/announcements">Announcements</a>
+            <a class="js-scroll-trigger" href="/announcements">Announcements</a>
           </li>
           <li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="/guest/trackcollector">Track Collector</a>
+            <a class="js-scroll-trigger" href="/trackcollector">Track Collector</a>
           </li>
           <li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="/guest/seminars">Seminars</a>
+            <a class="js-scroll-trigger" href="/seminars">Seminars</a>
           </li>
           <li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="/guest/contactus">Contact Us</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="/guest/about">About</a>
+            <a class="js-scroll-trigger" href="/contact-us">Contact Us</a>
           </li>
         </ul>
       </nav>
+      
       @yield('content')
-      <section id="about" class="content-section bg-light">
-        <div class="container text-center">
-          @yield('about')
-        </div>
-      </section>
-
-        <section class="content-section bg-primary text-white text-center" id="services">
-          <div class="container">
-          @yield('services')
-        </div>
-        </section>
-
-        <section id="portfolio" class="content-section">
-          <div class="container">
-          @yield('team')
-        </section>
-
-     
-       
 
       <footer class="footer text-center">
         <div class="container">
+          <ul class="list-inline mb-5">
+            <li class="list-inline-item">
+              <a class="social-link rounded-circle text-white mr-3" href="#!">
+                <i class="icon-social-facebook"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="social-link rounded-circle text-white mr-3" href="#!">
+                <i class="icon-social-twitter"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="social-link rounded-circle text-white" href="#!">
+                <i class="icon-social-github"></i>
+              </a>
+            </li>
+          </ul>
           <p class="text-muted small mb-0">Copyright &copy; Your Website 2020</p>
         </div>
       </footer>
@@ -72,7 +74,10 @@
       </a>
       <script src={{asset('js/app.js')}}></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src={{asset('js/stylish-portfolio.min.js')}}></script>
+      <script src={{asset('js/gallery.js')}}></script>
+      @yield('scripts')
       @include('sweetalert::alert')
 </body>
 </html>

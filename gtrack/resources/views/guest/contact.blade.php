@@ -1,34 +1,24 @@
-<section id="contact" class="mb-5">
-    <div class="container">
-      @yield('contact')
-    </div>
-    </section>
+@extends('layouts.guest_master')
 
-
-
-@section('contact')
-<div >
-  <h1><b>Contact Us</b></h1>
-  <hr>
-    <center>
-      <p class="lead">Feel free to visit (from the given location below) or message us down below for any of your concerns or questions.</p>
-    </center>
-    <br>
-</div>
+@section('content')
+ <!-- Jumbotron Header -->
+ <header class="jumbotron mb-4 headsem" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/nature4.jpg')}}') fixed center center; background-size: cover;">
+    <h1 class="display-3">CONTACT US</h1>
+  </header>
 <div class="row rowcont ">
     <div class="col-lg-6 ">
       <div class="card w-100 contacts" id="contacts2">
         
                 <div class="info">
-                <h3 class="label h31"><i class="icofont-google-map"></i>&nbsp;Location:</h3>
+                <h3 class="label h31"><i class="icon-location-pin"></i>&nbsp;Location:</h3>
                 <p>Compostela Cebu</p>
                       
                 
-                <h3 class="label"><i class="icofont-envelope"></i>&nbsp;Email:</h3>
+                <h3 class="label"><i class="icon-envelope"></i>&nbsp;Email:</h3>
                 <p>gtrack32@gmail.com</p>
                 
                 
-                <h3 class="label"><i class="icofont-phone"></i>&nbsp;Call:</h3>
+                <h3 class="label"><i class="icon-phone"></i>&nbsp;Call:</h3>
                 <p>+1 5589 55488 555</p>
                 <div class="row maprow">
                 <iframe src="https://www.google.com/maps/d/embed?mid=1yFQDBNLFVyMuO1yrPJCWnnixVA9HmCGg" class="contact-map"></iframe>

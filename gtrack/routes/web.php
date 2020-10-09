@@ -13,19 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.index');
-});
+//Guest
+Route::group([
+    'namespace' => 'Guest'
+],function  () {
+    Route::get('/', 'IndexController@index');
+    Route::get('/trackcollector', 'TrackerController@tracker');
+    Route::get('/announcements', 'AnnouncementController@index');
+    Route::get('/seminars', 'SeminarController@index');
+    Route::get('/contact-us','ContactController@index');
+    Route::post('/send', 'ContactController@send');
 
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/send', 'ContactController@send');
 
-Route::group([
-    'prefix' => 'guest',
-    'as' => 'guest.',
-    'namespace' => 'Guest',
-],function(){
-    Route::get('/about','AboutController@index');
-});
+

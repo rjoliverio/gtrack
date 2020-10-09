@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guest;
 use PHPMailer\PHPMailer;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 class ContactController extends Controller
 {
+    public function index()
+    {
+        return view('guest.contact');
+    }
     public function send(Request $request){
         $this->validate($request, [
             'email' => 'required|email',
