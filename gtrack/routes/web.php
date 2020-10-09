@@ -23,3 +23,8 @@ Route::group([
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Announcements
+Route::get('/guest/announcements','AnnouncementController@index');
+//Events
+Route::get('/guest/seminars','SeminarController@index');
