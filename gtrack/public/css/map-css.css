@@ -1,0 +1,18 @@
+#map{
+    z-index: 0 !important;
+}
+#menu{
+    top: 5px;
+    position: absolute;
+    z-index: 1;
+    
+}
+.mapboxgl-ctrl-top-left{
+    margin-top: 25px;
+}
+.truckIcon {
+    height: 46px;
+    width: 31px;
+    background-image: url(https://api.geoapify.com/v1/icon/?type=material&color=%2326a0ff&icon=truck&iconType=awesome&apiKey=2ef63a32339047eeb7acb6ff15c113da);
+    cursor: pointer;
+}

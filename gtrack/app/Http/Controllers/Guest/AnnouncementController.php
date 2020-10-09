@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guest;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller
@@ -9,6 +10,6 @@ class AnnouncementController extends Controller
     //
     public function index()
     {
-        return view('guest.Announcements');
+        return view('guest.announcements');
     }
 }
