@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link href={{asset('css/clean-blog.css')}} rel="stylesheet">
     <link href={{asset('css/stylish-portfolio.css')}} rel="stylesheet">
-  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
@@ -43,6 +42,7 @@
           </li>
         </ul>
       </nav>
+      
       @yield('content')
 
       <footer class="footer text-center">
