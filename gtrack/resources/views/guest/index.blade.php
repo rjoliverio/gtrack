@@ -85,7 +85,11 @@
                   <i class="mb-0">Developer</i>
                 </div>
               </div>
+<<<<<<< HEAD
               <img class="img-fluid" src="/storage/images/img/humera.jpg" alt="">
+=======
+              <img class="img-fluid" src={{asset('storage/images/img/humera.jpg')}} alt="">
+>>>>>>> f6a39048b62ed5f584f61b443de0b9348ec26a10
             </a>
           </div>
           <div class="col-lg-6">
@@ -123,9 +127,27 @@
           </div>
         </div>
         </div>
+<<<<<<< HEAD
       </div>
 @endsection
 
+=======
+
+
+
+
+
+
+  </section>
+
+
+
+
+@endsection
+
+
+
+>>>>>>> f6a39048b62ed5f584f61b443de0b9348ec26a10
 
 
 
