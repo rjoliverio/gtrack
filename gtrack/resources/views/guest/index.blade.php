@@ -86,7 +86,7 @@
                   <i class="mb-0">Developer</i>
                 </div>
               </div>
-              <img class="img-fluid" src="img/portfolio-4.jpg" alt="">
+              <img class="img-fluid" src={{asset('storage/images/img/humera.jpg')}} alt="">
             </a>
           </div>
           <div class="col-lg-6">
