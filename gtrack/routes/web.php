@@ -23,6 +23,7 @@ Route::group([
     Route::get('/seminars', 'SeminarController@index');
     Route::get('/contact-us','ContactController@index');
     Route::post('/send', 'ContactController@send');
+    Route::get('/calendar', 'CalendarController@index');
 
 });
 Auth::routes();
