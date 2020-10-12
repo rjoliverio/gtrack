@@ -16,7 +16,7 @@ class gCalendarController extends guest\CalendarController
     public function __construct()
     {
         $client = new Google_Client();
-        $client->setApplicationName('Calendar integration');
+        $client->setApplicationName('GTrack');
         $client->setAuthConfig('credentials.json');
         $client->setAccessType("offline");
         $client->setIncludeGrantedScopes(true);
@@ -65,7 +65,7 @@ class gCalendarController extends guest\CalendarController
         } else {
             $this->client->authenticate($_GET['code']);
             $_SESSION['access_token'] = $this->client->getAccessToken();
-            return redirect()->route('cal.index');
+            return redirect()->route('guest.calendar');
         }
     }
 

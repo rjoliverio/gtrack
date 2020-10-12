@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeminarsTable extends Migration
+class AddToAnnouncement extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateSeminarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('seminars', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->dateTime('seminar_date');
-            $table->timestamps();
+        Schema::table('announcements', function (Blueprint $table) {
+            //
+            $table->bigInteger('image_id')->nullable()->unsigned()->after('content')->references('image_id')->on('images');
         });
     }
 
@@ -29,6 +26,8 @@ class CreateSeminarsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seminars');
+        Schema::table('announcement', function (Blueprint $table) {
+            //
+        });
     }
 }

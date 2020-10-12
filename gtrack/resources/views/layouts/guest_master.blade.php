@@ -32,6 +32,9 @@
             <a class="js-scroll-trigger" href="/announcements">Announcements</a>
           </li>
           <li class="sidebar-nav-item">
+            <a class="js-scroll-trigger" href="/calendar">Schedules</a>
+          </li>
+          <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="/trackcollector">Track Collector</a>
           </li>
           <li class="sidebar-nav-item">

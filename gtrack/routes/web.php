@@ -26,6 +26,14 @@ Route::group([
     Route::get('/calendar', 'CalendarController@index');
 
 });
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.',
+    'namespace' => 'Admin',
+],function  () {
+    Route::get('/dashboard', 'DashboardController@index');
+
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
