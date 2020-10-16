@@ -4,6 +4,11 @@
 @section('title')
     GTrack | Seminars
 @endsection
+
+@section('css')
+<link href={{asset('css/announcement-seminar.css')}} rel="stylesheet">
+@endsection
+
 @section('content')
 
     <!-- Jumbotron Header -->

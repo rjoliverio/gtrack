@@ -10803,8 +10803,8 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
-  background-position: center;
+  background: url("../storage/images/img/compostela-login-bg.jpg");
+  background-position: left;
   background-size: cover;
 }
 

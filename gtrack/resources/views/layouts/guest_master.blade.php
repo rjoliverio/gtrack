@@ -10,15 +10,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    <link href={{asset('css/announcement-seminar.css')}} rel="stylesheet">
     <link href={{asset('css/stylish-portfolio.css')}} rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link href={{asset('css/map-css.css')}} rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css' rel='stylesheet' />
-</head>
+    @yield('css')
+
+  </head>
 <body id="page-top">
     <a class="menu-toggle rounded" href="#">
         <i class="fas fa-bars"></i>
@@ -26,7 +24,7 @@
       <nav id="sidebar-wrapper">
         <ul class="sidebar-nav">
           <li class="sidebar-brand">
-            <a class="js-scroll-trigger" href="/"><img src="{{asset('storage/images/gtrack-logo-2.png')}}" width="160" class="img-fluid "alt="" ></a>
+            <a class="js-scroll-trigger text-decoration-none img-logo" href="/"><img src="{{asset('storage/images/gtrack-logo-2.png')}}" width="160" class="img-fluid "alt="" ></a>
           </li>
           <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="/announcements">Announcements</a>
@@ -42,7 +40,13 @@
           </li>
           <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="/contact-us">Contact Us</a>
+          </li><hr>
+          <li class="sidebar-nav-item">
+            <a class="btn btn-success text-white btn-sm rounded login" href="/login">Login</a>
           </li>
+          {{-- <li class="sidebar-nav-item mt-1">
+            <a class=" btn btn-secondary text-white btn-sm rounded register" href="/register">Register</a>
+          </li> --}}
         </ul>
       </nav>
       

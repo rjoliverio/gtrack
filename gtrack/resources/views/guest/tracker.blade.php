@@ -3,6 +3,14 @@
 @section('title')
     GTrack | Track Collector
 @endsection
+
+@section('css')
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+<link href={{asset('css/map-css.css')}} rel="stylesheet">
+
+@endsection
+
 @section('content')
     <div class="container-fluid text-center bg-light menu-container">
         <div id="menu">
