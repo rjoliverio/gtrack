@@ -18,7 +18,7 @@ class CreateUserDetailsTable extends Migration
             $table->string('fname');
             $table->string('lname');
             $table->string('image');
-            $table->string('contant_no');
+            $table->string('contact_no');
             $table->bigInteger('address_id')->unsigned();
             $table->integer('age');
             $table->enum('gender', ['Male', 'Female']);

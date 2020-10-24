@@ -32,7 +32,11 @@ Route::group([
     'namespace' => 'Admin',
 ],function  () {
     Route::get('/dashboard', 'DashboardController@index');
-
+    Route::get('/reports', 'ReportsController@index');
+    Route::get('/reports/show/{id}', 'ReportsController@show');
+    Route::post('/reports/resolve/{id}', 'ReportsController@resolve');
+    Route::post('/reports/remove/{id}', 'ReportsController@remove');
+    Route::get('/tracker', 'TrackerController@index');
 });
 Auth::routes();
 

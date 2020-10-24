@@ -15,7 +15,7 @@ class CreateDumpstersTable extends Migration
     {
         Schema::create('dumpsters', function (Blueprint $table) {
             $table->id('dumpter_id');
-            $table->bigInteger('address_id')->unsigned()->references('address_id')->on('addresses');
+            $table->foreignId('address_id')->references('address_id')->on('addresses');
             $table->string('latitude');
             $table->string('longitude');
             $table->boolean('complete');

@@ -4,6 +4,11 @@
 <?php $__env->startSection('title'); ?>
     GTrack | Seminars
 <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('css'); ?>
+<link href=<?php echo e(asset('css/announcement-seminar.css')); ?> rel="stylesheet">
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
 
     <!-- Jumbotron Header -->

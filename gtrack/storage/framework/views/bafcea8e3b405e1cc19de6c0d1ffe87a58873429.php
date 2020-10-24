@@ -1,10 +1,13 @@
 
-
+<?php $__env->startSection('css'); ?>
+<link href=<?php echo e(asset('css/announcement-seminar.css')); ?> rel="stylesheet">
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
  <!-- Jumbotron Header -->
  <header class="jumbotron mb-4 headsem" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('<?php echo e(asset('storage/images/nature4.jpg')); ?>') fixed center center; background-size: cover;">
     <h1 class="display-3">CONTACT US</h1>
   </header>
+  <div class="container">
 <div class="row rowcont ">
     <div class="col-lg-6 ">
       <div class="card w-100 contacts" id="contacts2">
@@ -55,7 +58,7 @@
 
               <?php if(isset(Auth::user()->email)): ?>
               <input type="text" name="email" class="form-control form-control-lg w-100 ml-auto mr-auto mb-1"
-                  id="email" placeholder="Email Address" value="<?php echo e(Auth::user()->email); ?>" readonly>
+                  id="email" placeholder="Email Address" readonly>
               <?php else: ?>
               <input type="text" name="email" class="form-control form-control-lg w-100 ml-auto mr-auto mb-1"
                   id="email" placeholder="Email Address">
@@ -68,11 +71,12 @@
 
           </div>
           <div class="sendcont mr-3 mt-1 mb-1 ">
-              <input type="submit" name="send" class="form-control form-control-md btn" id="sendbtn" value="Send">
+              <input type="submit" name="send" class="form-control form-control-md " id="sendbtn" value="Send">
           </div>
       </form>
   </div>
 </div>
-</div>                   
+</div> 
+</div>                  
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.guest_master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\rjoli\Desktop\gtrack\gtrack\resources\views/guest/contact.blade.php ENDPATH**/ ?>

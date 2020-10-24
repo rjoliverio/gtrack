@@ -15,7 +15,7 @@ class CreateSchedulesTable extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id('schedule_id');
-            $table->bigInteger('admin_id')->unsigned()->references('user_id')->on('users');
+            $table->foreignId('admin_id')->references('user_id')->on('users');
             $table->dateTime('schedule', 0);
             $table->enum('garbage_type', ['Nonbiodegradable', 'Biodegradable']);
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

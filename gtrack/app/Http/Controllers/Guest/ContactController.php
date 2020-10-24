@@ -5,6 +5,10 @@ use PHPMailer\PHPMailer;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use Kreait\Firebase;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
+use Kreait\Firebase\Database;
 class ContactController extends Controller
 {
     public function index()
@@ -18,7 +22,7 @@ class ContactController extends Controller
             'message' => 'required'
         ]);
         $sender='simscodemembership@gmail.com';
-        $recipient='gtrack32@gmail.com';
+        $recipient=$request->email;
         $mail = new PHPMailer\PHPMailer();
         $mail->SMTPDebug = 0;                                       // Enable verbose debug output
         $mail->isSMTP();                                            // Set mailer to use SMTP
@@ -30,7 +34,7 @@ class ContactController extends Controller
         $mail->Port       = 587;                                    // TCP port to connect to
     
         //Recipients
-        $mail->setFrom($sender, 'GTrack');
+        $mail->setFrom($sender, 'GTrack Compostela');
         $mail->addAddress($recipient);
     
         // Content
@@ -39,6 +43,25 @@ class ContactController extends Controller
         $mail->Body    = $request->message;
     
         $mail->send();
+
+        // $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
+
+        $firebase = (new Factory)
+            ->withServiceAccount(__DIR__.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
+        // $data = [
+        //     'email' => $request->email,
+        //     'subject' => $request->subject
+        // ];
+        $database = $firebase->createDatabase();
+        $ref = $database->getReference("messages");
+        $key=$ref->push()->getKey();
+        $datetime=\Carbon\Carbon::now()->toDateTimeString();
+        $ref->getChild($key)->set([
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'created_at' => \Carbon\Carbon::parse($datetime)->format('g:i A')." ".\Carbon\Carbon::parse($datetime)->format('d F Y'),
+            'seen'=> 0
+        ]);
         return back()->with('success','Thanks for contacting us!');
     }
 }

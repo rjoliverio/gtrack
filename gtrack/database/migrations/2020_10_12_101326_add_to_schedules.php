@@ -15,7 +15,7 @@ class AddToSchedules extends Migration
     {
         Schema::table('schedules', function (Blueprint $table) {
             //
-            $table->bigInteger('assignment_id')->unsigned()->after('schedule')->references('assignment_id')->on('truck_assignments');
+            $table->foreignId('assignment_id')->after('schedule')->references('assignment_id')->on('truck_assignments');
         });
     }
 

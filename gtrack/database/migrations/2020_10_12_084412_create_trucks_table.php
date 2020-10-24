@@ -15,7 +15,7 @@ class CreateTrucksTable extends Migration
     {
         Schema::create('trucks', function (Blueprint $table) {
             $table->id('truck_id');
-            $table->bigInteger('user_id')->unsigned()->references('user_id')->on('users');
+            $table->foreignId('user_id')->references('user_id')->on('users');
             $table->string('plate_no');
             $table->boolean('active');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

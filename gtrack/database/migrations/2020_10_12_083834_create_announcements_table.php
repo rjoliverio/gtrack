@@ -15,7 +15,7 @@ class CreateAnnouncementsTable extends Migration
     {
         Schema::create('announcements', function (Blueprint $table) {
             $table->id('announcement_id');
-            $table->bigInteger('user_id')->unsigned()->references('user_id')->on('users');
+            $table->foreignId('user_id')->references('user_id')->on('users');
             $table->string('title');
             $table->string('content');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

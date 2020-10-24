@@ -1,0 +1,34 @@
+@media only screen and (max-width: 600px) {
+    .report-user-images{
+        display: none;
+    }
+    .report-user-name{
+        font-size: small !important;
+        display: block;
+    }
+    .report-user-date{
+        font-size: small !important;
+        display: block;
+        float: none !important;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .report-user-images{
+        display: none;
+    }
+    /* .report-pending-wrapper{
+        display: flex;
+        flex-direction: column;
+        width: 100% !important;
+    }
+    .mark-as-btn{
+        order: 2;
+        width: 100% !important;
+    } */
+}
+.report-user-images{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(121, 121, 121, 0.637);
+}

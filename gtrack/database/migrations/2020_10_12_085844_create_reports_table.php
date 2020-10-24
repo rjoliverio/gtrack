@@ -15,8 +15,8 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id('report_id');
-            $table->bigInteger('driver_id')->unsigned()->references('user_id')->on('users');
-            $table->bigInteger('image_id')->unsigned()->nullable()->references('image_id')->on('images');
+            $table->foreignId('driver_id')->references('user_id')->on('users');
+            $table->foreignId('image_id')->nullable()->references('image_id')->on('images');
             $table->string('subject');
             $table->string('message');
             $table->string('latitude');

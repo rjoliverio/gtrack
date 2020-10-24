@@ -15,7 +15,7 @@ class AddToAnnouncement extends Migration
     {
         Schema::table('announcements', function (Blueprint $table) {
             //
-            $table->bigInteger('image_id')->nullable()->unsigned()->after('content')->references('image_id')->on('images');
+            $table->foreignId('image_id')->nullable()->after('content')->references('image_id')->on('images');
         });
     }
 

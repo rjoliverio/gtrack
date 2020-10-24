@@ -272,7 +272,7 @@ img::-moz-selection {
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 
 
-.btn {
+.btn:not(.login) {
   font-size: 14px;
   font-weight: 800;
   padding: 15px 25px;
