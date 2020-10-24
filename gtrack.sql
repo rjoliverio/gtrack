@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2020 at 09:34 AM
+-- Generation Time: Oct 24, 2020 at 04:41 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -42,7 +42,8 @@ CREATE TABLE `addresses` (
 --
 
 INSERT INTO `addresses` (`address_id`, `street`, `barangay`, `town`, `postal_code`, `created_at`, `updated_at`) VALUES
-(4, 'rotunda', 'poblacion', 'compostela', '6003', '2020-10-15 22:44:51', '2020-10-15 22:44:51');
+(3, 'Rotunda', 'Poblacion', 'Compostela', '6003', '2020-10-23 21:29:16', '2020-10-23 21:29:16'),
+(4, 'Rotunda', 'Poblacion', 'Compostela', '6003', '2020-10-23 21:30:27', '2020-10-23 21:30:27');
 
 -- --------------------------------------------------------
 
@@ -86,7 +87,7 @@ CREATE TABLE `events` (
   `event_id` bigint(20) UNSIGNED NOT NULL,
   `address_id` bigint(20) UNSIGNED NOT NULL,
   `event_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `participants` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
   `contact_person_id` bigint(20) UNSIGNED NOT NULL,
@@ -126,6 +127,13 @@ CREATE TABLE `images` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`image_id`, `image_1`, `image_2`, `image_3`, `image_4`, `created_at`, `updated_at`) VALUES
+(1, 'bike1.jpg', 'bike2.jpg', 'bike3.jpg', 'bike4.jpg', '2020-10-24 05:26:09', '2020-10-24 05:26:09');
 
 -- --------------------------------------------------------
 
@@ -185,7 +193,7 @@ CREATE TABLE `reports` (
   `driver_id` bigint(20) UNSIGNED NOT NULL,
   `image_id` bigint(20) UNSIGNED DEFAULT NULL,
   `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `latitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `longitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `degree` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -262,7 +270,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_detail_id`, `email`, `user_type`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 1, 'rjoliverio18@gmail.com', 'Admin', NULL, '$2y$10$x9zSjWPphWofLgXcY49NGemSFeRJfpYY.YrqtGvsGOYKG4GxWeUWK', NULL, '2020-10-15 22:44:51', '2020-10-15 22:44:51');
+(1, 1, 'rjoliverio18@gmail.com', 'Admin', NULL, '$2y$10$8y8arG3oaQ0I8TBrsRCHT.yYDV2WCLy3kZBexMQH/xCoj7aAxZQ.u', NULL, '2020-10-23 21:29:16', '2020-10-23 21:29:16'),
+(2, 2, 'aljann3ondoy@gmail.com', 'Driver', NULL, '$2y$10$mGS4NtjVte7/7EfbJc0doO8hXEcq0Qr7YW3/cpmO9XOdRTQppiljK', NULL, '2020-10-23 21:30:27', '2020-10-23 21:30:27');
 
 -- --------------------------------------------------------
 
@@ -288,7 +297,8 @@ CREATE TABLE `user_details` (
 --
 
 INSERT INTO `user_details` (`user_detail_id`, `fname`, `lname`, `image`, `contact_no`, `address_id`, `age`, `gender`, `created_at`, `updated_at`) VALUES
-(1, 'Rj', 'Oliverio', 'user.png', '09123456789', 4, 21, 'Male', '2020-10-15 22:44:51', '2020-10-15 22:44:51');
+(1, 'Rj', 'Oliverio', 'user.png', '09123456789', 3, 21, 'Male', '2020-10-23 21:29:16', '2020-10-23 21:29:16'),
+(2, 'Aljann', 'Ondoy', 'user.png', '09123456789', 4, 21, 'Male', '2020-10-23 21:30:27', '2020-10-23 21:30:27');
 
 -- --------------------------------------------------------
 
@@ -318,19 +328,24 @@ ALTER TABLE `addresses`
 -- Indexes for table `announcements`
 --
 ALTER TABLE `announcements`
-  ADD PRIMARY KEY (`announcement_id`);
+  ADD PRIMARY KEY (`announcement_id`),
+  ADD KEY `announcements_user_id_foreign` (`user_id`),
+  ADD KEY `announcements_image_id_foreign` (`image_id`);
 
 --
 -- Indexes for table `dumpsters`
 --
 ALTER TABLE `dumpsters`
-  ADD PRIMARY KEY (`dumpter_id`);
+  ADD PRIMARY KEY (`dumpter_id`),
+  ADD KEY `dumpsters_address_id_foreign` (`address_id`);
 
 --
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
-  ADD PRIMARY KEY (`event_id`);
+  ADD PRIMARY KEY (`event_id`),
+  ADD KEY `events_address_id_foreign` (`address_id`),
+  ADD KEY `events_contact_person_id_foreign` (`contact_person_id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -361,25 +376,32 @@ ALTER TABLE `password_resets`
 -- Indexes for table `reports`
 --
 ALTER TABLE `reports`
-  ADD PRIMARY KEY (`report_id`);
+  ADD PRIMARY KEY (`report_id`),
+  ADD KEY `reports_driver_id_foreign` (`driver_id`),
+  ADD KEY `reports_image_id_foreign` (`image_id`);
 
 --
 -- Indexes for table `schedules`
 --
 ALTER TABLE `schedules`
-  ADD PRIMARY KEY (`schedule_id`);
+  ADD PRIMARY KEY (`schedule_id`),
+  ADD KEY `schedules_admin_id_foreign` (`admin_id`),
+  ADD KEY `schedules_assignment_id_foreign` (`assignment_id`);
 
 --
 -- Indexes for table `trucks`
 --
 ALTER TABLE `trucks`
-  ADD PRIMARY KEY (`truck_id`);
+  ADD PRIMARY KEY (`truck_id`),
+  ADD KEY `trucks_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `truck_assignments`
 --
 ALTER TABLE `truck_assignments`
-  ADD PRIMARY KEY (`assignment_id`);
+  ADD PRIMARY KEY (`assignment_id`),
+  ADD KEY `truck_assignments_driver_id_foreign` (`driver_id`),
+  ADD KEY `truck_assignments_truck_id_foreign` (`truck_id`);
 
 --
 -- Indexes for table `users`
@@ -399,7 +421,8 @@ ALTER TABLE `user_details`
 -- Indexes for table `waste_collections`
 --
 ALTER TABLE `waste_collections`
-  ADD PRIMARY KEY (`weight_id`);
+  ADD PRIMARY KEY (`weight_id`),
+  ADD KEY `waste_collections_collector_id_foreign` (`collector_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -439,7 +462,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `image_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -451,7 +474,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `report_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `report_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `schedules`
@@ -475,13 +498,13 @@ ALTER TABLE `truck_assignments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `user_detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `waste_collections`
@@ -494,10 +517,63 @@ ALTER TABLE `waste_collections`
 --
 
 --
+-- Constraints for table `announcements`
+--
+ALTER TABLE `announcements`
+  ADD CONSTRAINT `announcements_image_id_foreign` FOREIGN KEY (`image_id`) REFERENCES `images` (`image_id`),
+  ADD CONSTRAINT `announcements_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `dumpsters`
+--
+ALTER TABLE `dumpsters`
+  ADD CONSTRAINT `dumpsters_address_id_foreign` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`address_id`);
+
+--
+-- Constraints for table `events`
+--
+ALTER TABLE `events`
+  ADD CONSTRAINT `events_address_id_foreign` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`address_id`),
+  ADD CONSTRAINT `events_contact_person_id_foreign` FOREIGN KEY (`contact_person_id`) REFERENCES `user_details` (`user_detail_id`);
+
+--
+-- Constraints for table `reports`
+--
+ALTER TABLE `reports`
+  ADD CONSTRAINT `reports_driver_id_foreign` FOREIGN KEY (`driver_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `reports_image_id_foreign` FOREIGN KEY (`image_id`) REFERENCES `images` (`image_id`);
+
+--
+-- Constraints for table `schedules`
+--
+ALTER TABLE `schedules`
+  ADD CONSTRAINT `schedules_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `schedules_assignment_id_foreign` FOREIGN KEY (`assignment_id`) REFERENCES `truck_assignments` (`assignment_id`);
+
+--
+-- Constraints for table `trucks`
+--
+ALTER TABLE `trucks`
+  ADD CONSTRAINT `trucks_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `truck_assignments`
+--
+ALTER TABLE `truck_assignments`
+  ADD CONSTRAINT `truck_assignments_driver_id_foreign` FOREIGN KEY (`driver_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `truck_assignments_truck_id_foreign` FOREIGN KEY (`truck_id`) REFERENCES `trucks` (`truck_id`);
+
+--
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_user_detail_id_foreign` FOREIGN KEY (`user_detail_id`) REFERENCES `user_details` (`user_detail_id`);
+
+--
+-- Constraints for table `waste_collections`
+--
+ALTER TABLE `waste_collections`
+  ADD CONSTRAINT `waste_collections_collector_id_foreign` FOREIGN KEY (`collector_id`) REFERENCES `users` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
