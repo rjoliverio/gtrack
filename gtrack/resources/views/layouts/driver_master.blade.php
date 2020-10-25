@@ -39,20 +39,10 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item {{ (request()->is('admin/dashboard')) ? 'active' : '' }}">
-        <a class="nav-link" href="/admin/dashboard">
+      <li class="nav-item {{ (request()->is('driver/schedule')) ? 'active' : '' }}">
+        <a class="nav-link" href="/driver/schedule">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-      <li class="nav-item {{ (request()->is('admin/tracker/*') || request()->is('admin/tracker')) ? 'active' : '' }}">
-        <a class="nav-link" href="/admin/tracker">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Track Collector</span></a>
-      </li>
-      <li class="nav-item {{ (request()->is('admin/reports/*') || request()->is('admin/reports')) ? 'active' : '' }}">
-        <a class="nav-link" href="/admin/reports">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Reports</span></a>
+          <span>Schedule</span></a>
       </li>
       
       <!-- Divider -->
@@ -128,8 +118,9 @@
               </div>
             </li>
 
+
             <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
+            {{-- <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
@@ -144,10 +135,10 @@
                 </div>
                 <a class="dropdown-item text-center small text-gray-500" href="/admin/reports">Show All Alerts</a>
               </div>
-            </li>
+            </li> --}}
 
             <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
+            {{-- <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-envelope fa-fw"></i>
                 <!-- Counter - Messages -->
@@ -162,7 +153,7 @@
                 </div>
                 <a class="dropdown-item text-center small text-gray-500" style='cursor:pointer;' onClick='seenAllMsgClick();'>Read More Messages</a>
               </div>
-            </li>
+            </li> --}}
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -174,7 +165,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="/admin/profile">
+                <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -243,7 +234,7 @@
 
 
   <!-- Page level custom scripts -->
-  <script src={{asset('js/chart-area-demo.js')}}></script>
+  {{-- <script src={{asset('js/chart-area-demo.js')}}></script>
   
   <!-- ---------------------------------------------------- -->
 <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -253,9 +244,9 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
-<script src={{asset('js/firebase-notification.js')}}></script>
+<script src={{asset('js/firebase-notification.js')}}></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js" integrity="sha512-Z/2pIbAzFuLlc7WIt/xifag7As7GuTqoBbLsVTgut69QynAIOclmweT6o7pkxVoGGfLcmPJKn/lnxyMNKBAKgg==" crossorigin="anonymous"></script>
-<script src={{asset('js/search-suggestion.js')}}></script>
+<script src={{asset('js/search-suggestion-driver.js')}}></script>
     @yield('scripts')
     @include('sweetalert::alert')
 </body>

@@ -17,6 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href=<?php echo e(asset('css/sb-admin-2.css')); ?> rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.css" integrity="sha512-PZ83szWxZ41zcHUPd7NSgLfQ3Plzd7YmN0CHwYMmbR7puc6V/ac5Mm0t8QcXLD7sV/0AuKXectoLvjkQUdIz9g==" crossorigin="anonymous" />
+  <link href=<?php echo e(asset('css/search-suggestion.css')); ?> rel="stylesheet">
   <?php echo $__env->yieldContent('css'); ?>
 </head>
 
@@ -101,17 +103,13 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-success" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
+          <form class="form-wrapper d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group div-wrapper">
+              
+                <input type="text" class="form-control bg-light border-0 small template-links" placeholder="Search for..." >
+              
             </div>
           </form>
-
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
@@ -122,16 +120,11 @@
               </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
+                    <form class="form-wrapper">
+                      <input type="text" class="form-control bg-light border-0 small template-links2" placeholder="Search for..." >
+                    </form>
                   </div>
-                </form>
               </div>
             </li>
 
@@ -181,7 +174,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/admin/profile">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -262,6 +255,8 @@
 <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
 <script src=<?php echo e(asset('js/firebase-notification.js')); ?>></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js" integrity="sha512-Z/2pIbAzFuLlc7WIt/xifag7As7GuTqoBbLsVTgut69QynAIOclmweT6o7pkxVoGGfLcmPJKn/lnxyMNKBAKgg==" crossorigin="anonymous"></script>
+<script src=<?php echo e(asset('js/search-suggestion.js')); ?>></script>
     <?php echo $__env->yieldContent('scripts'); ?>
     <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </body>
