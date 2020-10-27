@@ -1,0 +1,11 @@
+
+.newcont p{
+    margin-left: 5px;
+    float:right;
+}
+.newcont{
+    height: 38px;
+}
+.desccont{
+    border: 0.5px solid black;
+}

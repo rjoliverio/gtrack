@@ -297,3 +297,30 @@ img::-moz-selection {
   font-size: 16px;
   padding: 25px 35px;
 }
+/* .li {
+  float: left;
+  width: 100px;
+  height: 150px;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+.ul:hover .li {
+  -webkit-transform: translateX(-25%);
+          transform: translateX(-25%);
+}
+.ul:hover .li:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  transition-duration: 0.1818181818s;
+}
+.ul:hover .li:hover ~ .li {
+  -webkit-transform: translateX(25%);
+          transform: translateX(25%);
+} */
+.ann-images:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  transition-duration: 0.1818181818s;
+}
