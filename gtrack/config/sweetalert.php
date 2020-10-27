@@ -150,7 +150,7 @@ return [
     |
     */
 
-    'toast_position' => env('SWEET_ALERT_TOAST_POSITION', 'top-center'),
+    'toast_position' => env('SWEET_ALERT_TOAST_POSITION', 'top'),
 
     /*
     |--------------------------------------------------------------------------

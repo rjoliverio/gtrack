@@ -47,6 +47,16 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Track Collector</span></a>
       </li>
+      <li class="nav-item {{ (request()->is('admin/tracker/*') || request()->is('admin/tracker')) ? 'active' : '' }}">
+        <a class="nav-link" href="/admin/announcements">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Announcements</span></a>
+      </li>
+      <li class="nav-item {{ (request()->is('admin/tracker/*') || request()->is('admin/tracker')) ? 'active' : '' }}">
+        <a class="nav-link" href="/admin/events">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Events</span></a>
+      </li>
       <li class="nav-item {{ (request()->is('admin/reports/*') || request()->is('admin/reports')) ? 'active' : '' }}">
         <a class="nav-link" href="/admin/reports">
           <i class="fas fa-fw fa-chart-area"></i>
@@ -250,7 +260,7 @@
 
 
   <!-- Page level custom scripts -->
-  <script src={{asset('js/chart-area-demo.js')}}></script>
+  <!-- <script src={{asset('js/chart-area-demo.js')}}></script> -->
   
   <!-- ---------------------------------------------------- -->
 <!-- The core Firebase JS SDK is always required and must be listed first -->
