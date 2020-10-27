@@ -40,6 +40,7 @@ Route::group([
     Route::post('/reports/remove/{id}', 'ReportsController@remove');
     Route::get('/tracker', 'TrackerController@index');
     Route::get('/profile', 'ProfileController@index');
+    Route::post('/profile/update/{id}', 'ProfileController@update');
 });
 Route::group([
     'prefix' => 'driver',
@@ -48,6 +49,8 @@ Route::group([
     'middleware' => ['auth','driver']
 ],function  () {
     Route::get('/schedule', 'ScheduleController@index');
+    Route::get('/profile', 'ProfileController@index');
+    Route::post('/profile/update/{id}', 'ProfileController@update');
 });
 Auth::routes();
 

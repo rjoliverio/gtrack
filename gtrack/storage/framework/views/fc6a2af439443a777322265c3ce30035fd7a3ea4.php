@@ -18,7 +18,7 @@
                 <div class="card">
                   <div class="card-body text-center bg-primary rounded-top">
                    <div class="user-box">
-                    <img src=<?php echo e(asset('storage/images/img/'.$report->userdetail->image)); ?> alt="user avatar">
+                    <img src=<?php echo e(asset('storage/images/uploads/'.$report->userdetail->image)); ?> alt="user avatar">
                   </div>
                   <h5 class="mb-1 text-white "><?php echo e($report->userdetail->fname); ?> <?php echo e($report->userdetail->lname); ?></h5>
                   <h6 class="text-light small"><?php echo e($report->userdetail->user->user_type); ?></h6>

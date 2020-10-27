@@ -89,6 +89,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'user_type' => 'Admin',
             'password' => Hash::make($data['password']),
+            'active' => 1
         ]);
     }
     public function showRegistrationForm()

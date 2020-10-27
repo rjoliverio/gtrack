@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\ValidationException;
 use Auth;
+use App\Models\User;
 class LoginController extends Controller
 {
     /*
@@ -40,6 +43,25 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('guest.login');
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        $active=User::where('email',$request->email)->first();
+        $bool = $this->guard()->attempt(
+            $this->credentials($request), $request->filled('remember')
+        );
+        if($bool==true){
+            if($active!=null && $active->active==0){
+                
+                $this->logout($request);
+                toast('Account is deactivated!','error');
+                return false;
+            }else{
+                return true;
+            }
+        }
+        return false;
     }
     public function redirectPath()
     {

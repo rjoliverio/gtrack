@@ -7,6 +7,7 @@
 <?php $__env->startSection('css'); ?>
 <link href=<?php echo e(asset('css/reports-css.css')); ?> rel="stylesheet">
 <?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="card shadow-lg">
@@ -22,7 +23,7 @@
                         <a class="text-decoration-none text-dark" href="/admin/reports/show/<?php echo e($report->report_id); ?>">
                             <div class="row report-pending-wrapper">
                                 <div class="col-lg-1 col-md-1 col-sm-1 d-flex align-items-center text-center">
-                                    <img src=<?php echo e(asset('storage/images/img/'.$report->userdetail->image)); ?> class="img-fluid img-responsive report-user-images shadow-sm" data-holder-rendered="true"  alt="user-pic">
+                                    <img src=<?php echo e(asset('storage/images/uploads/'.$report->userdetail->image)); ?> class="img-fluid img-responsive report-user-images shadow-sm" data-holder-rendered="true"  alt="user-pic">
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-10">
                                     <span class="report-user-name font-weight-bold"><?php echo e($report->userdetail->fname); ?> <?php echo e($report->userdetail->lname); ?></span>
@@ -62,7 +63,7 @@
                         <a class="text-decoration-none text-dark" href="/admin/reports/show/<?php echo e($report->report_id); ?>">
                             <div class="row report-pending-wrapper">
                                 <div class="col-lg-1 col-md-1 col-sm-1 d-flex align-items-center text-center">
-                                    <img src=<?php echo e(asset('storage/images/img/'.$report->userdetail->image)); ?> class="img-fluid img-responsive report-user-images shadow-sm" data-holder-rendered="true"  alt="user-pic">
+                                    <img src=<?php echo e(asset('storage/images/uploads/'.$report->userdetail->image)); ?> class="img-fluid img-responsive report-user-images shadow-sm" data-holder-rendered="true"  alt="user-pic">
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-10">
                                     <span class="report-user-name font-weight-bold"><?php echo e($report->userdetail->fname); ?> <?php echo e($report->userdetail->lname); ?></span>

@@ -1,4 +1,4 @@
-@extends('layouts.admin_master')
+@extends('layouts.driver_master')
 
 @section('title')
     GTrack | Profile
@@ -29,7 +29,7 @@
           <div class="tab-content">
             <div class="tab-pane fade active show" id="account-general">
         {{-- form --}}
-        <form action="/admin/profile/update/{{$user->user_id}}" method="post" enctype="multipart/form-data">
+        <form action="/driver/profile/update/{{$user->user_id}}" method="post" enctype="multipart/form-data">
             @csrf
               <div class="card-body media align-items-center">
                 <img src={{asset('/storage/images/uploads/'.$user->userdetail->image)}} alt="" class="d-block ui-w-80">
@@ -200,4 +200,8 @@
     </div>
 </form>
   </div>
+@endsection
+
+@section('scripts')
+
 @endsection

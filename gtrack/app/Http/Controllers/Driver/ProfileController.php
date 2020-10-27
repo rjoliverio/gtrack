@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Driver;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,11 +14,10 @@ use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 class ProfileController extends Controller
 {
-    //
     public function index()
     {
         $user=Auth::user();
-        return view('admin.profile',compact('user'));
+        return view('driver.profile',compact('user'));
     }
     public function update(Request $req, $id)
     {
@@ -71,6 +70,6 @@ class ProfileController extends Controller
 
        alert()->success('SuccessAlert','Profile updated successfully.');
     
-        return redirect('/admin/profile');
+        return redirect('/driver/profile');
     }
 }
