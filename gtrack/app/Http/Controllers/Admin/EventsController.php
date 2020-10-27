@@ -148,7 +148,7 @@ class EventsController extends Controller
     public function update(Request $request,Event $event, Address $add,UserDetail $use,$id,$aid,$bid,$cid,$did)
     {
         $this->validate ($request, [
-            'event' => 'required',
+            'event_name' => 'required',
             'desc' => 'required',
             'date' => 'required',
             'estreet' => 'required',
@@ -263,7 +263,7 @@ class EventsController extends Controller
 
             $event = Event::find($aid);
             
-            $event->event_name = $request->input("event");
+            $event->event_name = $request->input("event_name");
             $event->description = $request->input("desc");
             $event->date = $request->input("date");
             $event->participants = $request->input("participants");

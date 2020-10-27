@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 //Guest
 Route::group([
-    'namespace' => 'Guest'
+    'namespace' => 'Guest',
+    'middleware' => ['userlogged']
 ],function  () {
     Route::get('/', 'IndexController@index');
     Route::get('/trackcollector', 'TrackerController@tracker');
@@ -30,6 +31,7 @@ Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
     'namespace' => 'Admin',
+    'middleware' => ['auth','admin']
 ],function  () {
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('/reports', 'ReportsController@index');
@@ -45,6 +47,15 @@ Route::group([
     Route::patch('/announcements/update/{id}/{aid}', 'AdminAnnouncementController@update');
     Route::post('/announcements/create', 'AdminAnnouncementController@create');
     Route::post('/announcements/delete/{id}/{aid}', 'AdminAnnouncementController@delete');
+    Route::get('/profile', 'ProfileController@index');
+});
+Route::group([
+    'prefix' => 'driver',
+    'as' => 'driver.',
+    'namespace' => 'Driver',
+    'middleware' => ['auth','driver']
+],function  () {
+    Route::get('/schedule', 'ScheduleController@index');
 });
 Auth::routes();
 

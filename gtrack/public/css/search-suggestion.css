@@ -1,0 +1,20 @@
+.easy-autocomplete{
+    width:100% !important
+  }
+  .template-links{
+    width: 100% !important;
+  }
+  .template-links2{
+    width: 100% !important;
+  }
+  .easy-autocomplete input{
+    width: 100%;
+    background-image: url("../storage/images/img/search.svg");
+    background-size: 4% !important;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  }
+  
+  .form-wrapper{
+    width: 100%;
+  }
