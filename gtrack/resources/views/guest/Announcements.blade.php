@@ -5,6 +5,7 @@
 
 @section('css')
 <link href={{asset('css/announcement-seminar.css')}} rel="stylesheet">
+
 @endsection
 
 @section('content')
@@ -17,139 +18,63 @@
 
       <div class="album py-5 bg-light">
         <div class="container">
-
+        @foreach($ann as $row)
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="post-preview speech-bubble">
-          <a href="post.html">
+      
             <h2 class="post-title">
               
-What’s new in Chrome 83
+{{$row->title}}
             </h2>
             <h3 class="post-subtitle">
-            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
+           {{$row->content}}
             </h3>
-          </a>
-          <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="{{asset('storage/images/gtrack-logo-2.png')}}">
-              <img class="img-fluid" width="160" alt="" src="{{asset('storage/images/gtrack-logo-2.png')}}" />
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-            </div>
-            </div>
-            <hr>
-            <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 79
-            </h2>
-            <h3 class="post-subtitle">
-            As part of this new release, here’s a list of new features and changes you’ll notice when you update to Chrome version 79. Check or change your passwords  You can get notifications from Chrome if your password and username were used on a site with a data leak. Learn more about how to manage passwords.  Get warnings about suspicious sites You can get notifications if Chrome thinks that a site you're going to may not be safe. Learn more about how to manage warnings about
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 83
-            </h2>
-            <h3 class="post-subtitle">
-            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
-            </h3>
-          </a> <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="{{asset('storage/images/gtrack-logo-2.png')}}">
-              <img class="img-fluid" width="160" alt="" src="{{asset('storage/images/gtrack-logo-2.png')}}" />
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-            </div>
-            </div>
-            <hr>
-            <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 83
-            </h2>
-            <h3 class="post-subtitle">
-            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
-            </h3>
-          </a> <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="{{asset('storage/images/gtrack-logo-2.png')}}">
-              <img class="img-fluid" width="160" alt="" src="{{asset('storage/images/gtrack-logo-2.png')}}" />
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-            </div>
-            </div>
-            <hr>
-            <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 83
-            </h2>
-            <h3 class="post-subtitle">
-            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
-            </h3>
-          </a>
-          <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="{{asset('storage/images/gtrack-logo-2.png')}}">
-              <img class="img-fluid" width="160" alt="" src="{{asset('storage/images/gtrack-logo-2.png')}}" />
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-            </div>
-            </div>
-            <hr>
-            <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 83
-            </h2>
-            <h3 class="post-subtitle">
-            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
-            </h3>
-          </a> <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="{{asset('storage/images/gtrack-logo-2.png')}}">
-              <img class="img-fluid" width="160"alt="" src="{{asset('storage/images/gtrack-logo-2.png')}}" />
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-            </div>
-            </div>
-            <hr>
-          <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-        </div>
-        </div>
+         
         
+          @if($row->image_id!=null)
+          <h6><i>Attached Images:</i></h6>
+      <div class="text-center mb-3 border border-secondary rounded-lg p-3 ul">
+      <a class="thumbnail fancybox text-center text-decoration-none li" rel="ligthbox"
+            href="/storage/images/uploads/{{$row->image->image_1}}">
+            <img class="img-fluid ann-images " alt="" src="/storage/images/uploads/{{$row->image->image_1}}" width="100"/>
+        </a>
+        <a class="thumbnail fancybox text-center text-decoration-none li" rel="ligthbox"
+            href="/storage/images/uploads/{{$row->image->image_2}}">
+            <img class="img-fluid ann-images " alt="" src="/storage/images/uploads/{{$row->image->image_2}}" width="100"/>
+        </a>
+        <a class="thumbnail fancybox text-center text-decoration-none li" rel="ligthbox"
+            href="/storage/images/uploads/{{$row->image->image_3}}">
+            <img class="img-responsive img-fluid ann-images" alt=""
+                src="/storage/images/uploads/{{$row->image->image_3}}" width="100"/>
+        </a>
+        <a class="thumbnail fancybox text-center text-decoration-none li" rel="ligthbox"
+            href="/storage/images/uploads/{{$row->image->image_4}}">
+            <img class="img-responsive img-fluid ann-images" alt=""
+                src="/storage/images/uploads/{{$row->image->image_4}}" width="100"/>
+        </a>
+   </div>
+ 
+   @endif
+          <p class="post-meta">Posted by
+            <a href="#">{{$row->user->userdetail->fname}} {{$row->user->userdetail->lname}}</a>
+            on {{$row->created_at}}</p>
+        </div>
+            </div>
+            </div>
+            <hr>
+            @endforeach
+            
+            </div>
+            <div class="d-flex justify-content-center">
+            {{ $ann->links() }}
+        </div>
+           </div>
+           
 </div>
+
+
+    
 <section class="jumbotron text-center" id="anno1" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/nature2.jpg')}}') fixed center center; background-size: cover;">
         
 </section>
@@ -226,5 +151,6 @@ What’s new in Chrome 83
         <hr>
     </div>
 </div> -->
+
 
 @endsection

@@ -89,7 +89,7 @@ img::-moz-selection {
   font-size: 75px;
   font-weight: bolder;
 }
-.post-preview > a > .post-title {
+.post-preview > .post-title {
   font-size: 30px;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -109,7 +109,7 @@ img::-moz-selection {
   .site-heading{
     font-size:24px;
   }
-  .post-preview > a > .post-title {
+  .post-preview > .post-title {
     font-size: 30px;
     margin-top: 30px;
     margin-bottom: 10px;
@@ -192,9 +192,6 @@ img::-moz-selection {
 .yourcart h1{
   font-weight: bolder;
 }
-.post-preview > a {
-  color: #212529;
-}
 #anno1{
   
   background-size: cover;
@@ -206,7 +203,7 @@ img::-moz-selection {
 
 
 
-.post-preview > a > .post-subtitle {
+.post-preview > .post-subtitle {
   font-weight: 300;
   margin: 0 0 10px;
 }
@@ -296,4 +293,31 @@ img::-moz-selection {
 .btn-lg {
   font-size: 16px;
   padding: 25px 35px;
+}
+/* .li {
+  float: left;
+  width: 100px;
+  height: 150px;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+.ul:hover .li {
+  -webkit-transform: translateX(-25%);
+          transform: translateX(-25%);
+}
+.ul:hover .li:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  transition-duration: 0.1818181818s;
+}
+.ul:hover .li:hover ~ .li {
+  -webkit-transform: translateX(25%);
+          transform: translateX(25%);
+} */
+.ann-images:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  transition-duration: 0.1818181818s;
 }

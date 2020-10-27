@@ -39,6 +39,14 @@ Route::group([
     Route::post('/reports/resolve/{id}', 'ReportsController@resolve');
     Route::post('/reports/remove/{id}', 'ReportsController@remove');
     Route::get('/tracker', 'TrackerController@index');
+    Route::get('/announcements', 'AdminAnnouncementController@index');
+    Route::get('/events', 'EventsController@index');
+    Route::post('/events/create', 'EventsController@create');
+    Route::patch('/events/update/{aid}/{bid}/{cid}/{did}', 'EventsController@update');
+    Route::post('/events/delete/{id}/{aid}/{bid}', 'EventsController@delete');
+    Route::patch('/announcements/update/{aid}', 'AdminAnnouncementController@update');
+    Route::post('/announcements/create', 'AdminAnnouncementController@create');
+    Route::post('/announcements/delete/{aid}', 'AdminAnnouncementController@delete');
     Route::get('/profile', 'ProfileController@index');
     Route::get('/employees','EmployeesController@index');
     Route::get('/employees/create','EmployeesController@create');

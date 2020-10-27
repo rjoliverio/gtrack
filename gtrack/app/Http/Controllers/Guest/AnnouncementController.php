@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Announcement;
+use App\Models\Image;
 
 class AnnouncementController extends Controller
 {
     //
     public function index()
     {
-        return view('guest.announcements');
+        $ann=Announcement::simplePaginate(8);
+        return view('guest.announcements',compact('ann'));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Address;
 class UserDetail extends Model
 {
     use HasFactory;
@@ -21,5 +22,8 @@ class UserDetail extends Model
     {
         return $this->hasOne(Address::class,'address_id','address_id');
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 06677721a883a413866d20f974412cdaa836fc26
 }
