@@ -40,6 +40,17 @@ Route::group([
     Route::post('/reports/remove/{id}', 'ReportsController@remove');
     Route::get('/tracker', 'TrackerController@index');
     Route::get('/profile', 'ProfileController@index');
+    Route::get('/employees','EmployeesController@index');
+    Route::get('/employees/create','EmployeesController@create');
+    Route::post('/employees','EmployeesController@store');
+    Route::post('/employees/disable/{id}','EmployeesController@disable');
+    Route::get('/employees/show/{id}','EmployeesController@show');
+    Route::post('/employees/reactivate/{id}','EmployeesController@reactivate');
+    Route::get('/gtrucks','TrucksController@index');
+    Route::get('/gtrucks/create','TrucksController@create');
+    Route::post('/gtrucks','TrucksController@store');
+    Route::post('/gtrucks/maintenance/{id}','TrucksController@maintenance');
+    Route::post('/gtrucks/repair/{id}','TrucksController@repair');
 });
 Route::group([
     'prefix' => 'driver',
@@ -52,5 +63,4 @@ Route::group([
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 

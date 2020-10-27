@@ -50,6 +50,17 @@
           <span>Track Collector</span></a>
       </li>
       <li class="nav-item {{ (request()->is('admin/reports/*') || request()->is('admin/reports')) ? 'active' : '' }}">
+        <a class="nav-link" href="/admin/employees">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Employee</span></a>
+      </li>
+      <li class="nav-item {{ (request()->is('admin/reports/*') || request()->is('admin/reports')) ? 'active' : '' }}">
+        <a class="nav-link" href="/admin/gtrucks">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Garbage Trucks</span></a>
+      </li>
+      
+      <li class="nav-item {{ (request()->is('admin/reports/*') || request()->is('admin/reports')) ? 'active' : '' }}">
         <a class="nav-link" href="/admin/reports">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Reports</span></a>
