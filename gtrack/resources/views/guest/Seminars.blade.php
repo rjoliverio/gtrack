@@ -2,7 +2,7 @@
 
 
 @section('title')
-    GTrack | Seminars
+    GTrack | Events
 @endsection
 
 @section('css')

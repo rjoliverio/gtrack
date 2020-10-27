@@ -22,7 +22,7 @@
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="post-preview speech-bubble">
-          <a href="post.html">
+      
             <h2 class="post-title">
               
 {{$row->title}}
@@ -30,7 +30,9 @@
             <h3 class="post-subtitle">
            {{$row->content}}
             </h3>
-          </a>
+         
+        
+          @if($row->image_id!=null)
           <h6><i>Attached Images:</i></h6>
       <div class="text-center mb-3 border border-secondary rounded-lg p-3 ul">
       <a class="thumbnail fancybox text-center text-decoration-none li" rel="ligthbox"
@@ -52,6 +54,8 @@
                 src="/storage/images/uploads/{{$row->image->image_4}}" width="100"/>
         </a>
    </div>
+ 
+   @endif
           <p class="post-meta">Posted by
             <a href="#">{{$row->user->userdetail->fname}} {{$row->user->userdetail->lname}}</a>
             on {{$row->created_at}}</p>

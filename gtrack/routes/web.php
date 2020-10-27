@@ -42,11 +42,11 @@ Route::group([
     Route::get('/announcements', 'AdminAnnouncementController@index');
     Route::get('/events', 'EventsController@index');
     Route::post('/events/create', 'EventsController@create');
-    Route::patch('/events/update/{id}/{aid}/{bid}/{cid}/{did}', 'EventsController@update');
+    Route::patch('/events/update/{aid}/{bid}/{cid}/{did}', 'EventsController@update');
     Route::post('/events/delete/{id}/{aid}/{bid}', 'EventsController@delete');
-    Route::patch('/announcements/update/{id}/{aid}', 'AdminAnnouncementController@update');
+    Route::patch('/announcements/update/{aid}', 'AdminAnnouncementController@update');
     Route::post('/announcements/create', 'AdminAnnouncementController@create');
-    Route::post('/announcements/delete/{id}/{aid}', 'AdminAnnouncementController@delete');
+    Route::post('/announcements/delete/{aid}', 'AdminAnnouncementController@delete');
     Route::get('/profile', 'ProfileController@index');
 });
 Route::group([

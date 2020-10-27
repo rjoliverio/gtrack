@@ -50,7 +50,7 @@ class EventsController extends Controller
             'cppost' => 'required',
             'cpage' => 'required',
             'gender' => 'required',
-            'images' => 'min:4|max:4',
+            'images' => 'min:1|max:4|required',
             'images.*'=>'mimes:jpeg,png,jpg'
             
             
@@ -78,7 +78,9 @@ class EventsController extends Controller
   };
  
    
-
+  for(;$ctr!=4;$ctr++){
+    $original[$ctr]=null;
+  }
    $image = Image::create([
     'image_1' => $original[0],
     'image_2' => $original[1],
@@ -145,10 +147,10 @@ class EventsController extends Controller
 
         return redirect('/admin/events');
     }
-    public function update(Request $request,Event $event, Address $add,UserDetail $use,$id,$aid,$bid,$cid,$did)
+    public function update(Request $request,Event $event, Address $add,UserDetail $use,$aid,$bid,$cid,$did)
     {
         $this->validate ($request, [
-            'event_name' => 'required',
+            'event' => 'required',
             'desc' => 'required',
             'date' => 'required',
             'estreet' => 'required',
@@ -166,18 +168,19 @@ class EventsController extends Controller
             'cppost' => 'required',
             'cpage' => 'required',
             'gender' => 'required',
-            'images' => 'min:4|max:4',
+            'images' => 'min:1|max:4|required',
             'images.*'=>'mimes:jpeg,png,jpg'
             
             
             ],
             [
                 'images.*.mimes' => 'Only upload jpeg, jpg, png files',
-                'images.min' => 'Upload exactly 4 images',
+                'images.min' => 'Upload exactly 1 - 4 images',
                 'images.max' => 'Upload exactly 4 images',
                ]
        );
-        if(! is_dir(public_path('/storage/images/uploads'))){
+       $event=Event::find($aid); 
+       if(! is_dir(public_path('/storage/images/uploads'))){
             mkdir(public_path('/storage/images/uploads'), 0777);
 
         }
@@ -194,15 +197,18 @@ class EventsController extends Controller
                 $ctr++;
             };
 
-
-            $image = Image::find($id);
-            $image->image_1 =$original[0];
-            $image->image_2 =$original[1];
-            $image->image_3 =$original[2];
-            $image->image_4 =$original[3];
-            $image->save();
+            for(;$ctr!=4;$ctr++){
+                $original[$ctr]=null;
+              }
+            $image = Image::find($event->image_id);
+                $image->image_1 =$original[0];
+                $image->image_2 =$original[1];
+                $image->image_3 =$original[2];
+                $image->image_4 =$original[3];
+                $image->save();
+            
         }
-        $
+        
         //     $image=DB::table('images')
         // ->where('image_id', $announcement->image_id)  // find your user by their email
         // ->limit(1)  // optional - to ensure only one record is updated.
@@ -261,9 +267,9 @@ class EventsController extends Controller
         // $last_id = DB::table('user_details')->whereuser_detail_id($cid)
         // ->insertGetId($data);
 
-            $event = Event::find($aid);
+           
             
-            $event->event_name = $request->input("event_name");
+            $event->event_name = $request->input("event");
             $event->description = $request->input("desc");
             $event->date = $request->input("date");
             $event->participants = $request->input("participants");
