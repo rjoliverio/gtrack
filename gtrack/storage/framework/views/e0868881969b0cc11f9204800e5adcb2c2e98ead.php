@@ -2,7 +2,7 @@
 
 
 <?php $__env->startSection('title'); ?>
-    GTrack | Seminars
+    GTrack | Events
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>

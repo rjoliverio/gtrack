@@ -89,7 +89,7 @@ img::-moz-selection {
   font-size: 75px;
   font-weight: bolder;
 }
-.post-preview > a > .post-title {
+.post-preview > .post-title {
   font-size: 30px;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -109,7 +109,7 @@ img::-moz-selection {
   .site-heading{
     font-size:24px;
   }
-  .post-preview > a > .post-title {
+  .post-preview > .post-title {
     font-size: 30px;
     margin-top: 30px;
     margin-bottom: 10px;
@@ -192,9 +192,6 @@ img::-moz-selection {
 .yourcart h1{
   font-weight: bolder;
 }
-.post-preview > a {
-  color: #212529;
-}
 #anno1{
   
   background-size: cover;
@@ -206,7 +203,7 @@ img::-moz-selection {
 
 
 
-.post-preview > a > .post-subtitle {
+.post-preview > .post-subtitle {
   font-weight: 300;
   margin: 0 0 10px;
 }

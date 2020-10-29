@@ -59,6 +59,17 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Events</span></a>
       </li>
+      <li class="nav-item <?php echo e((request()->is('admin/employees/*') || request()->is('admin/employees')) ? 'active' : ''); ?>">
+        <a class="nav-link" href="/admin/employees">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Employee</span></a>
+      </li>
+      <li class="nav-item <?php echo e((request()->is('admin/gtrucks/*') || request()->is('admin/gtrucks')) ? 'active' : ''); ?>">
+        <a class="nav-link" href="/admin/gtrucks">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Garbage Trucks</span></a>
+      </li>
+      
       <li class="nav-item <?php echo e((request()->is('admin/reports/*') || request()->is('admin/reports')) ? 'active' : ''); ?>">
         <a class="nav-link" href="/admin/reports">
           <i class="fas fa-fw fa-chart-area"></i>

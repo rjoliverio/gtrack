@@ -30,7 +30,7 @@ GTrack | Events
             @foreach($row as $row)
             <div class="col-lg-4 col-md-8 mb-4">
                 <div class="card h-100 w-100">
-                    <img class="card-img-top" src="/storage/images/uploads/{{$row->image->image_1}}" alt="">
+                    <img class="card-img-top" src="/storage/images/uploads/{{$row->image->image_1}}" height="250" width="50" alt="">
                     <div class="card-body">
                         <h4 class="card-title">{{$row->event_name}}</h4>
                         <hr>
@@ -124,7 +124,7 @@ GTrack | Events
                         </div>
                         <div class="modal-body">
 
-                            <img src="/storage/images/uploads/{{$row->userdetail->image}}" class="images-display"
+                            <img src="/storage/images/uploads/{{$row->image->image_1}}" class="images-display"
                                 width="450" alt="Responsive image">
                             <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
                                 <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
@@ -177,7 +177,7 @@ GTrack | Events
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form
-                            action="/admin/events/update/{{$row->image->image_id}}/{{$row->event_id}}/{{$row->address_id}}/{{$row->contact_person_id}}/{{$row->userdetail->address->address_id}}"
+                            action="/admin/events/update/{{$row->event_id}}/{{$row->address_id}}/{{$row->contact_person_id}}/{{$row->userdetail->address->address_id}}"
                             method="POST" enctype="multipart/form-data">
                             @method('PATCH')
                             {{csrf_field()}}
@@ -189,16 +189,35 @@ GTrack | Events
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Event Name</label>
-                                    <input type="text" class="form-control" name="event" value="{{$row->event_name}}">
+                                    <input type="text" class="form-control @error('event') is-invalid @enderror"  name="event" value="{{ $row->event_name }}"  autocomplete="event" autofocus placeholder="Event Name">
+                                    @error('event')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <input type="text" class="form-control" name="desc" value="{{$row->description}}">
+                                    <textarea type="text" class="form-control @error('desc') is-invalid @enderror" name="desc"  rows="10" cols="10" value="{{ old('desc') }}"  autocomplete="desc" autofocus placeholder="Description" >{{$row->description}}</textarea>
+                                    @error('desc')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="images[]">Image</label>
-                                    <input type="file" class="form-control-file" name="images[]"
-                                        value="{{ old('images[]') }}" multiple required>
+                                    <input type="file" class="form-control-file @error('images') is-invalid @enderror @error('images.*') is-invalid @enderror" name="images[]" value="{{ old('images[]') }}" multiple required>
+                                    @error('images')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                    @error('images.*')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Date</label>
@@ -206,38 +225,66 @@ GTrack | Events
                                 </div>
                                 <div class="form-group">
                                     <label>Event Address - Street</label>
-                                    <input type="text" class="form-control" name="estreet"
-                                        value="{{$row->address->street}}">
+                                    <input type="text" class="form-control @error('estreet') is-invalid @enderror"  name="estreet" value="{{ $row->address->street }}"  autocomplete="estreet" autofocus placeholder="Event Address - Street">
+                                    @error('estreet')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Event Address - Barangay</label>
-                                    <input type="text" class="form-control" name="ebrgy"
-                                        value="{{$row->address->barangay}}">
+                                    <input type="text" class="form-control @error('ebrgy') is-invalid @enderror"  name="ebrgy" value="{{ $row->address->barangay }}"  autocomplete="ebrgy" autofocus placeholder="Event Address - Barangay">
+                                    @error('ebrgy')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Event Address - Town</label>
-                                    <input type="text" class="form-control" name="etown"
-                                        value="{{$row->address->town}}">
+                                    <input type="text" class="form-control @error('etown') is-invalid @enderror"  name="etown" value="{{ $row->address->town }}"  autocomplete="etown" autofocus placeholder="Event Address - Town">
+                                    @error('etown')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Event Address - Postal Code</label>
-                                    <input type="number" class="form-control" name="epost"
-                                        value="{{$row->address->postal_code}}">
+                                    <input type="text" class="form-control @error('epost') is-invalid @enderror"  name="epost" value="{{ $row->address->postal_code }}"  autocomplete="epost" autofocus placeholder="Event Address - Postal Code">
+                                    @error('epost')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Participants</label>
-                                    <input type="text" class="form-control" name="participants"
-                                        value="{{$row->participants}}">
+                                    <input type="text" class="form-control @error('participants') is-invalid @enderror"  name="participants" value="{{ $row->participants }}"  autocomplete="participants" autofocus placeholder="Event Participants">
+                                    @error('participants')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Contact Person First Name</label>
-                                    <input type="text" class="form-control" name="cpfname"
-                                        value="{{$row->userdetail->fname}}">
+                                    <input type="text" class="form-control @error('cpfname') is-invalid @enderror"  name="cpfname" value="{{ $row->userdetail->fname }}"  autocomplete="cpfname" autofocus placeholder="Contact Person First Name">
+                                    @error('cpfname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Contact Person Last Name</label>
-                                    <input type="text" class="form-control" name="cplname"
-                                        value="{{$row->userdetail->lname}}">
+                                    <input type="text" class="form-control @error('cplname') is-invalid @enderror"  name="cplname" value="{{ $row->userdetail->lname }}"  autocomplete="cplname" autofocus placeholder="Contact Person Last Name">
+                                    @error('cplname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Contact Person Image</label>
@@ -245,33 +292,57 @@ GTrack | Events
                                 </div>
                                 <div class="form-group">
                                     <label>Contact Person Contact Number</label>
-                                    <input type="number" class="form-control" name="cpconno"
-                                        value="{{$row->userdetail->contact_no}}">
+                                    <input type="text" class="form-control @error('cpconno') is-invalid @enderror"  name="cpconno" value="{{ $row->userdetail->contact_no }}"  autocomplete="cpconno" autofocus placeholder="Contact Person Contact Number">
+                                    @error('cpconno')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Contact Person Address - Street</label>
-                                    <input type="text" class="form-control" name="cpstreet"
-                                        value="{{$row->userdetail->address->street}}">
+                                    <input type="text" class="form-control @error('cpstreet') is-invalid @enderror"  name="cpstreet" value="{{ $row->userdetail->address->street }}"  autocomplete="cpstreet" autofocus placeholder="Contact Person Address - Street">
+                                    @error('cpstreet')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Contact Person Address - Barangay</label>
-                                    <input type="text" class="form-control" name="cpbrgy"
-                                        value="{{$row->userdetail->address->barangay}}">
+                                    <input type="text" class="form-control @error('cpbrgy') is-invalid @enderror"  name="cpbrgy" value="{{ $row->userdetail->address->barangay }}"  autocomplete="cpbrgy" autofocus placeholder="Contact Person Address - Barangay">
+                                    @error('cpbrgy')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Contact Person Address - Town</label>
-                                    <input type="text" class="form-control" name="cptown"
-                                        value="{{$row->userdetail->address->town}}">
+                                    <input type="text" class="form-control @error('cptown') is-invalid @enderror"  name="cptown" value="{{ $row->userdetail->address->town }}"  autocomplete="cptown" autofocus placeholder="Contact Person Address - Town">
+                                    @error('cptown')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Contact Person Address - Postal Code</label>
-                                    <input type="number" class="form-control" name="cppost"
-                                        value="{{$row->userdetail->address->postal_code}}">
+                                    <input type="text" class="form-control @error('cppost') is-invalid @enderror"  name="cppost" value="{{ $row->userdetail->address->postal_code }}"  autocomplete="cppost" autofocus placeholder="Contact Person Address - Postal Code">
+                                    @error('cppost')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Contact Person Age</label>
-                                    <input type="number" class="form-control" name="cpage"
-                                        value="{{$row->userdetail->age}}">
+                                    <input type="text" class="form-control @error('cpage') is-invalid @enderror"  name="cpage" value="{{ $row->userdetail->age }}"  autocomplete="cpage" autofocus placeholder="Contact Person Age">
+                                    @error('cpage')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Contact Person Gender</label><br><br>
@@ -313,7 +384,7 @@ GTrack | Events
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input type="text" class="form-control" name="desc" required>
+                        <textarea type="text" class="form-control" name="desc"  rows="10" cols="10" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="images[]">Image</label>

@@ -22,4 +22,5 @@ class UserDetail extends Model
     {
         return $this->hasOne(Address::class,'address_id','address_id');
     }
+
 }

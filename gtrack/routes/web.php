@@ -42,13 +42,24 @@ Route::group([
     Route::get('/announcements', 'AdminAnnouncementController@index');
     Route::get('/events', 'EventsController@index');
     Route::post('/events/create', 'EventsController@create');
-    Route::patch('/events/update/{id}/{aid}/{bid}/{cid}/{did}', 'EventsController@update');
+    Route::patch('/events/update/{aid}/{bid}/{cid}/{did}', 'EventsController@update');
     Route::post('/events/delete/{id}/{aid}/{bid}', 'EventsController@delete');
-    Route::patch('/announcements/update/{id}/{aid}', 'AdminAnnouncementController@update');
+    Route::patch('/announcements/update/{aid}', 'AdminAnnouncementController@update');
     Route::post('/announcements/create', 'AdminAnnouncementController@create');
-    Route::post('/announcements/delete/{id}/{aid}', 'AdminAnnouncementController@delete');
+    Route::post('/announcements/delete/{aid}', 'AdminAnnouncementController@delete');
     Route::get('/profile', 'ProfileController@index');
     Route::post('/profile/update/{id}', 'ProfileController@update');
+    Route::get('/employees','EmployeesController@index');
+    Route::get('/employees/create','EmployeesController@create');
+    Route::post('/employees','EmployeesController@store');
+    Route::post('/employees/disable/{id}','EmployeesController@disable');
+    Route::get('/employees/show/{id}','EmployeesController@show');
+    Route::post('/employees/reactivate/{id}','EmployeesController@reactivate');
+    Route::get('/gtrucks','TrucksController@index');
+    Route::get('/gtrucks/create','TrucksController@create');
+    Route::post('/gtrucks','TrucksController@store');
+    Route::post('/gtrucks/maintenance/{id}','TrucksController@maintenance');
+    Route::post('/gtrucks/repair/{id}','TrucksController@repair');
 });
 Route::group([
     'prefix' => 'driver',
@@ -65,5 +76,4 @@ Route::group([
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 

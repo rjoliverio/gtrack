@@ -30,7 +30,12 @@ GTrack | Announcements
             @foreach($row as $row)
             <div class="col-lg-4 col-md-8 mb-4">
                 <div class="card h-100 w-100">
-                    <img class="card-img-top" src="{{asset('storage/images/uploads/'.$row->image_1)}}" alt="">
+                    @if($row->image_id!=null)
+                    <img class="card-img-top" src="{{asset('storage/images/uploads/'.$row->image->image_1)}}" height="250" width="50" alt="">
+                    @else
+                    <img class="card-img-top" src="{{asset('storage/images/img/noimage.png')}}" height="250" width="50" alt="">
+                    
+                    @endif
                     <div class="card-body">
                         <h4 class="card-title">{{$row->title}}</h4>
                         <hr>
@@ -94,7 +99,7 @@ GTrack | Announcements
             <div id="deleteAnnouncement{{$row->announcement_id}}" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="/admin/announcements/delete/{{$row->image_id}}/{{$row->announcement_id}}"
+                        <form action="/admin/announcements/delete/{{$row->announcement_id}}"
                             method="POST" enctype="multipart/form-data">
                             {{csrf_field()}}
                             <div class="modal-header">
@@ -117,27 +122,31 @@ GTrack | Announcements
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
+                       
                         <div class="modal-body">
-
-                            <img src="/storage/images/uploads/{{$row->image_1}}" class="images-display" width="450"
+                        @if($row->image_id!=NULL)
+                            <img src="/storage/images/uploads/{{$row->image->image_1}}" class="images-display" width="450"
                                 alt="Responsive image">
                             <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
                                 <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
-                                    href="/storage/images/uploads/{{$row->image_2}}">
+                                    href="/storage/images/uploads/{{$row->image->image_2}}">
                                     <img class="img-fluid bike-images " alt=""
-                                        src="/storage/images/uploads/{{$row->image_2}}" width="50" />
+                                        src="/storage/images/uploads/{{$row->image->image_2}}" width="50" />
                                 </a>
                                 <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
-                                    href="/storage/images/uploads/{{$row->image_3}}">
+                                    href="/storage/images/uploads/{{$row->image->image_3}}">
                                     <img class="img-responsive img-fluid bike-images" alt=""
-                                        src="/storage/images/uploads/{{$row->image_3}}" width="50" />
+                                        src="/storage/images/uploads/{{$row->image->image_3}}" width="50" />
                                 </a>
                                 <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
-                                    href="/storage/images/uploads/{{$row->image_4}}">
+                                    href="/storage/images/uploads/{{$row->image->image_4}}">
                                     <img class="img-responsive img-fluid bike-images" alt=""
-                                        src="/storage/images/uploads/{{$row->image_4}}" width="50" />
+                                        src="/storage/images/uploads/{{$row->image->image_4}}" width="50" />
                                 </a>
+                              
+                                
                             </div>
+                            @endif
                             <hr>
                             <div>
                                 <div>
@@ -159,7 +168,7 @@ GTrack | Announcements
             <div id="editEmployeeModal{{$row->announcement_id}}" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="/admin/announcements/update/{{$row->image_id}}/{{$row->announcement_id}}"
+                        <form action="/admin/announcements/update/{{$row->announcement_id}}"
                             method="POST" enctype="multipart/form-data">
                             @method('PATCH')
                             {{csrf_field()}}
@@ -169,23 +178,42 @@ GTrack | Announcements
                                     aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <div class="form-group idnum" id="empID2">
+                                <!-- <div class="form-group idnum" id="empID2">
                                     <label>ID</label>
                                     <input type="text" class="form-control" name="empID"
                                         value="{{$row->announcement_id}}" readonly>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" class="form-control" name="title" value="{{$row->title}}">
+                                    <input type="text" class="form-control @error('title') is-invalid @enderror"  name="title" value="{{ $row->title }}"  autocomplete="title" autofocus placeholder="Title">
+                                    @error('title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Content</label>
-                                    <input type="text" class="form-control" name="content" value="{{$row->content}}">
+                                <label>Content</label>
+                                    <textarea type="text" class="form-control @error('content') is-invalid @enderror" name="content"  rows="10" cols="10" value="{{ old('$row->title') }}"  autocomplete="content" autofocus placeholder="Content" required>{{$row->content}}</textarea>
+                                    @error('content')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="images[]">Image</label>
-                                    <input type="file" class="form-control-file" name="images[]"
-                                        value="{{ old('images[]') }}" multiple required>
+                                <label for="images[]">Image</label>
+                                <input type="file" class="form-control-file @error('images') is-invalid @enderror @error('images.*') is-invalid @enderror" name="images[]" value="{{ old('images[]') }}" multiple>
+                                @error('images')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                @error('images.*')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -211,22 +239,37 @@ GTrack | Announcements
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group idnum" id="empID">
-                        <label>ID</label>
-                        <input type="text" class="form-control" name="empID" value="{{Auth::user()->user_id}}" readonly>
-                    </div>
-
                     <div class="form-group">
                         <label>Title</label>
-                        <input type="text" class="form-control" name="title" required>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror"  name="title" value="{{ old('title') }}"  autocomplete="title" autofocus placeholder="Title">
+                        @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Content</label>
-                        <input type="text" class="form-control" name="content" required>
+                        <textarea type="text" class="form-control @error('content') is-invalid @enderror" name="content"  rows="10" cols="10" value="{{ old('content') }}"  autocomplete="content" autofocus placeholder="Content" required></textarea>
+                        @error('content')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="images[]">Image</label>
-                        <input type="file" class="form-control-file" name="images[]" multiple required>
+                        <input type="file" class="form-control-file @error('images') is-invalid @enderror @error('images.*') is-invalid @enderror" name="images[]" value="{{ old('images[]') }}" multiple>
+                        @error('images')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        @error('images.*')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
 
                 </div>
