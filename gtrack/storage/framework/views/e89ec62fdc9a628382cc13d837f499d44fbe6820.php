@@ -36,7 +36,7 @@
             <a class="js-scroll-trigger" href="/trackcollector">Track Collector</a>
           </li>
           <li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="/seminars">Seminars</a>
+            <a class="js-scroll-trigger" href="/seminars">Events</a>
           </li>
           <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="/contact-us">Contact Us</a>

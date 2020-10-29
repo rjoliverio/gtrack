@@ -13,10 +13,9 @@
 
     <!-- Jumbotron Header -->
     <header class="jumbotron mb-4 headsem" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('<?php echo e(asset('storage/images/nature4.jpg')); ?>') fixed center center; background-size: cover;">
-      <h1 class="display-3">SEMINARS</h1>
+      <h1 class="display-3">EVENTS</h1>
 </header>
 <div class="container">
-<!-- Carousel -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -25,32 +24,27 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+            <img class="first-slide" src="/storage/images/img/event1.jpg" alt="First slide">
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Welcome to Events</h1>
+                <p><i>Here you can see all the events regarding waste management in Barangay Poblacion, Compostela</i></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="second-slide" src="/storage/images/img/event2.jpg" alt="Second slide">
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1>Upcoming Seminars</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                <h1><i>Help Nature...</i></h1>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+            <img class="third-slide" src="/storage/images/img/event3.jpg" alt="Third slide">
             <div class="container">
               <div class="carousel-caption text-right">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
-            <div class="container">
-              <div class="carousel-caption text-right">
-              <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                <h1><i>Become Responsible...</i></h1>
               </div>
             </div>
           </div>
@@ -64,67 +58,173 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+<!-- Carousel -->
+<div class="row">
+  <h5>Upcoming Events</h5>
+</div>
+<hr>
+<div class="row">
+<?php $__currentLoopData = $arr; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+<div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="/storage/images/uploads/<?php echo e($row->image->image_1); ?>" alt="">
+          <div class="card-body">
+            <h4 class="card-title"><?php echo e($row->event_name); ?></h4>
+            <p class="card-text"><?php echo e(\Illuminate\Support\Str::limit($row->description,100)); ?></p>
+          </div>
+          <div class="card-footer">
+            <a href="#showCont<?php echo e($row->event_id); ?>" class="btn btn-primary" data-toggle="modal">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+      <div id="showCont<?php echo e($row->event_id); ?>" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                      
+                                        <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">&times;</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                
+      <img src="/storage/images/uploads/<?php echo e($row->image->image_1); ?>" class="images-display" width="450" alt="Responsive image">
+      <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
+        <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
+            href="/storage/images/uploads/<?php echo e($row->image->image_2); ?>">
+            <img class="img-fluid bike-images " alt="" src="/storage/images/uploads/<?php echo e($row->image->image_2); ?>" width="50"/>
+        </a>
+        <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
+            href="/storage/images/uploads/<?php echo e($row->image->image_3); ?>">
+            <img class="img-responsive img-fluid bike-images" alt=""
+                src="/storage/images/uploads/<?php echo e($row->image->image_3); ?>" width="50"/>
+        </a>
+        <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
+            href="/storage/images/uploads/<?php echo e($row->image->image_4); ?>">
+            <img class="img-responsive img-fluid bike-images" alt=""
+                src="/storage/images/uploads/<?php echo e($row->image->image_4); ?>" width="50"/>
+        </a>
+    </div>
+      <hr>
+      <div>
+      <div>
+                                                    <h2 class="modal-title"><i><?php echo e($row->event_name); ?></i></h2>
+                                                    
+                                                </div>
+                                              <div>
+                                              <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
+                                              <p><?php echo e($row->description); ?></p>
+                                              </div>
+                                              <div class="text-left mb-3 border border-secondary rounded-lg p-3 ">
+                                              <div class="row">
+                                              <h4><b>Other Details:</b></h4>
+                                              </div>
+                                              <p><i>When:</i> <?php echo e(\Carbon\Carbon::parse($row->date)->format('m/d/Y')); ?></p>
+        <p><i>Who:</i> <?php echo e($row->participants); ?></p>
+        <p><i>Contact Person:</i> <?php echo e($row->userdetail->fname); ?> <?php echo e($row->userdetail->lname); ?>, <?php echo e($row->userdetail->contact_no); ?></p>
+                                              </div>
+        
+        </div>
+      </div>
+
+  
+                                                </div>
+
+                  
+                                        </div>
+                                    </div>
+                                </div>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+</div>
+<div class="row">
+  <h5>All Events</h5>
+</div>
+<hr>
     <!-- Page Features -->
     <div class="row text-center">
-
-      <div class="col-lg-3 col-md-6 mb-4">
+    <?php $__currentLoopData = $arr2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+<div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+          <img class="card-img-top" src="/storage/images/uploads/<?php echo e($row->image->image_1); ?>" alt="">
           <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            <h4 class="card-title"><?php echo e($row->event_name); ?></h4>
+            <p class="card-text"><?php echo e(\Illuminate\Support\Str::limit($row->description,100)); ?></p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
+            <a href="#showCont<?php echo e($row->event_id); ?>" class="btn btn-primary" data-toggle="modal">Find Out More!</a>
           </div>
         </div>
       </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
+      <div id="showCont<?php echo e($row->event_id); ?>" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                      
+                                        <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">&times;</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                
+      <img src="/storage/images/uploads/<?php echo e($row->image->image_1); ?>" class="images-display" width="450" alt="Responsive image">
+      <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
+        <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
+            href="/storage/images/uploads/<?php echo e($row->image->image_2); ?>">
+            <img class="img-fluid bike-images " alt="" src="/storage/images/uploads/<?php echo e($row->image->image_2); ?>" width="50"/>
+        </a>
+        <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
+            href="/storage/images/uploads/<?php echo e($row->image->image_3); ?>">
+            <img class="img-responsive img-fluid bike-images" alt=""
+                src="/storage/images/uploads/<?php echo e($row->image->image_3); ?>" width="50"/>
+        </a>
+        <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
+            href="/storage/images/uploads/<?php echo e($row->image->image_4); ?>">
+            <img class="img-responsive img-fluid bike-images" alt=""
+                src="/storage/images/uploads/<?php echo e($row->image->image_4); ?>" width="50"/>
+        </a>
     </div>
-    <!-- /.row -->
+      <hr>
+      <div>
+      <div>
+                                                    <h2 class="modal-title"><i><?php echo e($row->event_name); ?></i></h2>
+                                                    
+                                                </div>
+                                              <div>
+                                              <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
+                                              <p><?php echo e($row->description); ?></p>
+                                              </div>
+                                              <div class="text-left mb-3 border border-secondary rounded-lg p-3 ">
+                                              <div class="row">
+                                              <h4><b>Other Details:</b></h4>
+                                              </div>
+                                              <p><i>When:</i> <?php echo e(\Carbon\Carbon::parse($row->date)->format('m/d/Y')); ?></p>
+        <p><i>Who:</i> <?php echo e($row->participants); ?></p>
+        <p><i>Contact Person:</i> <?php echo e($row->userdetail->fname); ?> <?php echo e($row->userdetail->lname); ?>, <?php echo e($row->userdetail->contact_no); ?></p>
+                                              </div>
+        
+        </div>
+      </div>
 
+  
+                                                </div>
+
+                  
+                                        </div>
+                                    </div>
+                                </div>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+    
+    </div>
+    
+    <!-- /.row -->
+    <div class="d-flex justify-content-center">
+            <?php echo e($arr2->links()); ?>
+
+        </div>
   </div>
+  
+  
   <!-- /.container -->
-  <section class="jumbotron text-center" id="anno1" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('<?php echo e(asset('storage/images/nature4.jpg')); ?>') fixed center center; background-size: cover;">
+  <section class="jumbotron text-center mt-5" id="anno1" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('<?php echo e(asset('storage/images/nature4.jpg')); ?>') fixed center center; background-size: cover;">
         
 </section>
         

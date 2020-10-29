@@ -15,28 +15,35 @@
   firebase.analytics();
     var database = firebase.database();
 
-    function seenClick(id)
+    function seenClick(id,data,name,date)
     {
+        var obj=data;
+        data=JSON.stringify(data);
         database.ref('reports/'+id).set({
-            data:"{}",
+            created_at:date,
+            data:data,
+            name:name,
             seen:1
         });
-        window.location.href = "/admin/reports/show/"+id;
+        window.location.href = "/admin/reports/show/"+obj.report_id;
     }
     database.ref('reports').on('value', function(snapshot){
         var count=0;
         var notif="";
         snapshot.forEach(function(idSnapshot){
+            var data=JSON.parse(idSnapshot.val().data);
+            var str=idSnapshot.val().data;
+            str=str.replace(/\"/g,"'");
             if(idSnapshot.val().seen==0){
-                notif+="<a style='cursor:pointer;' class=\"dropdown-item d-flex align-items-center seen-notif "+idSnapshot.ref.key+" \" onClick='seenClick("+idSnapshot.ref.key+");' >"
-                        +"<div class=\"mr-3\">"+
+                notif+="<a style='cursor:pointer;' class=\"dropdown-item d-flex align-items-center seen-notif "+idSnapshot.ref.key+" \" onClick=\"seenClick('"+idSnapshot.ref.key+"', "+str+", '"+idSnapshot.val().name+"', '"+idSnapshot.val().created_at+"')\">"+
+                        "<div class=\"mr-3\">"+
                         "<div class=\"icon-circle bg-danger\">"+
                             "<i class=\"fas fa-exclamation-triangle text-white\"></i>"+
                         "</div>"+
                         "</div>"+
                         "<div>"+
-                        "<div class=\"small text-gray-500\">December 2, 2019</div>"+
-                        "<span class='font-weight-bold'>Rj Oliverio</span>: Hello World | 10"+
+                        "<div class=\"small text-gray-500\">"+idSnapshot.val().created_at+"</div>"+
+                        "<span class='font-weight-bold text-truncate'>"+idSnapshot.val().name+"</span>: "+data.subject+" | "+data.degree+""+
                         "</div>"+
                     "</a>";
                     count++;

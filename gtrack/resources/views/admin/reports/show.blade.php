@@ -63,18 +63,26 @@
                     </div><hr>
                     <span class="small">Photo attachments:</span>
                     <div class="text-center">
+                      @if($report->image->image_1!=null)
                         <a class="fancybox text-decoration-none" rel="ligthbox" href={{asset('storage/images/uploads/'.$report->image->image_1)}}>
-                            <img class="img-responsive" width="100" src={{asset('storage/images/uploads/'.$report->image->image_1)}}  />
-                        </a>
+                          <img class="img-responsive" width="100" src={{asset('storage/images/uploads/'.$report->image->image_1)}}  />
+                      </a>
+                      @endif
+                      @if($report->image->image_2!=null)
                         <a class="fancybox text-decoration-none" rel="ligthbox" href={{asset('storage/images/uploads/'.$report->image->image_2)}}>
-                            <img class="img-responsive" width="100" src={{asset('storage/images/uploads/'.$report->image->image_2)}}  />
-                        </a>
+                          <img class="img-responsive" width="100" src={{asset('storage/images/uploads/'.$report->image->image_2)}}  />
+                      </a>
+                      @endif
+                      @if($report->image->image_3!=null)
                         <a class="fancybox text-decoration-none" rel="ligthbox" href={{asset('storage/images/uploads/'.$report->image->image_3)}}>
-                            <img class="img-responsive" width="100" src={{asset('storage/images/uploads/'.$report->image->image_3)}}  />
-                        </a>
+                          <img class="img-responsive" width="100" src={{asset('storage/images/uploads/'.$report->image->image_3)}}  />
+                      </a>
+                      @endif
+                      @if($report->image->image_4!=null)
                         <a class="fancybox text-decoration-none" rel="ligthbox" href={{asset('storage/images/uploads/'.$report->image->image_4)}}>
-                            <img class="img-responsive" width="100" src={{asset('storage/images/uploads/'.$report->image->image_4)}}  />
-                        </a>
+                          <img class="img-responsive" width="100" src={{asset('storage/images/uploads/'.$report->image->image_4)}}  />
+                      </a>
+                      @endif
                     </div><hr>
                     @if($report->status==0)
                     <form id="logout-form" action="/admin/reports/resolve/{{$report->report_id}}" method="POST">

@@ -49,12 +49,12 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Track Collector</span></a>
       </li>
-      <li class="nav-item {{ (request()->is('admin/tracker/*') || request()->is('admin/tracker')) ? 'active' : '' }}">
+      <li class="nav-item {{ (request()->is('admin/announcements/*') || request()->is('admin/announcements')) ? 'active' : '' }}">
         <a class="nav-link" href="/admin/announcements">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Announcements</span></a>
       </li>
-      <li class="nav-item {{ (request()->is('admin/tracker/*') || request()->is('admin/tracker')) ? 'active' : '' }}">
+      <li class="nav-item {{ (request()->is('admin/events/*') || request()->is('admin/events')) ? 'active' : '' }}">
         <a class="nav-link" href="/admin/events">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Events</span></a>

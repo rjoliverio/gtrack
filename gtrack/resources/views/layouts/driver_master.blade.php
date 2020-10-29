@@ -44,7 +44,11 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Schedule</span></a>
       </li>
-      
+      <li class="nav-item {{ (request()->is('driver/reports')) ? 'active' : '' }}">
+        <a class="nav-link" href="/driver/reports">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Report</span></a>
+      </li>
       <!-- Divider -->
 
       <!-- Heading -->

@@ -63,18 +63,26 @@
                     </div><hr>
                     <span class="small">Photo attachments:</span>
                     <div class="text-center">
+                      <?php if($report->image->image_1!=null): ?>
                         <a class="fancybox text-decoration-none" rel="ligthbox" href=<?php echo e(asset('storage/images/uploads/'.$report->image->image_1)); ?>>
-                            <img class="img-responsive" width="100" src=<?php echo e(asset('storage/images/uploads/'.$report->image->image_1)); ?>  />
-                        </a>
+                          <img class="img-responsive" width="100" src=<?php echo e(asset('storage/images/uploads/'.$report->image->image_1)); ?>  />
+                      </a>
+                      <?php endif; ?>
+                      <?php if($report->image->image_2!=null): ?>
                         <a class="fancybox text-decoration-none" rel="ligthbox" href=<?php echo e(asset('storage/images/uploads/'.$report->image->image_2)); ?>>
-                            <img class="img-responsive" width="100" src=<?php echo e(asset('storage/images/uploads/'.$report->image->image_2)); ?>  />
-                        </a>
+                          <img class="img-responsive" width="100" src=<?php echo e(asset('storage/images/uploads/'.$report->image->image_2)); ?>  />
+                      </a>
+                      <?php endif; ?>
+                      <?php if($report->image->image_3!=null): ?>
                         <a class="fancybox text-decoration-none" rel="ligthbox" href=<?php echo e(asset('storage/images/uploads/'.$report->image->image_3)); ?>>
-                            <img class="img-responsive" width="100" src=<?php echo e(asset('storage/images/uploads/'.$report->image->image_3)); ?>  />
-                        </a>
+                          <img class="img-responsive" width="100" src=<?php echo e(asset('storage/images/uploads/'.$report->image->image_3)); ?>  />
+                      </a>
+                      <?php endif; ?>
+                      <?php if($report->image->image_4!=null): ?>
                         <a class="fancybox text-decoration-none" rel="ligthbox" href=<?php echo e(asset('storage/images/uploads/'.$report->image->image_4)); ?>>
-                            <img class="img-responsive" width="100" src=<?php echo e(asset('storage/images/uploads/'.$report->image->image_4)); ?>  />
-                        </a>
+                          <img class="img-responsive" width="100" src=<?php echo e(asset('storage/images/uploads/'.$report->image->image_4)); ?>  />
+                      </a>
+                      <?php endif; ?>
                     </div><hr>
                     <?php if($report->status==0): ?>
                     <form id="logout-form" action="/admin/reports/resolve/<?php echo e($report->report_id); ?>" method="POST">

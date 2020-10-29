@@ -5,6 +5,7 @@
 
 <?php $__env->startSection('css'); ?>
 <link href=<?php echo e(asset('css/announcement-seminar.css')); ?> rel="stylesheet">
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -17,139 +18,62 @@
 
       <div class="album py-5 bg-light">
         <div class="container">
+        <?php $__currentLoopData = $ann; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="post-preview speech-bubble">
+          <a href="post.html">
+            <h2 class="post-title">
+              
+<?php echo e($row->title); ?>
 
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 83
             </h2>
             <h3 class="post-subtitle">
-            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
+           <?php echo e($row->content); ?>
+
             </h3>
           </a>
-          <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="<?php echo e(asset('storage/images/gtrack-logo-2.png')); ?>">
-              <img class="img-fluid" width="160" alt="" src="<?php echo e(asset('storage/images/gtrack-logo-2.png')); ?>" />
-          </a>
+          <h6><i>Attached Images:</i></h6>
+      <div class="text-center mb-3 border border-secondary rounded-lg p-3 ul">
+      <a class="thumbnail fancybox text-center text-decoration-none li" rel="ligthbox"
+            href="/storage/images/uploads/<?php echo e($row->image->image_1); ?>">
+            <img class="img-fluid ann-images " alt="" src="/storage/images/uploads/<?php echo e($row->image->image_1); ?>" width="100"/>
+        </a>
+        <a class="thumbnail fancybox text-center text-decoration-none li" rel="ligthbox"
+            href="/storage/images/uploads/<?php echo e($row->image->image_2); ?>">
+            <img class="img-fluid ann-images " alt="" src="/storage/images/uploads/<?php echo e($row->image->image_2); ?>" width="100"/>
+        </a>
+        <a class="thumbnail fancybox text-center text-decoration-none li" rel="ligthbox"
+            href="/storage/images/uploads/<?php echo e($row->image->image_3); ?>">
+            <img class="img-responsive img-fluid ann-images" alt=""
+                src="/storage/images/uploads/<?php echo e($row->image->image_3); ?>" width="100"/>
+        </a>
+        <a class="thumbnail fancybox text-center text-decoration-none li" rel="ligthbox"
+            href="/storage/images/uploads/<?php echo e($row->image->image_4); ?>">
+            <img class="img-responsive img-fluid ann-images" alt=""
+                src="/storage/images/uploads/<?php echo e($row->image->image_4); ?>" width="100"/>
+        </a>
+   </div>
           <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
+            <a href="#"><?php echo e($row->user->userdetail->fname); ?> <?php echo e($row->user->userdetail->lname); ?></a>
+            on <?php echo e($row->created_at); ?></p>
         </div>
             </div>
             </div>
             <hr>
-            <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 79
-            </h2>
-            <h3 class="post-subtitle">
-            As part of this new release, here’s a list of new features and changes you’ll notice when you update to Chrome version 79. Check or change your passwords  You can get notifications from Chrome if your password and username were used on a site with a data leak. Learn more about how to manage passwords.  Get warnings about suspicious sites You can get notifications if Chrome thinks that a site you're going to may not be safe. Learn more about how to manage warnings about
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            
+            </div>
+            <div class="d-flex justify-content-center">
+            <?php echo e($ann->links()); ?>
+
         </div>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 83
-            </h2>
-            <h3 class="post-subtitle">
-            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
-            </h3>
-          </a> <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="<?php echo e(asset('storage/images/gtrack-logo-2.png')); ?>">
-              <img class="img-fluid" width="160" alt="" src="<?php echo e(asset('storage/images/gtrack-logo-2.png')); ?>" />
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-            </div>
-            </div>
-            <hr>
-            <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 83
-            </h2>
-            <h3 class="post-subtitle">
-            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
-            </h3>
-          </a> <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="<?php echo e(asset('storage/images/gtrack-logo-2.png')); ?>">
-              <img class="img-fluid" width="160" alt="" src="<?php echo e(asset('storage/images/gtrack-logo-2.png')); ?>" />
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-            </div>
-            </div>
-            <hr>
-            <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 83
-            </h2>
-            <h3 class="post-subtitle">
-            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
-            </h3>
-          </a>
-          <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="<?php echo e(asset('storage/images/gtrack-logo-2.png')); ?>">
-              <img class="img-fluid" width="160" alt="" src="<?php echo e(asset('storage/images/gtrack-logo-2.png')); ?>" />
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-            </div>
-            </div>
-            <hr>
-            <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="post-preview speech-bubble">
-          <a href="post.html">
-            <h2 class="post-title">
-              
-What’s new in Chrome 83
-            </h2>
-            <h3 class="post-subtitle">
-            As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts about: Malware Risky
-            </h3>
-          </a> <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox" href="<?php echo e(asset('storage/images/gtrack-logo-2.png')); ?>">
-              <img class="img-fluid" width="160"alt="" src="<?php echo e(asset('storage/images/gtrack-logo-2.png')); ?>" />
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-            </div>
-            </div>
-            <hr>
-          <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-        </div>
-        </div>
-        
+           </div>
+           
 </div>
+
+
+    
 <section class="jumbotron text-center" id="anno1" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('<?php echo e(asset('storage/images/nature2.jpg')); ?>') fixed center center; background-size: cover;">
         
 </section>
@@ -226,6 +150,7 @@ What’s new in Chrome 83
         <hr>
     </div>
 </div> -->
+
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.guest_master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\rjoli\Desktop\gtrack\gtrack\resources\views/guest/announcements.blade.php ENDPATH**/ ?>

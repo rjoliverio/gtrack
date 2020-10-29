@@ -59,6 +59,8 @@ Route::group([
     Route::get('/schedule', 'ScheduleController@index');
     Route::get('/profile', 'ProfileController@index');
     Route::post('/profile/update/{id}', 'ProfileController@update');
+    Route::get('/reports', 'ReportsController@index');
+    Route::post('/reports/send', 'ReportsController@send');
 });
 Auth::routes();
 
