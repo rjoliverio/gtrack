@@ -44,32 +44,16 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Schedule</span></a>
       </li>
+      <li class="nav-item {{ (request()->is('driver/tracker')) ? 'active' : '' }}">
+        <a class="nav-link" href="/driver/tracker">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Location</span></a>
+      </li>
       <li class="nav-item {{ (request()->is('driver/reports')) ? 'active' : '' }}">
         <a class="nav-link" href="/driver/reports">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Report</span></a>
       </li>
-      <!-- Divider -->
-
-      <!-- Heading -->
-
-      <!-- Nav Item - Pages Collapse Menu -->
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-
-      <!-- Divider -->
-
-      <!-- Heading -->
-      
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      
-
-      <!-- Nav Item - Charts -->
-      
-
-      <!-- Nav Item - Tables -->
-      
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -121,43 +105,6 @@
                   </div>
               </div>
             </li>
-
-
-            <!-- Nav Item - Alerts -->
-            {{-- <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter badge-notif-count"></span>
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <div class="notif-item">
-                </div>
-                <a class="dropdown-item text-center small text-gray-500" href="/admin/reports">Show All Alerts</a>
-              </div>
-            </li> --}}
-
-            <!-- Nav Item - Messages -->
-            {{-- <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter badge-notif-messages"></span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <div class="notif-messages">
-                </div>
-                <a class="dropdown-item text-center small text-gray-500" style='cursor:pointer;' onClick='seenAllMsgClick();'>Read More Messages</a>
-              </div>
-            </li> --}}
 
             <div class="topbar-divider d-none d-sm-block"></div>
 

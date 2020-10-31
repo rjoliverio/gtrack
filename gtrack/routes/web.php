@@ -72,6 +72,7 @@ Route::group([
     Route::post('/profile/update/{id}', 'ProfileController@update');
     Route::get('/reports', 'ReportsController@index');
     Route::post('/reports/send', 'ReportsController@send');
+    Route::get('/tracker', 'TrackerController@index');
 });
 Auth::routes();
 
