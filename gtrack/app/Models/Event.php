@@ -8,10 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\UserDetail;
 use App\Models\Image;
 use App\Models\Address;
+
 class Event extends Model
 {
-    protected $guarded=[];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $primaryKey = 'event_id';
+    protected $fillable = [
+        'event_id','address_id','event_name','description','participants','date','contact_person_id','status','created_at','updated_at'
+    ];
 
     public function address()
     {
@@ -21,9 +29,4 @@ class Event extends Model
     {
         return $this->hasOne(UserDetail::class,'user_detail_id','contact_person_id');
     }
-    public function image()
-    {
-        return $this->hasOne(Image::class,'image_id','image_id');
-    }
-
 }

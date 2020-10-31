@@ -19,7 +19,8 @@ class CreateEventsTable extends Migration
             $table->string('event_name');
             $table->string('description');
             $table->string('participants');
-            $table->dateTime('date', 0);
+            $table->dateTime('date_start', 0);
+            $table->dateTime('date_end', 0);
             $table->foreignId('contact_person_id')->references('user_detail_id')->on('user_details');
             $table->boolean('status');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
