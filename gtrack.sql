@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2020 at 07:16 AM
+-- Generation Time: Nov 02, 2020 at 07:30 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -107,7 +107,6 @@ CREATE TABLE `dumpsters` (
   `address_id` bigint(20) UNSIGNED NOT NULL,
   `latitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `longitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `complete` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -116,8 +115,8 @@ CREATE TABLE `dumpsters` (
 -- Dumping data for table `dumpsters`
 --
 
-INSERT INTO `dumpsters` (`dumpter_id`, `address_id`, `latitude`, `longitude`, `complete`, `created_at`, `updated_at`) VALUES
-(1, 22, 'asdas', 'asd', 1, '2020-10-26 10:30:59', '2020-10-26 10:30:59');
+INSERT INTO `dumpsters` (`dumpter_id`, `address_id`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
+(1, 22, 'asdas', 'asd', '2020-10-26 10:30:59', '2020-10-26 10:30:59');
 
 -- --------------------------------------------------------
 
