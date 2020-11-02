@@ -22,7 +22,7 @@
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="post-preview speech-bubble">
-          <a href="post.html">
+      
             <h2 class="post-title">
               
 <?php echo e($row->title); ?>
@@ -32,7 +32,9 @@
            <?php echo e($row->content); ?>
 
             </h3>
-          </a>
+         
+        
+          <?php if($row->image_id!=null): ?>
           <h6><i>Attached Images:</i></h6>
       <div class="text-center mb-3 border border-secondary rounded-lg p-3 ul">
       <a class="thumbnail fancybox text-center text-decoration-none li" rel="ligthbox"
@@ -54,6 +56,8 @@
                 src="/storage/images/uploads/<?php echo e($row->image->image_4); ?>" width="100"/>
         </a>
    </div>
+ 
+   <?php endif; ?>
           <p class="post-meta">Posted by
             <a href="#"><?php echo e($row->user->userdetail->fname); ?> <?php echo e($row->user->userdetail->lname); ?></a>
             on <?php echo e($row->created_at); ?></p>

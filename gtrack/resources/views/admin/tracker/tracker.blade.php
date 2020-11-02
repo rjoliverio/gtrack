@@ -55,6 +55,8 @@
 @endsection
 
 @section('scripts')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <!-- ---------------------------------------------------- -->
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
@@ -212,25 +214,35 @@ var database = firebase.database();
     var markers=[];
     var truckIcon=[];
     var startla=[];
+    var mark_pop=null;
     database.ref('drivers').once('value', function(snapshot){
         var count=0;
+        var allctr=0;
         snapshot.forEach(function(idSnapshot){
+            allctr++;
             startla[idSnapshot.val().driver_id]=[];
             truckIcon[idSnapshot.val().driver_id]= document.createElement('div');
             truckIcon[idSnapshot.val().driver_id].classList.add("truckIcon");
             if(idSnapshot.val().active!=0){
+                mark_pop = new mapboxgl.Popup({ offset: 30 })
+                .setText(idSnapshot.val().route)
+                .addTo(map);
                 markers[idSnapshot.val().driver_id]=new mapboxgl.Marker(truckIcon[idSnapshot.val().driver_id], {
                         anchor: 'bottom',
                         offset: [0, 6]
                     })
                     .setLngLat([idSnapshot.val().longitude, idSnapshot.val().latitude])
-                    .addTo(map);
+                    .addTo(map)
+                    .setPopup(mark_pop);
+                startla[idSnapshot.val().driver_id].push([idSnapshot.val().longitude, idSnapshot.val().latitude]);
             }else{
                 count++;
             }
         });
-        if(count==3){
-            alert("No Collection Schedule Today!");
+        if(count==allctr){
+            swal("No collection as of today!", {
+                    icon: "info",
+                }); 
         }
     });
 
@@ -248,34 +260,35 @@ var dump_popups=[];
     map.on('load', function () {
         database.ref('drivers').on('value', function(snapshot){
             snapshot.forEach(function(idSnapshot){
-                markers[idSnapshot.val().driver_id].setLngLat([idSnapshot.val().longitude, idSnapshot.val().latitude]);
-                startla[idSnapshot.val().driver_id].push([idSnapshot.val().longitude, idSnapshot.val().latitude]);
-                
-                // console.log(startla);
-                // start=[];
-                // start.push()
-                if (map.getLayer("route"+idSnapshot.val().driver_id)!=null) {
-                    map.removeLayer("route"+idSnapshot.val().driver_id);
-                }
-                if (map.getSource("route"+idSnapshot.val().driver_id)) {
-                        map.removeSource("route"+idSnapshot.val().driver_id);
-                }
-
-                map.addSource('route'+idSnapshot.val().driver_id, {
-                    'type': 'geojson',
-                    'data': {
-                        'type': 'Feature',
-                        'properties': {},
-                        'geometry': {
-                            'type': 'LineString',
-                            'coordinates': startla[idSnapshot.val().driver_id]
-                        }
+                if(idSnapshot.val().active==1){
+                    markers[idSnapshot.val().driver_id].setLngLat([idSnapshot.val().longitude, idSnapshot.val().latitude]);
+                    startla[idSnapshot.val().driver_id].push([idSnapshot.val().longitude, idSnapshot.val().latitude]);
+                    
+                    // console.log(startla);
+                    // start=[];
+                    // start.push()
+                    if (map.getLayer("route"+idSnapshot.val().driver_id)!=null) {
+                        map.removeLayer("route"+idSnapshot.val().driver_id);
                     }
-                });
-                // if (map.getLayer("route")!=null) {
-                //     map.removeLayer("route");
-                // }
-                map.removeLayer('route'+idSnapshot.val().driver_id);
+                    if (map.getSource("route"+idSnapshot.val().driver_id)) {
+                            map.removeSource("route"+idSnapshot.val().driver_id);
+                    }
+
+                    map.addSource('route'+idSnapshot.val().driver_id, {
+                        'type': 'geojson',
+                        'data': {
+                            'type': 'Feature',
+                            'properties': {},
+                            'geometry': {
+                                'type': 'LineString',
+                                'coordinates': startla[idSnapshot.val().driver_id]
+                            }
+                        }
+                    });
+                    // if (map.getLayer("route")!=null) {
+                    //     map.removeLayer("route");
+                    // }
+                    map.removeLayer('route'+idSnapshot.val().driver_id);
                     map.addLayer({
                         'id': 'route'+idSnapshot.val().driver_id,
                         'type': 'line',
@@ -289,7 +302,10 @@ var dump_popups=[];
                         'line-width': 8
                     }
                     });
-                
+                }else{
+                    markers[idSnapshot.val().driver_id].remove();
+                    map.removeLayer('route'+idSnapshot.val().driver_id);
+                }
             });
         });     
     });

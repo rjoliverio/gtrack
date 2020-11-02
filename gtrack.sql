@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2020 at 04:41 PM
+-- Generation Time: Nov 02, 2020 at 07:30 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -43,7 +43,31 @@ CREATE TABLE `addresses` (
 
 INSERT INTO `addresses` (`address_id`, `street`, `barangay`, `town`, `postal_code`, `created_at`, `updated_at`) VALUES
 (3, 'Rotunda', 'Poblacion', 'Compostela', '6003', '2020-10-23 21:29:16', '2020-10-23 21:29:16'),
-(4, 'Rotunda', 'Poblacion', 'Compostela', '6003', '2020-10-23 21:30:27', '2020-10-23 21:30:27');
+(4, 'Rotunda', 'Poblacion', 'Compostela', '6003', '2020-10-23 21:30:27', '2020-10-23 21:30:27'),
+(5, 'backstreet', 'westlife', 'california', '6000', '2020-10-25 05:53:00', '2020-10-25 05:53:00'),
+(6, 'asdasd', 'asdasd', 'asdasd', '123', '2020-10-26 05:41:02', '2020-10-26 05:41:02'),
+(7, 'asda123123123', 'asdasd123123123', 'asdasd123123123', '123123123123', '2020-10-26 05:41:02', '2020-10-25 23:06:29'),
+(8, 'asdasd123', 'asdasd123', 'asdasd123', '123123', '2020-10-25 22:58:12', '2020-10-25 22:58:12'),
+(9, 'asdasd123', 'asdasd123', 'asdasd123', '123123', '2020-10-25 22:59:16', '2020-10-25 22:59:16'),
+(10, 'asdasd123', 'asdasd123', 'asdasd123', '123123', '2020-10-25 23:06:29', '2020-10-25 23:06:29'),
+(11, 'asdasd123', 'asdasd123', 'asdasd123', '123123', '2020-10-25 23:56:54', '2020-10-25 23:56:54'),
+(13, 'asdasd', 'asdasd', 'asdasd', '123', '2020-10-26 00:01:26', '2020-10-26 00:01:26'),
+(14, 'asdasd', 'asdasd', 'asdasd', '123', '2020-10-26 00:02:35', '2020-10-26 00:02:35'),
+(15, 'asdasd', 'asdasd', 'asdasd', '123', '2020-10-26 00:11:02', '2020-10-26 00:11:02'),
+(16, 'asdasd', 'asdasd', 'asdasd', '123', '2020-10-26 00:23:27', '2020-10-26 00:23:27'),
+(17, 'Back', 'Konoha', 'Fire', '7', '2020-10-26 08:34:36', '2020-10-26 08:34:36'),
+(18, 'Front', 'Konoha', 'zxczxc', '7', '2020-10-26 08:34:36', '2020-10-26 08:34:36'),
+(19, 'asdasd', 'asdasd123', 'Fire', '7', '2020-10-26 08:35:39', '2020-10-26 08:35:39'),
+(20, 'Front', 'asdasd123123', 'asdasd123', '7', '2020-10-26 08:35:39', '2020-10-26 08:35:39'),
+(21, 'asdasd123', 'asdasd', 'asd', '7', '2020-10-26 08:37:13', '2020-10-26 08:37:13'),
+(22, 'asd', 'asd', 'asd', '7', '2020-10-26 08:37:13', '2020-10-26 08:37:13'),
+(24, 'Front', 'asdasd123123123', 'asdasd123123', '7', '2020-10-26 08:37:53', '2020-10-26 08:37:53'),
+(25, 'asdasd123', 'asdasd', 'asd', '7', '2020-10-26 00:39:30', '2020-10-26 00:39:30'),
+(27, 'Front', 'Konoha', 'asdasd123123', '7', '2020-10-26 14:33:09', '2020-10-26 14:33:09'),
+(28, 'asd', 'asd', 'asd', '7', '2020-10-26 17:48:05', '2020-10-26 17:48:05'),
+(29, 'asdasd123', 'asdasd123', 'asdasd123', '7', '2020-10-27 04:51:39', '2020-10-27 04:51:39'),
+(30, 'Front', 'Konoha', 'asdasd123123123', '7', '2020-10-27 04:51:40', '2020-10-26 23:47:51'),
+(32, 'asda123123', 'qweqwe', 'asdasd123123123', '7', '2020-10-27 08:31:41', '2020-10-27 08:31:41');
 
 -- --------------------------------------------------------
 
@@ -55,11 +79,22 @@ CREATE TABLE `announcements` (
   `announcement_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `image_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `announcements`
+--
+
+INSERT INTO `announcements` (`announcement_id`, `user_id`, `title`, `content`, `image_id`, `created_at`, `updated_at`) VALUES
+(19, 3, 'What’s new in Chrome 79', 'adasdasdasd', 15, '2020-10-26 20:45:24', '2020-10-26 20:45:24'),
+(20, 3, 'asdasd', 'asdasd', 17, '2020-10-26 21:41:33', '2020-10-26 21:41:33'),
+(21, 3, 'asdasd', 'asdasd', 19, '2020-10-26 22:01:30', '2020-10-26 22:56:50'),
+(22, 3, 'asdasd', 'asdasd', NULL, '2020-10-26 22:07:14', '2020-10-26 22:07:14'),
+(25, 3, 'asdasd123', 'asdasd123', 18, '2020-10-26 22:32:22', '2020-10-26 23:28:04');
 
 -- --------------------------------------------------------
 
@@ -72,10 +107,16 @@ CREATE TABLE `dumpsters` (
   `address_id` bigint(20) UNSIGNED NOT NULL,
   `latitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `longitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `complete` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `dumpsters`
+--
+
+INSERT INTO `dumpsters` (`dumpter_id`, `address_id`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
+(1, 22, 'asdas', 'asd', '2020-10-26 10:30:59', '2020-10-26 10:30:59');
 
 -- --------------------------------------------------------
 
@@ -88,6 +129,7 @@ CREATE TABLE `events` (
   `address_id` bigint(20) UNSIGNED NOT NULL,
   `event_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_id` bigint(20) UNSIGNED DEFAULT NULL,
   `participants` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
   `contact_person_id` bigint(20) UNSIGNED NOT NULL,
@@ -95,6 +137,13 @@ CREATE TABLE `events` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`event_id`, `address_id`, `event_name`, `description`, `image_id`, `participants`, `date`, `contact_person_id`, `status`, `created_at`, `updated_at`) VALUES
+(19, 29, 'rj', 'qwewe123', 16, 'asdasd123', '2020-10-29 00:00:00', 10, 1, '2020-10-26 20:51:40', '2020-10-27 00:01:36');
 
 -- --------------------------------------------------------
 
@@ -133,7 +182,11 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`image_id`, `image_1`, `image_2`, `image_3`, `image_4`, `created_at`, `updated_at`) VALUES
-(1, 'bike1.jpg', 'bike2.jpg', 'bike3.jpg', 'bike4.jpg', '2020-10-24 05:26:09', '2020-10-24 05:26:09');
+(15, 'Nmxhefc7lwhEMs6s.png', 'VzDoZen9OGWtTj6N.png', '28UjZfRiwyP968tc.png', '0iMSeujGRFui5AkS.png', '2020-10-26 20:45:23', '2020-10-26 20:45:23'),
+(16, '5MF88fUHlsu1dI0J.png', NULL, NULL, NULL, '2020-10-26 20:51:39', '2020-10-27 00:01:36'),
+(17, 'KqrR0hrY2E4ov73i.png', 'y3bc8HJPSMcPUJ8v.png', 'NeFQlBHrcmvoVw4V.png', 'ngkgnTJKgKCBU7FV.png', '2020-10-26 21:41:33', '2020-10-26 21:41:33'),
+(18, 'wW83rvdADw9EMQof.png', 'T1msFbcuqU7SZo86.png', 'ikQdx6OfPq2OUGow.png', 'xlBvnc08mXn49bua.png', '2020-10-26 22:32:22', '2020-10-26 23:28:04'),
+(19, 'cipyHVnrqNHQPiSq.png', 't6tXp3QbsxmbH6M8.png', 'D4lCdumKHThKD5QQ.png', 'eLWzV0vEHqqgZGz3.png', '2020-10-26 22:56:50', '2020-10-26 22:56:50');
 
 -- --------------------------------------------------------
 
@@ -233,6 +286,13 @@ CREATE TABLE `trucks` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `trucks`
+--
+
+INSERT INTO `trucks` (`truck_id`, `user_id`, `plate_no`, `active`, `created_at`, `updated_at`) VALUES
+(1, 1, 'XA3306', 1, '2020-10-26 10:12:20', '2020-10-26 10:12:20');
+
 -- --------------------------------------------------------
 
 --
@@ -243,6 +303,7 @@ CREATE TABLE `truck_assignments` (
   `assignment_id` bigint(20) UNSIGNED NOT NULL,
   `driver_id` bigint(20) UNSIGNED NOT NULL,
   `truck_id` bigint(20) UNSIGNED NOT NULL,
+  `route` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Poblacion',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -258,10 +319,10 @@ CREATE TABLE `users` (
   `user_detail_id` bigint(20) UNSIGNED NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_type` enum('Admin','Driver') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `active` BOOLEAN NOT NULL DEFAULT TRUE,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -270,9 +331,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_detail_id`, `email`, `user_type`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 1, 'rjoliverio18@gmail.com', 'Admin', NULL, '$2y$10$8y8arG3oaQ0I8TBrsRCHT.yYDV2WCLy3kZBexMQH/xCoj7aAxZQ.u', NULL, '2020-10-23 21:29:16', '2020-10-23 21:29:16'),
-(2, 2, 'aljann3ondoy@gmail.com', 'Driver', NULL, '$2y$10$mGS4NtjVte7/7EfbJc0doO8hXEcq0Qr7YW3/cpmO9XOdRTQppiljK', NULL, '2020-10-23 21:30:27', '2020-10-23 21:30:27');
+INSERT INTO `users` (`user_id`, `user_detail_id`, `email`, `user_type`, `email_verified_at`, `password`, `remember_token`, `active`, `created_at`, `updated_at`) VALUES
+(1, 1, 'rjoliverio18@gmail.com', 'Admin', NULL, '$2y$10$8y8arG3oaQ0I8TBrsRCHT.yYDV2WCLy3kZBexMQH/xCoj7aAxZQ.u', NULL, 1, '2020-10-23 21:29:16', '2020-10-23 21:29:16'),
+(2, 2, 'aljann3ondoy@gmail.com', 'Driver', NULL, '$2y$10$mGS4NtjVte7/7EfbJc0doO8hXEcq0Qr7YW3/cpmO9XOdRTQppiljK', NULL, 1, '2020-10-23 21:30:27', '2020-10-23 21:30:27'),
+(3, 3, 'tonystark@yahoo.com', 'Admin', NULL, '$2y$10$uQohBaAi8q.7nJl4MoKDQ.BuAAjuFrJKS/QdgJzLqZoBuBjKJDBWi', NULL, 1, '2020-10-25 05:53:02', '2020-10-25 05:53:02');
 
 -- --------------------------------------------------------
 
@@ -299,7 +361,11 @@ CREATE TABLE `user_details` (
 
 INSERT INTO `user_details` (`user_detail_id`, `fname`, `lname`, `image`, `contact_no`, `address_id`, `age`, `gender`, `created_at`, `updated_at`) VALUES
 (1, 'Rj', 'Oliverio', 'user.png', '09123456789', 3, 21, 'Male', '2020-10-23 21:29:16', '2020-10-23 21:29:16'),
-(2, 'Aljann', 'Ondoy', 'user.png', '09123456789', 4, 21, 'Male', '2020-10-23 21:30:27', '2020-10-23 21:30:27');
+(2, 'Aljann', 'Ondoy', 'user.png', '09123456789', 4, 21, 'Male', '2020-10-23 21:30:27', '2020-10-23 21:30:27'),
+(3, 'tony', 'stark', 'user.png', '123456', 5, 50, 'Male', '2020-10-25 05:53:00', '2020-10-25 05:53:00'),
+(4, 'asdasd', 'asdasd', '106-512.png', '123123', 7, 45, 'Male', '2020-10-26 05:41:02', '2020-10-26 00:23:27'),
+(5, 'Hiruzen', 'Sarutobi', '106-512.png', '12345678', 18, 70, 'Male', '2020-10-26 08:34:36', '2020-10-26 08:34:36'),
+(10, 'asdasd', 'asdasd123', '16-512.png', '123123', 30, 70, 'Male', '2020-10-27 04:51:40', '2020-10-26 23:52:40');
 
 -- --------------------------------------------------------
 
@@ -314,6 +380,22 @@ CREATE TABLE `waste_collections` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `waste_collections`
+--
+
+INSERT INTO `waste_collections` (`weight_id`, `collector_id`, `garbage_weight`, `created_at`, `updated_at`) VALUES
+(1, 2, 14.00, '2020-10-26 09:31:31', '2020-10-26 09:31:31'),
+(2, 1, 12.00, '2020-10-26 09:31:31', '2020-10-26 09:31:31'),
+(3, 1, 15.00, '2020-10-29 09:31:31', '2020-10-29 09:31:31'),
+(4, 3, 10.00, '2020-10-29 09:31:31', '2020-10-29 09:31:31'),
+(5, 1, 11.00, '2020-10-31 09:31:31', '2020-10-31 09:31:31'),
+(6, 1, 16.00, '2020-10-31 09:31:31', '2020-10-31 09:31:31'),
+(7, 3, 14.00, '2020-11-18 09:31:31', '2020-11-18 09:31:31'),
+(8, 1, 13.00, '2020-11-18 09:31:31', '2020-11-18 09:31:31'),
+(9, 2, 16.00, '2020-11-19 09:31:31', '2020-11-19 09:31:31'),
+(10, 1, 18.00, '2020-11-19 09:31:31', '2020-11-19 09:31:31');
 
 --
 -- Indexes for dumped tables
@@ -346,7 +428,8 @@ ALTER TABLE `dumpsters`
 ALTER TABLE `events`
   ADD PRIMARY KEY (`event_id`),
   ADD KEY `events_address_id_foreign` (`address_id`),
-  ADD KEY `events_contact_person_id_foreign` (`contact_person_id`);
+  ADD KEY `events_contact_person_id_foreign` (`contact_person_id`),
+  ADD KEY `events_image_id_foreign` (`image_id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -433,25 +516,25 @@ ALTER TABLE `waste_collections`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `address_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `address_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `announcement_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `announcement_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `dumpsters`
 --
 ALTER TABLE `dumpsters`
-  MODIFY `dumpter_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `dumpter_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `event_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -463,7 +546,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `image_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -487,7 +570,7 @@ ALTER TABLE `schedules`
 -- AUTO_INCREMENT for table `trucks`
 --
 ALTER TABLE `trucks`
-  MODIFY `truck_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `truck_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `truck_assignments`
@@ -499,19 +582,19 @@ ALTER TABLE `truck_assignments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `user_detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `waste_collections`
 --
 ALTER TABLE `waste_collections`
-  MODIFY `weight_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `weight_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -521,21 +604,22 @@ ALTER TABLE `waste_collections`
 -- Constraints for table `announcements`
 --
 ALTER TABLE `announcements`
-  ADD CONSTRAINT `announcements_image_id_foreign` FOREIGN KEY (`image_id`) REFERENCES `images` (`image_id`),
+  ADD CONSTRAINT `announcements_image_id_foreign` FOREIGN KEY (`image_id`) REFERENCES `images` (`image_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `announcements_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
 -- Constraints for table `dumpsters`
 --
 ALTER TABLE `dumpsters`
-  ADD CONSTRAINT `dumpsters_address_id_foreign` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`address_id`);
+  ADD CONSTRAINT `dumpsters_address_id_foreign` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`address_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `events`
 --
 ALTER TABLE `events`
-  ADD CONSTRAINT `events_address_id_foreign` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`address_id`),
-  ADD CONSTRAINT `events_contact_person_id_foreign` FOREIGN KEY (`contact_person_id`) REFERENCES `user_details` (`user_detail_id`);
+  ADD CONSTRAINT `events_address_id_foreign` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`address_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `events_contact_person_id_foreign` FOREIGN KEY (`contact_person_id`) REFERENCES `user_details` (`user_detail_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `events_image_id_foreign` FOREIGN KEY (`image_id`) REFERENCES `images` (`image_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reports`
@@ -574,7 +658,7 @@ ALTER TABLE `users`
 -- Constraints for table `waste_collections`
 --
 ALTER TABLE `waste_collections`
-  ADD CONSTRAINT `waste_collections_collector_id_foreign` FOREIGN KEY (`collector_id`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `waste_collections_collector_id_foreign` FOREIGN KEY (`collector_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

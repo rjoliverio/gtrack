@@ -74,6 +74,7 @@ Route::group([
     Route::get('/reports', 'ReportsController@index');
     Route::post('/reports/send', 'ReportsController@send');
     Route::post('/weight/input', 'WeightController@input');
+    Route::get('/tracker', 'TrackerController@index');
 });
 Auth::routes();
 

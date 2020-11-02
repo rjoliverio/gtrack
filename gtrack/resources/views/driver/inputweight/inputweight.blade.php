@@ -18,7 +18,7 @@
 
                 {{csrf_field()}}
                 <div class="modal-header">
-                    <h4 class="modal-title">Input Weight(in Tons)</h4>
+                    <h4 class="modal-title" id="title">Input Weight(in Tons)</h4>
                 </div>
                 <div class="modal-body">
                 <div class="form-group">

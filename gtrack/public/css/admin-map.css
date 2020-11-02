@@ -13,3 +13,10 @@
       width: 100%;
       height: 100%;
     }
+
+    .truckIcon {
+      height: 46px;
+      width: 31px;
+      background-image: url(https://api.geoapify.com/v1/icon/?type=material&color=%2326a0ff&icon=truck&iconType=awesome&apiKey=2ef63a32339047eeb7acb6ff15c113da);
+      cursor: pointer;
+  }
