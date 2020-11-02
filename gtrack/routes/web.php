@@ -70,9 +70,11 @@ Route::group([
 ],function  () {
     Route::get('/schedule', 'ScheduleController@index');
     Route::get('/profile', 'ProfileController@index');
+    Route::get('/weight', 'WeightController@index');
     Route::post('/profile/update/{id}', 'ProfileController@update');
     Route::get('/reports', 'ReportsController@index');
     Route::post('/reports/send', 'ReportsController@send');
+    Route::post('/weight/input', 'WeightController@input');
     Route::get('/tracker', 'TrackerController@index');
 });
 Auth::routes();

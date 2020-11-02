@@ -25,9 +25,12 @@ class EventsController extends Controller
     {
         $row=Event::all();
       
-        
+        return view('admin.events.events',[
+            'row' => $row
+
+        ]);
        
-        return view('admin.events.events', compact('row'));
+        // return view('admin.events.events', compact('row'));
     }
     public function create(Request $request)
     {
