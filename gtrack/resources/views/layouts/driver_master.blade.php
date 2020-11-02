@@ -44,6 +44,11 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Schedule</span></a>
       </li>
+      <li class="nav-item {{ (request()->is('driver/weight')) ? 'active' : '' }}">
+        <a class="nav-link" href="/driver/weight">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Input Collected Weight</span></a>
+      </li>
       <li class="nav-item {{ (request()->is('driver/reports')) ? 'active' : '' }}">
         <a class="nav-link" href="/driver/reports">
           <i class="fas fa-fw fa-tachometer-alt"></i>
