@@ -60,6 +60,7 @@ Route::group([
     Route::post('/gtrucks','TrucksController@store');
     Route::post('/gtrucks/maintenance/{id}','TrucksController@maintenance');
     Route::post('/gtrucks/repair/{id}','TrucksController@repair');
+    Route::get('/dumpsters','DumpstersController@index');
 });
 Route::group([
     'prefix' => 'driver',
