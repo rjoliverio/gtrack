@@ -32,7 +32,7 @@ class DashboardController extends Controller
             }
         }
         
-        $trucks=Truck::all()->count();
+        $trucks=Truck::whereactive(1)->count();
         $driver=User::whereuser_type('Driver')->whereactive(1)->count();
         $dump=Dumpster::all()->count();
         $collect=WasteCollection::all()->count();
