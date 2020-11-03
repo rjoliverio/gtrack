@@ -51,16 +51,21 @@ Route::group([
     Route::post('/profile/update/{id}', 'ProfileController@update');
     Route::get('/employees','EmployeesController@index');
     Route::get('/employees/create','EmployeesController@create');
-    Route::post('/employees','EmployeesController@store');
+    Route::post('/employees/store','EmployeesController@store');
     Route::post('/employees/disable/{id}','EmployeesController@disable');
     Route::get('/employees/show/{id}','EmployeesController@show');
     Route::post('/employees/reactivate/{id}','EmployeesController@reactivate');
     Route::get('/gtrucks','TrucksController@index');
     Route::get('/gtrucks/create','TrucksController@create');
-    Route::post('/gtrucks','TrucksController@store');
+    Route::post('/gtrucks/store','TrucksController@store');
     Route::post('/gtrucks/maintenance/{id}','TrucksController@maintenance');
     Route::post('/gtrucks/repair/{id}','TrucksController@repair');
     Route::get('/dumpsters','DumpstersController@index');
+    Route::get('/dumpsters/create','DumpstersController@create');
+    Route::post('/dumpsters/store','DumpstersController@store');
+    Route::get('/dumpsters/edit/{dumpter_id}/{address_id}','DumpstersController@edit');
+    Route::patch('/dumpsters/{dumpter_id}/{address_id}','DumpstersController@update');
+    Route::delete('/dumpsters/{dumpter_id}','DumpstersController@destroy');
 });
 Route::group([
     'prefix' => 'driver',

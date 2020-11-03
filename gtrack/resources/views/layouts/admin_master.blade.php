@@ -69,7 +69,7 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Garbage Trucks</span></a>
       </li>
-      <li class="nav-item {{ (request()->is('admin/gtrucks/*') || request()->is('admin/gtrucks')) ? 'active' : '' }}">
+      <li class="nav-item {{ (request()->is('admin/gtrucks/*') || request()->is('admin/dumpsters')) ? 'active' : '' }}">
         <a class="nav-link" href="/admin/dumpsters">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Dumpsters</span></a>
