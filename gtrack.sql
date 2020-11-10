@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2020 at 07:30 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Nov 10, 2020 at 03:57 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -67,7 +68,8 @@ INSERT INTO `addresses` (`address_id`, `street`, `barangay`, `town`, `postal_cod
 (28, 'asd', 'asd', 'asd', '7', '2020-10-26 17:48:05', '2020-10-26 17:48:05'),
 (29, 'asdasd123', 'asdasd123', 'asdasd123', '7', '2020-10-27 04:51:39', '2020-10-27 04:51:39'),
 (30, 'Front', 'Konoha', 'asdasd123123123', '7', '2020-10-27 04:51:40', '2020-10-26 23:47:51'),
-(32, 'asda123123', 'qweqwe', 'asdasd123123123', '7', '2020-10-27 08:31:41', '2020-10-27 08:31:41');
+(32, 'asda123123', 'qweqwe', 'asdasd123123123', '7', '2020-10-27 08:31:41', '2020-10-27 08:31:41'),
+(33, 'k', 'i', 'l', '666', '2020-11-08 22:46:50', '2020-11-08 22:46:50');
 
 -- --------------------------------------------------------
 
@@ -94,7 +96,8 @@ INSERT INTO `announcements` (`announcement_id`, `user_id`, `title`, `content`, `
 (20, 3, 'asdasd', 'asdasd', 17, '2020-10-26 21:41:33', '2020-10-26 21:41:33'),
 (21, 3, 'asdasd', 'asdasd', 19, '2020-10-26 22:01:30', '2020-10-26 22:56:50'),
 (22, 3, 'asdasd', 'asdasd', NULL, '2020-10-26 22:07:14', '2020-10-26 22:07:14'),
-(25, 3, 'asdasd123', 'asdasd123', 18, '2020-10-26 22:32:22', '2020-10-26 23:28:04');
+(25, 3, 'asdasd123', 'asdasd123', 18, '2020-10-26 22:32:22', '2020-10-26 23:28:04'),
+(26, 4, 'haha', 'kill me', NULL, '2020-11-08 23:46:20', '2020-11-08 23:46:20');
 
 -- --------------------------------------------------------
 
@@ -143,7 +146,7 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event_id`, `address_id`, `event_name`, `description`, `image_id`, `participants`, `date`, `contact_person_id`, `status`, `created_at`, `updated_at`) VALUES
-(19, 29, 'rj', 'qwewe123', 16, 'asdasd123', '2020-10-29 00:00:00', 10, 1, '2020-10-26 20:51:40', '2020-10-27 00:01:36');
+(19, 29, 'ahsfjhasdf', 'qwewe123', 16, 'asdasd123', '2020-11-28 00:00:00', 10, 1, '2020-10-26 20:51:40', '2020-11-09 01:42:08');
 
 -- --------------------------------------------------------
 
@@ -183,7 +186,7 @@ CREATE TABLE `images` (
 
 INSERT INTO `images` (`image_id`, `image_1`, `image_2`, `image_3`, `image_4`, `created_at`, `updated_at`) VALUES
 (15, 'Nmxhefc7lwhEMs6s.png', 'VzDoZen9OGWtTj6N.png', '28UjZfRiwyP968tc.png', '0iMSeujGRFui5AkS.png', '2020-10-26 20:45:23', '2020-10-26 20:45:23'),
-(16, '5MF88fUHlsu1dI0J.png', NULL, NULL, NULL, '2020-10-26 20:51:39', '2020-10-27 00:01:36'),
+(16, '5WDWBkLcTp1apQKw.jpg', NULL, NULL, NULL, '2020-10-26 20:51:39', '2020-11-09 01:42:08'),
 (17, 'KqrR0hrY2E4ov73i.png', 'y3bc8HJPSMcPUJ8v.png', 'NeFQlBHrcmvoVw4V.png', 'ngkgnTJKgKCBU7FV.png', '2020-10-26 21:41:33', '2020-10-26 21:41:33'),
 (18, 'wW83rvdADw9EMQof.png', 'T1msFbcuqU7SZo86.png', 'ikQdx6OfPq2OUGow.png', 'xlBvnc08mXn49bua.png', '2020-10-26 22:32:22', '2020-10-26 23:28:04'),
 (19, 'cipyHVnrqNHQPiSq.png', 't6tXp3QbsxmbH6M8.png', 'D4lCdumKHThKD5QQ.png', 'eLWzV0vEHqqgZGz3.png', '2020-10-26 22:56:50', '2020-10-26 22:56:50');
@@ -265,7 +268,6 @@ CREATE TABLE `schedules` (
   `schedule_id` bigint(20) UNSIGNED NOT NULL,
   `admin_id` bigint(20) UNSIGNED NOT NULL,
   `schedule` datetime NOT NULL,
-  `assignment_id` bigint(20) UNSIGNED NOT NULL,
   `garbage_type` enum('Nonbiodegradable','Biodegradable') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -291,7 +293,7 @@ CREATE TABLE `trucks` (
 --
 
 INSERT INTO `trucks` (`truck_id`, `user_id`, `plate_no`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 'XA3306', 1, '2020-10-26 10:12:20', '2020-10-26 10:12:20');
+(1, 2, 'XA3306', 1, '2020-10-26 10:12:20', '2020-11-10 06:14:05');
 
 -- --------------------------------------------------------
 
@@ -301,11 +303,12 @@ INSERT INTO `trucks` (`truck_id`, `user_id`, `plate_no`, `active`, `created_at`,
 
 CREATE TABLE `truck_assignments` (
   `assignment_id` bigint(20) UNSIGNED NOT NULL,
-  `driver_id` bigint(20) UNSIGNED NOT NULL,
+  `schedule_id` bigint(20) UNSIGNED NOT NULL,
   `truck_id` bigint(20) UNSIGNED NOT NULL,
   `route` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Poblacion',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `active` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -333,8 +336,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `user_detail_id`, `email`, `user_type`, `email_verified_at`, `password`, `remember_token`, `active`, `created_at`, `updated_at`) VALUES
 (1, 1, 'rjoliverio18@gmail.com', 'Admin', NULL, '$2y$10$8y8arG3oaQ0I8TBrsRCHT.yYDV2WCLy3kZBexMQH/xCoj7aAxZQ.u', NULL, 1, '2020-10-23 21:29:16', '2020-10-23 21:29:16'),
-(2, 2, 'aljann3ondoy@gmail.com', 'Driver', NULL, '$2y$10$mGS4NtjVte7/7EfbJc0doO8hXEcq0Qr7YW3/cpmO9XOdRTQppiljK', NULL, 1, '2020-10-23 21:30:27', '2020-10-23 21:30:27'),
-(3, 3, 'tonystark@yahoo.com', 'Admin', NULL, '$2y$10$uQohBaAi8q.7nJl4MoKDQ.BuAAjuFrJKS/QdgJzLqZoBuBjKJDBWi', NULL, 1, '2020-10-25 05:53:02', '2020-10-25 05:53:02');
+(2, 2, 'aljann3ondoy@gmail.com', 'Driver', NULL, '$2y$10$mGS4NtjVte7/7EfbJc0doO8hXEcq0Qr7YW3/cpmO9XOdRTQppiljK', NULL, 1, '2020-10-23 21:30:27', '2020-11-09 00:47:27'),
+(3, 3, 'tonystark@yahoo.com', 'Admin', NULL, '$2y$10$uQohBaAi8q.7nJl4MoKDQ.BuAAjuFrJKS/QdgJzLqZoBuBjKJDBWi', NULL, 1, '2020-10-25 05:53:02', '2020-10-25 05:53:02'),
+(4, 12, 'hu@me.com', 'Admin', NULL, '$2y$10$kd5Izc.oZ5RwY5jOVRa0eumktiatg9KtKKejtdHkgTpiwFzzFtvEC', NULL, 1, '2020-11-08 22:46:51', '2020-11-08 22:46:51');
 
 -- --------------------------------------------------------
 
@@ -365,7 +369,8 @@ INSERT INTO `user_details` (`user_detail_id`, `fname`, `lname`, `image`, `contac
 (3, 'tony', 'stark', 'user.png', '123456', 5, 50, 'Male', '2020-10-25 05:53:00', '2020-10-25 05:53:00'),
 (4, 'asdasd', 'asdasd', '106-512.png', '123123', 7, 45, 'Male', '2020-10-26 05:41:02', '2020-10-26 00:23:27'),
 (5, 'Hiruzen', 'Sarutobi', '106-512.png', '12345678', 18, 70, 'Male', '2020-10-26 08:34:36', '2020-10-26 08:34:36'),
-(10, 'asdasd', 'asdasd123', '16-512.png', '123123', 30, 70, 'Male', '2020-10-27 04:51:40', '2020-10-26 23:52:40');
+(10, 'asdasd', 'asdasd123', 'bike1.jpg', '123123', 30, 50, 'Male', '2020-10-27 04:51:40', '2020-11-09 01:42:08'),
+(12, 'Humera', 'Killme', 'user.png', '666', 33, 14, 'Female', '2020-11-08 22:46:51', '2020-11-08 22:46:51');
 
 -- --------------------------------------------------------
 
@@ -469,8 +474,7 @@ ALTER TABLE `reports`
 --
 ALTER TABLE `schedules`
   ADD PRIMARY KEY (`schedule_id`),
-  ADD KEY `schedules_admin_id_foreign` (`admin_id`),
-  ADD KEY `schedules_assignment_id_foreign` (`assignment_id`);
+  ADD KEY `schedules_admin_id_foreign` (`admin_id`);
 
 --
 -- Indexes for table `trucks`
@@ -484,7 +488,7 @@ ALTER TABLE `trucks`
 --
 ALTER TABLE `truck_assignments`
   ADD PRIMARY KEY (`assignment_id`),
-  ADD KEY `truck_assignments_driver_id_foreign` (`driver_id`),
+  ADD UNIQUE KEY `schedule_id` (`schedule_id`),
   ADD KEY `truck_assignments_truck_id_foreign` (`truck_id`);
 
 --
@@ -516,13 +520,13 @@ ALTER TABLE `waste_collections`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `address_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `address_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `announcement_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `announcement_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `dumpsters`
@@ -564,7 +568,7 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `schedule_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `schedule_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `trucks`
@@ -576,19 +580,19 @@ ALTER TABLE `trucks`
 -- AUTO_INCREMENT for table `truck_assignments`
 --
 ALTER TABLE `truck_assignments`
-  MODIFY `assignment_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `assignment_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `user_detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `user_detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `waste_collections`
@@ -632,8 +636,7 @@ ALTER TABLE `reports`
 -- Constraints for table `schedules`
 --
 ALTER TABLE `schedules`
-  ADD CONSTRAINT `schedules_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `schedules_assignment_id_foreign` FOREIGN KEY (`assignment_id`) REFERENCES `truck_assignments` (`assignment_id`);
+  ADD CONSTRAINT `schedules_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `users` (`user_id`);
 
 --
 -- Constraints for table `trucks`
@@ -645,7 +648,7 @@ ALTER TABLE `trucks`
 -- Constraints for table `truck_assignments`
 --
 ALTER TABLE `truck_assignments`
-  ADD CONSTRAINT `truck_assignments_driver_id_foreign` FOREIGN KEY (`driver_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `truck_assignments_ibfk_1` FOREIGN KEY (`schedule_id`) REFERENCES `schedules` (`schedule_id`),
   ADD CONSTRAINT `truck_assignments_truck_id_foreign` FOREIGN KEY (`truck_id`) REFERENCES `trucks` (`truck_id`);
 
 --
