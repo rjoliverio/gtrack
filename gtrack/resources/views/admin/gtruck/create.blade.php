@@ -9,7 +9,7 @@ GTrack | Trucks
             <div class="card-header">{{ __('Add New Garbage Truck') }}</div>
 
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.gtrucks.store')}}">
+                <form method="POST" action="/admin/gtrucks/store">
                     @csrf
 
                     <div class="form-group col-md-4">
