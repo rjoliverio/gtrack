@@ -15,6 +15,7 @@
 @endsection
 @section('content')
     <div id='calendar'></div>
+    <p>{{$schedule->garbage_type}}</p>
 @endsection
 @section('scripts')
     <script src='{{asset('js/calendar-main.js')}}'></script>
@@ -35,19 +36,9 @@
             selectable: true,
             events: [
             {
-                title: 'Trash Day',
+                title: 'KillMe',
                 start: '2020-10-11T13:00:00',
                 color: '#ffae00'
-            },
-            {
-                title: 'Trash Day',
-                start: '2020-10-14T13:00:00',
-                color: '#ff0000'
-            },
-            {
-                title: 'Trash Day',
-                start: '2020-10-16T13:00:00',
-                color: '#f8e321'
             }
             // {
             //     title: 'Meeting',

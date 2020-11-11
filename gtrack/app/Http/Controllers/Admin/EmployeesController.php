@@ -84,7 +84,7 @@ class EmployeesController extends Controller
         
         $user->save();
         toast('Registration Successful. You may now log in.','success');
-        return view('admin.employee.create');
+        return redirect('admin/employees');
     }
 
     /**

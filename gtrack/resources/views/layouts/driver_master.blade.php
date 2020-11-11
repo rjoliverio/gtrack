@@ -41,17 +41,22 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item {{ (request()->is('driver/schedule')) ? 'active' : '' }}">
         <a class="nav-link" href="/driver/schedule">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fas fa-calendar-alt"></i>
           <span>Schedule</span></a>
       </li>
+      <li class="nav-item {{ (request()->is('driver/weight')) ? 'active' : '' }}">
+        <a class="nav-link" href="/driver/weight">
+          <i class="fas fa-fw fas fa-weight"></i>
+          <span>Input Collected Weight</span></a>
+          </li>
       <li class="nav-item {{ (request()->is('driver/tracker')) ? 'active' : '' }}">
         <a class="nav-link" href="/driver/tracker">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw  fas fa-map-marker-alt"></i>
           <span>Location</span></a>
       </li>
       <li class="nav-item {{ (request()->is('driver/reports')) ? 'active' : '' }}">
         <a class="nav-link" href="/driver/reports">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fas fa-exclamation-circle"></i>
           <span>Report</span></a>
       </li>
 

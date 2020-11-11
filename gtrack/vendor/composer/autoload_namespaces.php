@@ -8,7 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'Rize\\UriTemplate' => array($vendorDir . '/rize/uri-template/src'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
-    'Highlight\\' => array($vendorDir . '/scrivo/highlight.php'),
-    'HighlightUtilities\\' => array($vendorDir . '/scrivo/highlight.php'),
     'Google_Service_' => array($vendorDir . '/google/apiclient-services/src'),
 );

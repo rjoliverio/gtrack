@@ -102,20 +102,12 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Total Collected Garbage Weight(in Tons) per Day Overview</h6>
                   <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                    <i>Date Format: y-m-d (Year-Month-Day)</i>
                   </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                @if($result[0]!=null)
                   <div class="chart-area">
                     <canvas id="canvas"></canvas>
                     <script>
@@ -240,6 +232,11 @@ var myLineChart = new Chart(ctx, {
 
                     </script>
                   </div>
+                  @else
+                    <div>
+                    <h4>No data available as of now</h4>
+                    </div>
+                  @endif
                 </div>
               </div>
             </div>

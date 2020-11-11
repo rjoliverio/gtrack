@@ -15,16 +15,24 @@ class DashboardController extends Controller
     //
     public function index()
     {
-        $totalton = \DB::select('SELECT DATE(created_at) date,SUM(garbage_weight) total FROM waste_collections GROUP BY DATE(created_at) ORDER BY DATE(created_at) ASC');
+        $totalton = \DB::select('SELECT DATE(created_at) date,SUM(garbage_weight) total FROM waste_collections GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 5');
         $arrton=array();
         $arrd=array();
-        foreach($totalton as $col){
+        if($totalton!=null){
+            foreach($totalton as $col){
          
-            $arrton[]=$col->total;
-            $arrd[]=$col->date;
-            
+                $arrton[]=$col->total;
+                $arrd[]=$col->date;
+                
+            }
+        }else{
+            for($x=0;$x<5;$x++){
+                $arrton[$x]=null;
+                $arrd[$x]=null;
+            }
         }
-        $trucks=Truck::all()->count();
+        
+        $trucks=Truck::whereactive(1)->count();
         $driver=User::whereuser_type('Driver')->whereactive(1)->count();
         $dump=Dumpster::all()->count();
         $collect=WasteCollection::all()->count();

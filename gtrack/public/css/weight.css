@@ -1,0 +1,17 @@
+html, body, .container-table {
+    height: 100%;
+}
+.container-table {
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+@media only screen and (min-width: 320px) and (max-width:375px){
+   #title{
+       font-size: 18px;
+   }
+  
+  
+  }

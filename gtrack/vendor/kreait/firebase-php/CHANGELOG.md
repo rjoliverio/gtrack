@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+## [5.11.0] - 2020-11-01
+### Added
+* Added helper methods to add default/specific notification sounds to messages
+  ([Documentation](https://firebase-php.readthedocs.io/en/latest/cloud-messaging.html#notification-sounds))
+  * `Kreait\Firebase\Messaging\ApnsConfig::withDefaultSound()`
+  * `Kreait\Firebase\Messaging\ApnsConfig::withSound($sound)`
+  * `Kreait\Firebase\Messaging\AndroidConfig::withDefaultSound()`
+  * `Kreait\Firebase\Messaging\AndroidConfig::withSound($sound)`
+  * `Kreait\Firebase\Messaging\CloudMessage::withDefaultSounds()`
+* Added exception handler for FCM errors concerning quota/rate limits. When a quota is exceeded, a
+  `Kreait\Firebase\Exception\Messaging\QuotaExceeded` exception is thrown. You can get the
+  datetime after which to retry with `Kreait\Firebase\Exception\Messaging\QuotaExceeded::retryAfter()`
+* When the Firebase API is unavailable and/or overloaded, the response might return a `Retry-After`
+  header. When it does, you can get the datetime after which it is suggested to retry with
+  `Kreait\Firebase\Exception\Messaging\ServerUnavailable::retryAfter()`
+* Added support for the retrieval of user's last activity time with `Kreait\Firebase\Auth\UserMetadata::$lastRefreshedAt`
+### Fixed
+  * `Kreait\Firebase\Messaging\CloudMessage::fromArray()` did not allow providing pre-configured message components
+    (objects instead of "pure" arrays)
+
 ## [5.10.0] - 2020-10-20
 ### Added
 * Added `Kreait\Firebase\Auth::getUsers()` enables retrieving multiple users at once.
@@ -128,7 +148,8 @@ to upgrade from a 4.x release to 5.0 without changes to your code.**
 * Support for PHP `<7.2`
 * Deprecated methods and classes
 
-[Unreleased]: https://github.com/kreait/firebase-php/compare/5.10.0...HEAD
+[Unreleased]: https://github.com/kreait/firebase-php/compare/5.11.0...HEAD
+[5.11.0]: https://github.com/kreait/firebase-php/compare/5.10.0...5.11.0
 [5.10.0]: https://github.com/kreait/firebase-php/compare/5.9.0...5.10.0
 [5.9.0]: https://github.com/kreait/firebase-php/compare/5.8.1...5.9.0
 [5.8.1]: https://github.com/kreait/firebase-php/compare/5.8.0...5.8.1

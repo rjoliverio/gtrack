@@ -18,7 +18,7 @@ class Event extends Model
      */
     protected $primaryKey = 'event_id';
     protected $fillable = [
-        'event_id','address_id','event_name','description','participants','date','contact_person_id','status','created_at','updated_at'
+        'event_id','address_id','event_name','description','image_id','participants','date','contact_person_id','status','created_at','updated_at'
     ];
 
     public function address()
@@ -28,5 +28,9 @@ class Event extends Model
     public function userdetail()
     {
         return $this->hasOne(UserDetail::class,'user_detail_id','contact_person_id');
+    }
+    public function image()
+    {
+        return $this->hasOne(Image::class,'image_id','image_id');
     }
 }

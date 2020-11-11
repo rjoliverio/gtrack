@@ -46,9 +46,10 @@ class TrucksController extends Controller
       $truck = new Truck();
       $truck->plate_no = $request->input("plate_no");
       $truck->user_id = $request->input("driver_id");
+      $truck->active =1;
       $truck->save();
       toast('Truck Created Successfully!','success');
-      return view('admin.gtruck.create');
+      return redirect('admin/gtrucks');
     }
 
     /**

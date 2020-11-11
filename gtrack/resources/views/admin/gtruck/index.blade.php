@@ -54,29 +54,8 @@
 
                     </tr>
                     <form action="/admin/gtrucks/maintenance/{{ $truck->truck_id }}" method="POST">
-                        <!--First Modal -->
+            
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Disable Truck Operation</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  Are you sure you want to perform this action?
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-danger">Yes</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        
-                        <!--Second Modal -->
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -155,28 +134,8 @@
 
                     </tr>
                     <form action="/admin/gtrucks/repair/{{ $inactive->truck_id }}" method="POST">
-                        <!--First Modal -->
+      
                         <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Repair Truck</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  Are you sure you want to perform this action?
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <button type="button" data-toggle="modal" data-target="#Modale" class="btn btn-danger">Yes</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        <!--Second Modal -->
-                        <div class="modal fade" id="Modale" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">

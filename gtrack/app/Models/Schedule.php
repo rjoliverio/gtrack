@@ -13,16 +13,20 @@ class Schedule extends Model
      *
      * @var array
      */
-    protected $primaryKey='schedule_id';
+    
     protected $fillable = [
-        'schedule_id','admin_id','schedule','assignment_id','garbage_type','created_at','updated_at'
+        'admin_id',
+        'schedule',
+        'garbage_type',
     ];
+    protected $table = 'schedules';
+    protected $primaryKey='schedule_id';
+    public $timestamps = true;
     public function user()
     {
-        return $this->hasOne(User::class,'admin_id','user_id');
+        return $this->hasOne(User::class,'user_id','admin_id');
     }
-    public function truck()
-    {
-        return $this->hasOne(Truck::class,'assignment_id','truck_id');
+    public function assignments(){
+        return $this->hasMany(TruckAssignment::class,'schedule_id','schedule_id');
     }
 }

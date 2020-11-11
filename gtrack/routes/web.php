@@ -60,6 +60,28 @@ Route::group([
     Route::post('/gtrucks/store','TrucksController@store');
     Route::post('/gtrucks/maintenance/{id}','TrucksController@maintenance');
     Route::post('/gtrucks/repair/{id}','TrucksController@repair');
+    Route::get('/dumpsters','DumpstersController@index');
+    Route::get('/dumpsters/create','DumpstersController@create');
+    Route::post('/dumpsters/store','DumpstersController@store');
+    Route::get('/dumpsters/edit/{dumpter_id}/{address_id}','DumpstersController@edit');
+    Route::patch('/dumpsters/{dumpter_id}/{address_id}','DumpstersController@update');
+    Route::delete('/dumpsters/{dumpter_id}','DumpstersController@destroy');
+    Route::get('/schedules/assignments', 'SchedulesController@truckindex');
+    Route::get('/schedules/assignments/create/{id}', 'SchedulesController@truckcreate');
+    Route::post('/schedules/assignments/store', 'SchedulesController@truckstore');
+    Route::get('/schedules/assignments/show/{id}', 'SchedulesController@truckshow');
+    Route::get('/schedules/assignments/edit/{id}', 'SchedulesController@truckedit');
+    Route::patch('/schedules/assignments/update/{id}', 'SchedulesController@truckupdate');
+    Route::delete('/schedules/assignments/destroy/{id}', 'SchedulesController@truckdestroy');
+    Route::get('/schedules/calendar', 'CalendarController@index');
+    Route::get('/schedules', 'SchedulesController@index');
+    Route::get('/schedules/create/{id}', 'SchedulesController@create');
+    Route::post('/schedules/store', 'SchedulesController@store');
+    Route::get('/schedules/show/{id}', 'SchedulesController@show');
+    Route::get('/schedules/edit/{id}', 'SchedulesController@edit');
+    Route::patch('/schedules/update/{id}', 'SchedulesController@update');
+    Route::delete('/schedules/destroy/{id}', 'SchedulesController@destroy');
+    // Route::resource('/schedules', SchedulesController::class);
 });
 Route::group([
     'prefix' => 'driver',
@@ -68,10 +90,13 @@ Route::group([
     'middleware' => ['auth','driver']
 ],function  () {
     Route::get('/schedule', 'ScheduleController@index');
+    Route::get('/calendar', 'CalendarController@index');
     Route::get('/profile', 'ProfileController@index');
+    Route::get('/weight', 'WeightController@index');
     Route::post('/profile/update/{id}', 'ProfileController@update');
     Route::get('/reports', 'ReportsController@index');
     Route::post('/reports/send', 'ReportsController@send');
+    Route::post('/weight/input', 'WeightController@input');
     Route::get('/tracker', 'TrackerController@index');
 });
 Auth::routes();

@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
-use App\Models\Event;
-// use Spatie\GoogleCalendar\Event;
+use App\Models\Schedule;
+use App\Models\TruckAssignment;
 
 class CalendarController extends Controller
 {
     //
     public function index()
     {
-        $row = Event::all();
-        return view('guest.calendar', compact('row'));
+        $schedule = TruckAssignment::where('active', 1)->get();
+        return view('guest.calendar')->with('schedule', $schedule);
     }
 }
