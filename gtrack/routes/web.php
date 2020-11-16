@@ -31,7 +31,7 @@ Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
     'namespace' => 'Admin',
-    'middleware' => ['auth','admin']
+    'middleware' => ['auth','verified','admin']
 ],function  () {
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('/reports', 'ReportsController@index');
@@ -87,7 +87,7 @@ Route::group([
     'prefix' => 'driver',
     'as' => 'driver.',
     'namespace' => 'Driver',
-    'middleware' => ['auth','driver']
+    'middleware' => ['auth','verified','driver']
 ],function  () {
     Route::get('/schedule', 'ScheduleController@index');
     Route::get('/calendar', 'CalendarController@index');
@@ -99,7 +99,7 @@ Route::group([
     Route::post('/weight/input', 'WeightController@input');
     Route::get('/tracker', 'TrackerController@index');
 });
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

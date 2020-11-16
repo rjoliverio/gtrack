@@ -45,7 +45,7 @@
                     <td class="text-center">{{$schedule->schedule_id}}</td>
                     <td>{{$schedule->schedule}}</td>
                     <td class="text-center">{{$schedule->garbage_type == 'Biodegradable'?'✔':'❌'}}</td>
-                    <td class="text-center">{{$schedule->garbage_type == 'Nonbiodegradable'?'✔;':'❌'}}</td>
+                    <td class="text-center">{{$schedule->garbage_type == 'Nonbiodegradable'?'✔':'❌'}}</td>
                     <td class="text-center">{{$schedule->admin_id}}</td>
                     <td>{{$schedule->created_at}}</td>
                     @if(Auth::user()->user_type == "Admin")
@@ -116,7 +116,7 @@
                     <div class="form-group row">
                         <label for="schedule" class="col-md-4 col-form-label text-md-right">{{ __('DateTime') }}</label>
                         <div class="col-md-6">
-                            <input id="schedule" type="datetime-local" class="form-control @error('DateTime') is-invalid @enderror" name="DateTIme" value="{{ old('DateTime') }}" required autocomplete="DateTime" autofocus>
+                            <input id="schedule" type="datetime-local" class="form-control @error('DateTime') is-invalid @enderror" name="schedule" value="{{ old('DateTime') }}" required autocomplete="DateTime" autofocus>
                             {{-- {{Form::label('schedule', 'DateTime')}}
                             {{Form::DateTime('schedule', '', ['class' => 'form-control', 'placeholder' => 'DateTime' ])}} --}}
                             @error('DateTime')

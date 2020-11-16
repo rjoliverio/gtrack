@@ -51,28 +51,38 @@
       </li>
       <li class="nav-item <?php echo e((request()->is('admin/announcements/*') || request()->is('admin/announcements')) ? 'active' : ''); ?>">
         <a class="nav-link" href="/admin/announcements">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fas fa-bullhorn"></i>
           <span>Announcements</span></a>
       </li>
       <li class="nav-item <?php echo e((request()->is('admin/events/*') || request()->is('admin/events')) ? 'active' : ''); ?>">
         <a class="nav-link" href="/admin/events">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fas fa-clipboard"></i>
           <span>Events</span></a>
+      </li>
+      <li class="nav-item <?php echo e((request()->is('admin/schedules/*') || request()->is('admin/schedules')) ? 'active' : ''); ?>">
+        <a class="nav-link" href="/admin/schedules">
+          <i class="fas fa-fw fas fa-calendar-alt "></i>
+          <span>Schedules</span></a>
       </li>
       <li class="nav-item <?php echo e((request()->is('admin/employees/*') || request()->is('admin/employees')) ? 'active' : ''); ?>">
         <a class="nav-link" href="/admin/employees">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fas fa-user"></i>
           <span>Employee</span></a>
       </li>
       <li class="nav-item <?php echo e((request()->is('admin/gtrucks/*') || request()->is('admin/gtrucks')) ? 'active' : ''); ?>">
         <a class="nav-link" href="/admin/gtrucks">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fas fa-truck"></i>
           <span>Garbage Trucks</span></a>
+      </li>
+      <li class="nav-item <?php echo e((request()->is('admin/gtrucks/*') || request()->is('admin/dumpsters')) ? 'active' : ''); ?>">
+        <a class="nav-link" href="/admin/dumpsters">
+          <i class="fas fa-fw fas fa-dumpster"></i>
+          <span>Dumpsters</span></a>
       </li>
       
       <li class="nav-item <?php echo e((request()->is('admin/reports/*') || request()->is('admin/reports')) ? 'active' : ''); ?>">
         <a class="nav-link" href="/admin/reports">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fas fa-exclamation-circle"></i>
           <span>Reports</span></a>
       </li>
       

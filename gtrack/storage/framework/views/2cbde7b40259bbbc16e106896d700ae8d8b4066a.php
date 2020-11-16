@@ -15,13 +15,46 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <div id='calendar'></div>
+    
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('scripts'); ?>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src='<?php echo e(asset('js/calendar-main.js')); ?>'></script>
     <script>
+        
         document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
-    
+        var schedules =<?php echo $schedules; ?>;
+        var trucks=<?php echo $trucks; ?>;
+        var event=<?php echo $events; ?>;
+        var events=[];
+
+        schedules.forEach(function(item,index){
+            date=new Date(item.schedule);
+            day=date.getDay();
+            time=date.toLocaleTimeString('it-IT');
+            truck=trucks.find(o => o.schedule_id == item.schedule_id);
+            var obj={title:truck.route,
+                    startTime:time,
+                    endTime: "16:00",
+                    color:"green",
+                    description: "Collection Details: "+item.garbage_type+"\n"+"Collection will start at: "+date.toLocaleString('en-US', { hour: 'numeric', hour12: true }),
+                    daysOfWeek:[day],
+                    backgroundColor: '#5cb85c',
+                };
+            events.push(obj);
+        });
+        event.forEach(function(item,index){
+            date=new Date(item.date);
+            day=date.getDate();
+            var obj={title:item.event_name,
+                    allDay:true,
+                    start:date,
+                    description:"Description: "+ item.description+"\n"+"Participants: "+item.participants,
+                    color: 'purple',
+                };
+            events.push(obj);
+        });
         var calendar = new FullCalendar.Calendar(calendarEl, {
             headerToolbar: {
             left: 'prev,next today',
@@ -33,68 +66,13 @@
             businessHours: true, // display business hours
             editable: false,
             selectable: true,
-            events: [
-            {
-                title: 'Trash Day',
-                start: '2020-10-11T13:00:00',
-                color: '#ffae00'
-            },
-            {
-                title: 'Trash Day',
-                start: '2020-10-14T13:00:00',
-                color: '#ff0000'
-            },
-            {
-                title: 'Trash Day',
-                start: '2020-10-16T13:00:00',
-                color: '#f8e321'
+            eventColor: 'green',
+            events: events,
+            eventClick: function(info) {
+                swal(info.event.extendedProps.description, {
+                    icon: "info",
+                }); 
             }
-            // {
-            //     title: 'Meeting',
-            //     start: '2020-09-13T11:00:00',
-            //     constraint: 'availableForMeeting', // defined below
-            //     color: '#257e4a'
-            // },
-            // {
-            //     title: 'Conference',
-            //     start: '2020-09-18',
-            //     end: '2020-09-20'
-            // },
-            // {
-            //     title: 'Party',
-            //     start: '2020-09-29T20:00:00'
-            // },
-    
-            // // <==== areas where "Meeting" must be dropped ====>
-            // {
-            //     groupId: 'availableForMeeting',
-            //     start: '2020-09-11T10:00:00',
-            //     end: '2020-09-11T16:00:00',
-            //     display: 'background'
-            // },
-            // {
-            //     groupId: 'availableForMeeting',
-            //     start: '2020-09-13T10:00:00',
-            //     end: '2020-09-13T16:00:00',
-            //     display: 'background'
-            // },
-    
-            // //<==== red areas where no events can be dropped ====>
-            // {
-            //     start: '2020-09-24',
-            //     end: '2020-09-28',
-            //     overlap: false,
-            //     display: 'background',
-            //     color: '#ff9f89'
-            // },
-            // {
-            //     start: '2020-09-06',
-            //     end: '2020-09-08',
-            //     overlap: false,
-            //     display: 'background',
-            //     color: '#ff9f89'
-            // }
-            ]
         });
     
         calendar.render();

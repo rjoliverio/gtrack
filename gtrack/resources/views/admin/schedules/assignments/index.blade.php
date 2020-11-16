@@ -285,7 +285,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    {{ Form::open(array('url' => '/admin/assignments/store' , 'method' => 'POST')) }}
+                    {{ Form::open(array('url' => '/admin/schedules/assignments/store' , 'method' => 'POST')) }}
                         <div class="form-group row">
                             {{-- {{Form::label('schedule_id', 'Schedule Id', ['class' => 'col-md-4 col-form-label text-md-right', 'placeholder' => 'Title' ])}}
                             <div class="col-md-6">

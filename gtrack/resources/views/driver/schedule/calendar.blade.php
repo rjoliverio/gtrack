@@ -26,12 +26,43 @@
 @endsection
 @section('scripts')
     <script src={{asset('js/gallery-view.js')}}></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src='{{asset('js/calendar-main.js')}}'></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
-    
+        var schedules ={!! $schedules !!};
+        var trucks={!! $trucks !!};
+        var event={!! $events !!};
+        var events=[];
+
+        schedules.forEach(function(item,index){
+            date=new Date(item.schedule);
+            day=date.getDay();
+            time=date.toLocaleTimeString('it-IT');
+            truck=trucks.find(o => o.schedule_id == item.schedule_id);
+            var obj={title:truck.route,
+                    startTime:time,
+                    endTime: "16:00",
+                    color:"green",
+                    description: "Collection Details: "+item.garbage_type+"\n"+"Collection will start at: "+date.toLocaleString('en-US', { hour: 'numeric', hour12: true }),
+                    daysOfWeek:[day],
+                    backgroundColor: '#5cb85c',
+                };
+            events.push(obj);
+        });
+        event.forEach(function(item,index){
+            date=new Date(item.date);
+            day=date.getDate();
+            var obj={title:item.event_name,
+                    allDay:true,
+                    start:date,
+                    description:"Description: "+ item.description+"\n"+"Participants: "+item.participants,
+                    color: 'purple',
+                };
+            events.push(obj);
+        });
         var calendar = new FullCalendar.Calendar(calendarEl, {
             headerToolbar: {
             left: 'prev,next today',
@@ -43,23 +74,13 @@
             businessHours: true, // display business hours
             editable: false,
             selectable: true,
-            events: [
-            {
-                title: 'Trash Day',
-                start: '2020-10-11T13:00:00',
-                color: '#ffae00'
-            },
-            {
-                title: 'Trash Day',
-                start: '2020-10-14T13:00:00',
-                color: '#ff0000'
-            },
-            {
-                title: 'Trash Day',
-                start: '2020-10-16T13:00:00',
-                color: '#f8e321'
+            eventColor: 'green',
+            events: events,
+            eventClick: function(info) {
+                swal(info.event.extendedProps.description, {
+                    icon: "info",
+                }); 
             }
-            ]
         });
     
         calendar.render();

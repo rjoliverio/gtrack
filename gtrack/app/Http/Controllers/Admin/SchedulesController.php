@@ -60,19 +60,18 @@ class SchedulesController extends Controller
      */
     public function store(Request $request)
     {
+        
         $this->validate($request, [
             'schedule' => 'required',
-            'garbage_type' => 'required',
+            'garbage_type' => 'required'
         ]);
-
         // Create Event
         $schedule = new Schedule;
-        $schedule->schedule = $request->input('schedule');
-        $schedule->garbage_type = $request->input('garbage_type');
+        $schedule->schedule = $request->schedule;
+        $schedule->garbage_type = $request->garbage_type;
         $schedule->admin_id = auth()->user()->user_id;
 
         $schedule->save();
-        
         toast('Schedule added successfully','success');
         return redirect('/admin/schedules');
     }
