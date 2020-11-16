@@ -1,11 +1,12 @@
 var options = {
     data: [
-        {"text": "Dashboard", "website-link": "/driver/dashboard"},
         {"text": "Schedule", "website-link": "/driver/schedule"},
+        {"text": "Calendar", "website-link": "/driver/calendar"},
         {"text": "Reports", "website-link": "/driver/reports"},
         {"text": "Events", "website-link": "/driver/events"},
-        {"text": "Location", "website-link": "/driver/location"},
-        {"text": "Profile", "website-link": "/driver/profile"}
+        {"text": "Location", "website-link": "/driver/tracker"},
+        {"text": "Profile", "website-link": "/driver/profile"},
+        {"text": "Input Weight", "website-link": "/driver/weight"}
     ],
 
     getValue: "text",

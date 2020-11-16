@@ -75,10 +75,19 @@
             </div>
             <div class="tab-pane fade" id="account-change-password">
               <div class="card-body pb-2">
+                <div class="form-group">
+                  <label class="form-label">Current Password</label>
+                  <input type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror" value="{{ old('old_password') }}" autocomplete="old_password" autofocus>
+                  @error('old_password')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                    @enderror 
+                </div>
 
                 <div class="form-group">
                   <label class="form-label">New password</label>
-                  <input type="password" name="password" class="form-control @error('image') is-invalid @enderror" value="{{ old('password') }}" autocomplete="password" autofocus>
+                  <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" autocomplete="password" autofocus>
                   @error('password')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
