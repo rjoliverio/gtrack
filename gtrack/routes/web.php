@@ -25,7 +25,6 @@ Route::group([
     Route::get('/contact-us','ContactController@index');
     Route::post('/send', 'ContactController@send');
     Route::get('/calendar', 'CalendarController@index');
-
 });
 Route::group([
     'prefix' => 'admin',

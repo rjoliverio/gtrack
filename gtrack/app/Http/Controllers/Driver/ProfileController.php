@@ -34,8 +34,9 @@ class ProfileController extends Controller
             'barangay'=>'required',
             'town'=>'required',
             'postal_code'=>'required',
+            'old_password'=>'nullable|password',
             'password' => ['min:8', 'confirmed','nullable'],
-            'image'=>'nullable|mimes:jpeg,png,jpg'
+            'image'=>'nullable|mimes:jpeg,png,jpg',
             
             ],
             [
@@ -44,6 +45,7 @@ class ProfileController extends Controller
              'password.confirmed'=>'Password did not match'
             ]
        );
+
        if($req->image!=null)
        {
         $basename = Str::random();

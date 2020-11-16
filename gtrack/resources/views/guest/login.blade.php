@@ -59,7 +59,7 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small text-success" href="/forgot-pass">Forgot Password?</a>
+                    <a class="small text-success" href="{{ route('password.request') }}">Forgot Password?</a>
                   </div>
                 </div>
               </div>

@@ -87,7 +87,7 @@ unset($__errorArgs, $__bag); ?>
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small text-success" href="/forgot-pass">Forgot Password?</a>
+                    <a class="small text-success" href="<?php echo e(route('password.request')); ?>">Forgot Password?</a>
                   </div>
                 </div>
               </div>
