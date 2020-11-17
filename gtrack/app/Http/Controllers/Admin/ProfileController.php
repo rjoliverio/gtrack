@@ -35,6 +35,7 @@ class ProfileController extends Controller
             'barangay'=>'required',
             'town'=>'required',
             'postal_code'=>'required',
+            'old_password'=>'nullable|password',
             'password' => ['min:8', 'confirmed','nullable'],
             'image'=>'nullable|mimes:jpeg,png,jpg'
             
