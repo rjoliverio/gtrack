@@ -46,17 +46,17 @@ GTrack | Dumpsters
                             @if(Auth::user()->user_type=="Admin")
                             @endif
                             <td>
-                                <a href="#myModal{{ $dumpster->dumpter_id }}" data-toggle="modal"><i class="fas fa-edit"
+                                <a href="#myModal{{ $dumpster->dumpster_id }}" data-toggle="modal"><i class="fas fa-edit"
                                         data-toggle="tooltip" title="Edit"></i></a>
                                 <a href="#"><i class="fas fa-trash" data-toggle="modal" data-target="#exampleModal"
                                         title="Delete"></i></a>
                             </td>
                             </td>
-                            <div id="myModal{{ $dumpster->dumpter_id }}" class="modal fade">
+                            <div id="myModal{{ $dumpster->dumpster_id }}" class="modal fade">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <form
-                                            action="/admin/dumpsters/{{$dumpster->dumpter_id}}/{{$dumpster->address_id}}"
+                                            action="/admin/dumpsters/{{$dumpster->dumpster_id}}/{{$dumpster->address_id}}"
                                             method="POST">
                                             @method('PATCH')
                                             {{csrf_field()}}
@@ -161,7 +161,7 @@ GTrack | Dumpsters
                 </table>
             </div>
             @foreach($dumpsters as $dumpster)
-            <form action="/admin/dumpsters/{{ $dumpster->dumpter_id }}" method="POST">
+            <form action="/admin/dumpsters/{{ $dumpster->dumpster_id }}" method="POST">
                 @method('DELETE')
                 @csrf
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
