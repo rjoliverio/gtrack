@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Schedule;
 use App\Models\TruckAssignment;
 use App\Models\Truck;
-
+use Kreait\Firebase;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
+use Kreait\Firebase\Database;
 class SchedulesController extends Controller
 {
     /**
@@ -88,8 +91,23 @@ class SchedulesController extends Controller
         $assignment->route = $request->input('route');
         $assignment->schedule_id = $request->input('schedule_id');
         
-        $assignment->save();
+        
+        $truck=Truck::find($assignment->truck_id);
+        $firebase = (new Factory)
+        ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
 
+        $database = $firebase->createDatabase();
+        $ref = $database->getReference("drivers");
+        $key=$ref->push()->getKey();
+        $ref->getChild($key)->set([
+            'active' => 0,
+            'driver_id' => $truck->user_id,
+            'latitude' => 0,
+            'longitude'=> 0,
+            'route'=>$assignment->route
+        ]);
+        $assignment->firebase_uid=$key;
+        $assignment->save();
         toast('Truck Assignment added successfully','success');
         return redirect('/admin/schedules/assignments');
     }
