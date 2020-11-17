@@ -54,6 +54,70 @@
         ]
     },
     {
+        "name": "barryvdh/laravel-dompdf",
+        "version": "v0.8.7",
+        "version_normalized": "0.8.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/barryvdh/laravel-dompdf.git",
+            "reference": "30310e0a675462bf2aa9d448c8dcbf57fbcc517d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/barryvdh/laravel-dompdf/zipball/30310e0a675462bf2aa9d448c8dcbf57fbcc517d",
+            "reference": "30310e0a675462bf2aa9d448c8dcbf57fbcc517d",
+            "shasum": ""
+        },
+        "require": {
+            "dompdf/dompdf": "^0.8",
+            "illuminate/support": "^5.5|^6|^7|^8",
+            "php": ">=7"
+        },
+        "time": "2020-09-07T11:50:18+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.8-dev"
+            },
+            "laravel": {
+                "providers": [
+                    "Barryvdh\\DomPDF\\ServiceProvider"
+                ],
+                "aliases": {
+                    "PDF": "Barryvdh\\DomPDF\\Facade"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Barryvdh\\DomPDF\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Barry vd. Heuvel",
+                "email": "barryvdh@gmail.com"
+            }
+        ],
+        "description": "A DOMPDF Wrapper for Laravel",
+        "keywords": [
+            "dompdf",
+            "laravel",
+            "pdf"
+        ],
+        "funding": [
+            {
+                "url": "https://github.com/barryvdh",
+                "type": "github"
+            }
+        ]
+    },
+    {
         "name": "brick/math",
         "version": "0.9.1",
         "version_normalized": "0.9.1.0",
@@ -381,6 +445,76 @@
         ]
     },
     {
+        "name": "dompdf/dompdf",
+        "version": "v0.8.6",
+        "version_normalized": "0.8.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/dompdf/dompdf.git",
+            "reference": "db91d81866c69a42dad1d2926f61515a1e3f42c5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/dompdf/dompdf/zipball/db91d81866c69a42dad1d2926f61515a1e3f42c5",
+            "reference": "db91d81866c69a42dad1d2926f61515a1e3f42c5",
+            "shasum": ""
+        },
+        "require": {
+            "ext-dom": "*",
+            "ext-mbstring": "*",
+            "phenx/php-font-lib": "^0.5.2",
+            "phenx/php-svg-lib": "^0.3.3",
+            "php": "^7.1"
+        },
+        "require-dev": {
+            "mockery/mockery": "^1.3",
+            "phpunit/phpunit": "^7.5",
+            "squizlabs/php_codesniffer": "^3.5"
+        },
+        "suggest": {
+            "ext-gd": "Needed to process images",
+            "ext-gmagick": "Improves image processing performance",
+            "ext-imagick": "Improves image processing performance",
+            "ext-zlib": "Needed for pdf stream compression"
+        },
+        "time": "2020-08-30T22:54:22+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-develop": "0.7-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Dompdf\\": "src/"
+            },
+            "classmap": [
+                "lib/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.1"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Ménager",
+                "email": "fabien.menager@gmail.com"
+            },
+            {
+                "name": "Brian Sweeney",
+                "email": "eclecticgeek@gmail.com"
+            },
+            {
+                "name": "Gabriel Bull",
+                "email": "me@gabrielbull.com"
+            }
+        ],
+        "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
+        "homepage": "https://github.com/dompdf/dompdf"
+    },
+    {
         "name": "dragonmantank/cron-expression",
         "version": "v3.0.2",
         "version_normalized": "3.0.2.0",
@@ -438,17 +572,17 @@
     },
     {
         "name": "egulias/email-validator",
-        "version": "2.1.23",
-        "version_normalized": "2.1.23.0",
+        "version": "2.1.24",
+        "version_normalized": "2.1.24.0",
         "source": {
             "type": "git",
             "url": "https://github.com/egulias/EmailValidator.git",
-            "reference": "5fa792ad1853ae2bc60528dd3e5cbf4542d3c1df"
+            "reference": "ca90a3291eee1538cd48ff25163240695bd95448"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/5fa792ad1853ae2bc60528dd3e5cbf4542d3c1df",
-            "reference": "5fa792ad1853ae2bc60528dd3e5cbf4542d3c1df",
+            "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ca90a3291eee1538cd48ff25163240695bd95448",
+            "reference": "ca90a3291eee1538cd48ff25163240695bd95448",
             "shasum": ""
         },
         "require": {
@@ -464,7 +598,7 @@
         "suggest": {
             "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
         },
-        "time": "2020-10-31T20:37:35+00:00",
+        "time": "2020-11-14T15:56:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -494,6 +628,12 @@
             "emailvalidator",
             "validation",
             "validator"
+        ],
+        "funding": [
+            {
+                "url": "https://github.com/egulias",
+                "type": "github"
+            }
         ]
     },
     {
@@ -561,17 +701,17 @@
     },
     {
         "name": "facade/ignition",
-        "version": "2.5.0",
-        "version_normalized": "2.5.0.0",
+        "version": "2.5.1",
+        "version_normalized": "2.5.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/facade/ignition.git",
-            "reference": "81698c5e32837c74abf9bb764ff0c1b3e001afb3"
+            "reference": "3b3403f18bbdc0aeadf1ffaddf11a1588b12ec7a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/facade/ignition/zipball/81698c5e32837c74abf9bb764ff0c1b3e001afb3",
-            "reference": "81698c5e32837c74abf9bb764ff0c1b3e001afb3",
+            "url": "https://api.github.com/repos/facade/ignition/zipball/3b3403f18bbdc0aeadf1ffaddf11a1588b12ec7a",
+            "reference": "3b3403f18bbdc0aeadf1ffaddf11a1588b12ec7a",
             "shasum": ""
         },
         "require": {
@@ -595,7 +735,7 @@
         "suggest": {
             "laravel/telescope": "^3.1"
         },
-        "time": "2020-10-27T13:02:22+00:00",
+        "time": "2020-11-13T13:36:24+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1038,17 +1178,17 @@
     },
     {
         "name": "giggsey/libphonenumber-for-php",
-        "version": "8.12.12",
-        "version_normalized": "8.12.12.0",
+        "version": "8.12.13",
+        "version_normalized": "8.12.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-            "reference": "f3802f572c5fff322a2ccd8d2d792c147ed9e3c4"
+            "reference": "571bbbabdab5b1cf16550cb257005bb527fa0899"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/f3802f572c5fff322a2ccd8d2d792c147ed9e3c4",
-            "reference": "f3802f572c5fff322a2ccd8d2d792c147ed9e3c4",
+            "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/571bbbabdab5b1cf16550cb257005bb527fa0899",
+            "reference": "571bbbabdab5b1cf16550cb257005bb527fa0899",
             "shasum": ""
         },
         "require": {
@@ -1065,7 +1205,7 @@
             "phpunit/phpunit": "^4.8.36|^5.0|^7.0",
             "symfony/console": "^2.8|^3.0"
         },
-        "time": "2020-10-29T09:27:40+00:00",
+        "time": "2020-11-12T14:42:30+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1159,17 +1299,17 @@
     },
     {
         "name": "google/apiclient",
-        "version": "v2.8.1",
-        "version_normalized": "2.8.1.0",
+        "version": "v2.8.2",
+        "version_normalized": "2.8.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/googleapis/google-api-php-client.git",
-            "reference": "c8f6d09f50f859fa9457104bb0fb72c893804ede"
+            "reference": "24f3ec0c79567a08c31f8271b61d79b050b25b0a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/c8f6d09f50f859fa9457104bb0fb72c893804ede",
-            "reference": "c8f6d09f50f859fa9457104bb0fb72c893804ede",
+            "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/24f3ec0c79567a08c31f8271b61d79b050b25b0a",
+            "reference": "24f3ec0c79567a08c31f8271b61d79b050b25b0a",
             "shasum": ""
         },
         "require": {
@@ -1195,7 +1335,7 @@
         "suggest": {
             "cache/filesystem-adapter": "For caching certs and tokens (using Google\\Client::setCache)"
         },
-        "time": "2020-10-27T23:20:13+00:00",
+        "time": "2020-11-11T17:07:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2918,17 +3058,17 @@
     },
     {
         "name": "myclabs/deep-copy",
-        "version": "1.10.1",
-        "version_normalized": "1.10.1.0",
+        "version": "1.10.2",
+        "version_normalized": "1.10.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/myclabs/DeepCopy.git",
-            "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5"
+            "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
-            "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
+            "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/776f831124e9c62e1a2c601ecc52e776d8bb7220",
+            "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220",
             "shasum": ""
         },
         "require": {
@@ -2942,7 +3082,7 @@
             "doctrine/common": "^2.6",
             "phpunit/phpunit": "^7.1"
         },
-        "time": "2020-06-29T13:22:24+00:00",
+        "time": "2020-11-13T09:40:50+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3372,6 +3512,87 @@
             }
         ],
         "description": "Library for handling version information and constraints"
+    },
+    {
+        "name": "phenx/php-font-lib",
+        "version": "0.5.2",
+        "version_normalized": "0.5.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PhenX/php-font-lib.git",
+            "reference": "ca6ad461f032145fff5971b5985e5af9e7fa88d8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/ca6ad461f032145fff5971b5985e5af9e7fa88d8",
+            "reference": "ca6ad461f032145fff5971b5985e5af9e7fa88d8",
+            "shasum": ""
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.8.35 || ^5 || ^6 || ^7"
+        },
+        "time": "2020-03-08T15:31:32+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "FontLib\\": "src/FontLib"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Ménager",
+                "email": "fabien.menager@gmail.com"
+            }
+        ],
+        "description": "A library to read, parse, export and make subsets of different types of font files.",
+        "homepage": "https://github.com/PhenX/php-font-lib"
+    },
+    {
+        "name": "phenx/php-svg-lib",
+        "version": "v0.3.3",
+        "version_normalized": "0.3.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PhenX/php-svg-lib.git",
+            "reference": "5fa61b65e612ce1ae15f69b3d223cb14ecc60e32"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PhenX/php-svg-lib/zipball/5fa61b65e612ce1ae15f69b3d223cb14ecc60e32",
+            "reference": "5fa61b65e612ce1ae15f69b3d223cb14ecc60e32",
+            "shasum": ""
+        },
+        "require": {
+            "sabberworm/php-css-parser": "^8.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^5.5|^6.5"
+        },
+        "time": "2019-09-11T20:02:13+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Svg\\": "src/Svg"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Ménager",
+                "email": "fabien.menager@gmail.com"
+            }
+        ],
+        "description": "A library to read, parse and export to PDF SVG files.",
+        "homepage": "https://github.com/PhenX/php-svg-lib"
     },
     {
         "name": "phpdocumentor/reflection-common",
@@ -5053,6 +5274,53 @@
             "RFC 6570",
             "template",
             "uri"
+        ]
+    },
+    {
+        "name": "sabberworm/php-css-parser",
+        "version": "8.3.1",
+        "version_normalized": "8.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sabberworm/PHP-CSS-Parser.git",
+            "reference": "d217848e1396ef962fb1997cf3e2421acba7f796"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sabberworm/PHP-CSS-Parser/zipball/d217848e1396ef962fb1997cf3e2421acba7f796",
+            "reference": "d217848e1396ef962fb1997cf3e2421acba7f796",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "codacy/coverage": "^1.4",
+            "phpunit/phpunit": "~4.8"
+        },
+        "time": "2020-06-01T09:10:00+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Sabberworm\\CSS": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Raphael Schweikert"
+            }
+        ],
+        "description": "Parser for CSS Files written in PHP",
+        "homepage": "http://www.sabberworm.com/blog/2010/6/10/php-css-parser",
+        "keywords": [
+            "css",
+            "parser",
+            "stylesheet"
         ]
     },
     {
@@ -8431,17 +8699,17 @@
     },
     {
         "name": "voku/portable-ascii",
-        "version": "1.5.4",
-        "version_normalized": "1.5.4.0",
+        "version": "1.5.6",
+        "version_normalized": "1.5.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/voku/portable-ascii.git",
-            "reference": "87dc337d4200b32717dd3849fea846319e897658"
+            "reference": "80953678b19901e5165c56752d087fc11526017c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/voku/portable-ascii/zipball/87dc337d4200b32717dd3849fea846319e897658",
-            "reference": "87dc337d4200b32717dd3849fea846319e897658",
+            "url": "https://api.github.com/repos/voku/portable-ascii/zipball/80953678b19901e5165c56752d087fc11526017c",
+            "reference": "80953678b19901e5165c56752d087fc11526017c",
             "shasum": ""
         },
         "require": {
@@ -8453,7 +8721,7 @@
         "suggest": {
             "ext-intl": "Use Intl for transliterator_transliterate() support"
         },
-        "time": "2020-11-08T21:15:15+00:00",
+        "time": "2020-11-12T00:07:28+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

@@ -33,7 +33,7 @@ GTrack | Announcements
                     @if($row->image_id!=null)
                     <img class="card-img-top" src="{{asset('storage/images/uploads/'.$row->image->image_1)}}" height="250" width="50" alt="">
                     @else
-                    <img class="card-img-top" src="{{asset('storage/images/img/noimage.png')}}" height="250" width="50" alt="">
+                    <img class="card-img-top noimage" src="{{asset('storage/images/img/noimage.png')}}" height="300" width="50" alt="">
                     
                     @endif
                     <div class="card-body">

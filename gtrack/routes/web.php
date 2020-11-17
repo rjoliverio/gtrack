@@ -33,6 +33,7 @@ Route::group([
     'middleware' => ['auth','verified','admin']
 ],function  () {
     Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/dashboard/pdf', 'DashboardController@export');
     Route::get('/reports', 'ReportsController@index');
     Route::get('/reports/show/{id}', 'ReportsController@show');
     Route::post('/reports/resolve/{id}', 'ReportsController@resolve');
