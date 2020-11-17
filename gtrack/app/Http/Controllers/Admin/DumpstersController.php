@@ -10,6 +10,10 @@ use Auth;
 use App\Models\Dumpster;
 use App\Models\Address;
 use Illuminate\Support\Facades\Hash;
+use Kreait\Firebase;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
+use Kreait\Firebase\Database;
 class DumpstersController extends Controller
 {
     
@@ -45,8 +49,22 @@ class DumpstersController extends Controller
         $dumpster->latitude = $request->input('latitude');
         $dumpster->longitude = $request->input('longitude');
         $dumpster->save();
+
+        $firebase = (new Factory)
+        ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
+
+        $database = $firebase->createDatabase();
+        $ref = $database->getReference("dumpsters");
+        $key=$ref->push()->getKey();
+        $ref->getChild($key)->set([
+            'dumpster_id' => $dumpster->dumpster_id,
+            'landmark' => $address->street,
+            'latitude' => $dumpster->latitude,
+            'longitude'=> $dumpster->longitude
+        ]);
+
         toast('Dumpster Created Successfully!','success');
-      return redirect('admin/dumpsters');
+        return redirect('admin/dumpsters');
     }
     public function edit(Dumpster $dumpster_id,Address $address_id)
     {
@@ -72,6 +90,7 @@ class DumpstersController extends Controller
             'longitude' =>$request->longitude,
             'latitude' =>$request->latitude
         ]);
+
         toast('Dumpster updated successfully','success');
         return redirect('admin/dumpsters');
     }

@@ -86,12 +86,12 @@
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 var database = firebase.database();
+
 </script>
 <!-- ------------------------------------------------- -->
 <script>
 // share-location
-var collector = {{ Auth::user()->user_id }};
-    
+var collector = {!! json_encode($uid) !!}; // {!! $uid !!} not working basta dli object
   var watchID=null;
   var markers=null;
   var truckIcon=null;
@@ -125,7 +125,7 @@ var collector = {{ Auth::user()->user_id }};
                     latitude: coord.coords.latitude,
                     longitude: coord.coords.longitude,
                     route:"Poblacion",
-                    driver_id:collector,
+                    driver_id:{{Auth::user()->user_id}},
                     active:1
                 });
             }
@@ -159,7 +159,7 @@ var collector = {{ Auth::user()->user_id }};
                     latitude: coord.coords.latitude,
                     longitude: coord.coords.longitude,
                     route:"Poblacion",
-                    driver_id:collector,
+                    driver_id:{{Auth::user()->user_id}},
                     active:1
                 });
             }
@@ -188,7 +188,7 @@ var collector = {{ Auth::user()->user_id }};
                 latitude: 0,
                 longitude: 0,
                 route:"Poblacion",
-                driver_id:collector,
+                driver_id:{{Auth::user()->user_id}},
                 active:0
             });
             markers.remove();

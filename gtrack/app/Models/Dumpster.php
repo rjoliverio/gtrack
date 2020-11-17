@@ -10,7 +10,7 @@ class Dumpster extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'dumpter_id';
+    protected $primaryKey = 'dumpster_id';
     protected $fillable = [
         'dumpter_id','address_id','latitude','longitude','complete'
     ];
