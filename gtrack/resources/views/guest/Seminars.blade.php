@@ -41,7 +41,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="third-slide" src="/storage/images/img/event3.jpg" alt="Third slide">
+            <img class="third-slide" src="/storage/images/img/event3.png" alt="Third slide">
             <div class="container">
               <div class="carousel-caption text-right">
                 <h1><i>Become Responsible...</i></h1>
@@ -118,7 +118,9 @@
                                               <div class="row">
                                               <h4><b>Other Details:</b></h4>
                                               </div>
-                                              <p><i>When:</i> {{ \Carbon\Carbon::parse($row->date)->format('m/d/Y')}}</p>
+                                              <p><i>Start Date:</i> {{$row->start_date}}</p>
+                                              <p><i>End Date:</i> {{$row->end_date}}</p>
+                                              
         <p><i>Who:</i> {{$row->participants}}</p>
         <p><i>Contact Person:</i> {{$row->userdetail->fname}} {{$row->userdetail->lname}}, {{$row->userdetail->contact_no}}</p>
                                               </div>
@@ -195,7 +197,8 @@
                                               <div class="row">
                                               <h4><b>Other Details:</b></h4>
                                               </div>
-                                              <p><i>When:</i> {{ \Carbon\Carbon::parse($row->date)->format('m/d/Y')}}</p>
+                                              <p><i>Start Date:</i> {{ $row->start_date}}</p>
+                                              <p><i>End Date:</i> {{$row->end_date}}</p>
         <p><i>Who:</i> {{$row->participants}}</p>
         <p><i>Contact Person:</i> {{$row->userdetail->fname}} {{$row->userdetail->lname}}, {{$row->userdetail->contact_no}}</p>
                                               </div>

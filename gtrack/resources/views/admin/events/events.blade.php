@@ -46,19 +46,12 @@ GTrack | Events
                         <a href="#editEmployeeModal{{$row->event_id}}" class="btn btn-sm btn-primary"
                             data-toggle="modal"><i class="material-icons btn-primary" data-toggle="tooltip"
                                 title="Edit">&#xE254;</i></a>
-                        &nbsp;&nbsp;
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
                         &nbsp;
                         &nbsp;
                         &nbsp;
                         
                         
-                            <small class="text-muted">{{ \Carbon\Carbon::parse($row->created_at)->format('m/d/Y')}}</small>
+                            <small class="text-muted">{{$row->created_at}}</small>
                        
                     </div>
                 </div>
@@ -157,7 +150,8 @@ GTrack | Events
                                         <div class="row">
                                             <h4><b>Other Details:</b></h4>
                                         </div>
-                                        <p><i>When:</i> {{ \Carbon\Carbon::parse($row->date)->format('m/d/Y')}}</p>
+                                        <p><i>Start Date:</i> {{$row->start_date}}</p>
+                                        <p><i>End Date:</i> {{$row->end_date}}</p>
                                         <p><i>Who:</i> {{$row->participants}}</p>
                                         <p><i>Contact Person:</i> {{$row->userdetail->fname}}
                                             {{$row->userdetail->lname}}, {{$row->userdetail->contact_no}}</p>
@@ -220,9 +214,35 @@ GTrack | Events
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Date</label>
-                                    <input type="date" class="form-control" name="date" value="{{$row->date}}" required>
-                                </div>
+                            <label for="date">{{ __('Start Date and Time') }}</label>
+                           
+                                <input id="date" type="datetime-local" class="form-control @error('DateTimeS') is-invalid @enderror" name="DateTimeS" value="{{ old('DateTimeS') }}" required autocomplete="DateTimeS" autofocus>
+                                <!-- {{-- {{Form::label('date', 'DateTime')}}
+                                {{Form::DateTimeS('date', '', ['class' => 'form-control', 'placeholder' => 'DateTime' ])}} --}} -->
+                                @error('DateTimeS')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                           
+                    </div>
+                    <!-- <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" class="form-control" name="date" required>
+                    </div> -->
+                    <div class="form-group">
+                            <label for="date">{{ __('End Date and Time') }}</label>
+                           
+                                <input id="date" type="datetime-local" class="form-control @error('DateTimeE') is-invalid @enderror" name="DateTimeE" value="{{ old('DateTimeE') }}" required autocomplete="DateTimeE" autofocus>
+                                <!-- {{-- {{Form::label('date', 'DateTime')}}
+                                {{Form::DateTimeS('date', '', ['class' => 'form-control', 'placeholder' => 'DateTime' ])}} --}} -->
+                                @error('DateTimeE')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                           
+                    </div>
                                 <div class="form-group">
                                     <label>Event Address - Street</label>
                                     <input type="text" class="form-control @error('estreet') is-invalid @enderror"  name="estreet" value="{{ $row->address->street }}"  autocomplete="estreet" autofocus placeholder="Event Address - Street">
@@ -391,10 +411,35 @@ GTrack | Events
                         <input type="file" class="form-control-file" name="images[]" value="{{ old('images[]') }}"
                             multiple required>
                     </div>
-
                     <div class="form-group">
-                        <label>Date</label>
+                            <label for="date">{{ __('Start Date and Time') }}</label>
+                           
+                                <input id="date" type="datetime-local" class="form-control @error('DateTimeS') is-invalid @enderror" name="DateTimeS" value="{{ old('DateTimeS') }}" required autocomplete="DateTimeS" autofocus>
+                                <!-- {{-- {{Form::label('date', 'DateTime')}}
+                                {{Form::DateTimeS('date', '', ['class' => 'form-control', 'placeholder' => 'DateTime' ])}} --}} -->
+                                @error('DateTimeS')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                           
+                    </div>
+                    <!-- <div class="form-group">
+                        <label>Start Date</label>
                         <input type="date" class="form-control" name="date" required>
+                    </div> -->
+                    <div class="form-group">
+                            <label for="date">{{ __('End Date and Time') }}</label>
+                           
+                                <input id="date" type="datetime-local" class="form-control @error('DateTimeE') is-invalid @enderror" name="DateTimeE" value="{{ old('DateTimeE') }}" required autocomplete="DateTimeE" autofocus>
+                                <!-- {{-- {{Form::label('date', 'DateTime')}}
+                                {{Form::DateTimeS('date', '', ['class' => 'form-control', 'placeholder' => 'DateTime' ])}} --}} -->
+                                @error('DateTimeE')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                           
                     </div>
                     <div class="form-group">
                         <label>Event Address - Street</label>
