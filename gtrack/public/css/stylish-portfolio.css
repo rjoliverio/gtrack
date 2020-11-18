@@ -227,12 +227,12 @@ h6 {
   display: block;
   max-width: 30rem;
 }
-
+/* 
 .portfolio-item {
   display: block;
   position: relative;
   overflow: hidden;
-  max-width: 530px;
+  max-width: 350px;
   margin: auto auto 1rem;
 }
 
@@ -296,7 +296,7 @@ h6 {
     -webkit-clip-path: inset(2rem);
     clip-path: inset(2rem);
   }
-}
+} */
 
 .map iframe {
   height: 100%;
