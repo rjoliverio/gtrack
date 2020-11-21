@@ -4,11 +4,15 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <header class="masthead d-flex">
+      <video autoplay muted loop id="myVideo">
+        <source src="../storage/images/img/compostela_playback.mp4" type="video/mp4">
+      </video>
         <div class="container text-center my-auto">
-        <h1 class="mb-1 app text-white">GTrack</h1>
-        <h3 class="mb-5 text-white">
-            <em>A Waste Collection Mobile-Responsive App</em>
-        </h3>
+        <h1 class="mb-1 app text-white header-title">GTrack</h1><hr class="bg-white">
+        <h4 class="text-white ">
+            <em>A Waste Collection System for the residents of Barangay Poblacion, Compostela</em>
+        </h4>
+        <p class="mb-4 text-white">Let us increase our level of awareness and compliance regarding waste-related activities with GTrack.</p>
         <a class="btn btn-success btn-xl js-scroll-trigger" href="#about">Find Out More</a>
         </div>
         <div class="overlay"></div>

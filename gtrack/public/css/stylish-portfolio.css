@@ -18,6 +18,9 @@ html {
   padding: 1.25rem 2.5rem;
 }
 
+.header-title{
+  text-shadow: 2px 2px 5px rgb(80, 80, 80);
+}
 .content-section {
   padding-top: 7.5rem;
   padding-bottom: 7.5rem;
@@ -84,18 +87,19 @@ h6 {
 .scroll-to-top i {
   font-weight: 800;
 }
-
-.masthead{
-  min-height: 30rem;
-  position: relative;
+#myVideo {
+  position: absolute;
   display: table;
   height:auto;
   width:100%;
-  padding-top: 8rem;
   padding-bottom: 8rem;
-  background:  url("../storage/images/img/bg2.jpg") no-repeat center center fixed;
+  z-index: -1;
   background-size: cover;
+  background-color: #4c9a2a;
 }
+/* .masthead{
+  background-color: #4c9a2a;
+} */
 .bg-primary{
   background-color: #4c9a2a!important;
 }
