@@ -53,6 +53,9 @@
                         @endif
 
                     </tr>
+                    @endforeach
+                </tbody>
+            </table>
                     <form action="/admin/gtrucks/maintenance/{{ $truck->truck_id }}" method="POST">
             
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -90,9 +93,7 @@
                           </div>
                         
                         </form>
-                   @endforeach
-                </tbody>
-            </table>
+                 
 </div>
 </div>
 </div>

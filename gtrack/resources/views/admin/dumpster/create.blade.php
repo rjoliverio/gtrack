@@ -97,6 +97,5 @@ GTrack | Dumpsters
             </div>
         </div>
     </div>
-</div>
 
 @endsection
