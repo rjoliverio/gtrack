@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 02:06 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Nov 21, 2020 at 08:50 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -89,7 +90,9 @@ INSERT INTO `addresses` (`address_id`, `street`, `barangay`, `town`, `postal_cod
 (51, 'asd', 'asdf', 'asdf', '6003', '2020-11-16 01:48:15', '2020-11-16 01:48:15'),
 (52, 've', 'dfv', 'dfv', '6003', '2020-11-16 01:49:38', '2020-11-16 01:49:38'),
 (53, 'sdfasd', 'fasdf', 'asdf', '6003', '2020-11-16 02:02:07', '2020-11-16 02:02:07'),
-(54, 'Rotunda', 'Cogon', 'Compostela', '6003', '2020-11-16 02:03:04', '2020-11-16 02:03:04');
+(54, 'Rotunda', 'Cogon', 'Compostela', '6003', '2020-11-16 02:03:04', '2020-11-16 02:03:04'),
+(55, 'asd123', 'asdasd123', 'Fire', '7', '2020-11-21 07:14:46', '2020-11-21 07:14:46'),
+(56, 'Front', 'Konoha', 'asdasd', '7', '2020-11-21 07:14:46', '2020-11-21 07:14:46');
 
 -- --------------------------------------------------------
 
@@ -112,13 +115,7 @@ CREATE TABLE `announcements` (
 --
 
 INSERT INTO `announcements` (`announcement_id`, `user_id`, `title`, `content`, `image_id`, `created_at`, `updated_at`) VALUES
-(19, 3, 'What’s new in Chrome 79', 'adasdasdasd', 15, '2020-10-26 20:45:24', '2020-10-26 20:45:24'),
-(20, 3, 'asdasd', 'asdasd', 17, '2020-10-26 21:41:33', '2020-10-26 21:41:33'),
-(21, 3, 'asdasd', 'asdasd', 19, '2020-10-26 22:01:30', '2020-10-26 22:56:50'),
-(22, 3, 'asdasd', 'asdasd', NULL, '2020-10-26 22:07:14', '2020-10-26 22:07:14'),
-(25, 3, 'asdasd123', 'asdasd123', 18, '2020-10-26 22:32:22', '2020-10-26 23:28:04'),
-(26, 4, 'haha', 'kill me', NULL, '2020-11-08 23:46:20', '2020-11-08 23:46:20'),
-(27, 1, 'asdsdf', 'sdfsdf', NULL, '2020-11-16 16:49:10', '2020-11-16 16:49:10');
+(28, 3, 'What’s new in Chrome 83', 'As part of this new release, here’s a list of features and changes you’ll notice when you update to Chrome version 83. Zoom in or out on a page (iPhone/iPad)  You can make a page larger or smaller with “Zoom in” and “Zoom out.” Learn to change text, image, and video sizes. Put your tabs in groups (Computer) You can organize your tabs in Chrome into groups. Learn how to use tabs in Chrome. Use Safe Browsing in Chrome (Computer) Safe Browsing provides alerts', 22, '2020-11-20 23:18:04', '2020-11-20 23:18:04');
 
 -- --------------------------------------------------------
 
@@ -155,7 +152,8 @@ CREATE TABLE `events` (
   `description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `image_id` bigint(20) UNSIGNED DEFAULT NULL,
   `participants` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` datetime NOT NULL,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
   `contact_person_id` bigint(20) UNSIGNED NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -166,8 +164,17 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`event_id`, `address_id`, `event_name`, `description`, `image_id`, `participants`, `date`, `contact_person_id`, `status`, `created_at`, `updated_at`) VALUES
-(19, 29, 'Sample Event', 'qwewe123', 16, 'asdasd123', '2020-11-28 00:00:00', 10, 1, '2020-10-26 20:51:40', '2020-11-11 08:12:14');
+INSERT INTO `events` (`event_id`, `address_id`, `event_name`, `description`, `image_id`, `participants`, `start_date`, `end_date`, `contact_person_id`, `status`, `created_at`, `updated_at`) VALUES
+(21, 55, 'Seminar', 'asdasdasd', 21, 'asdasd123', '2020-11-21 15:15:00', '2020-11-22 18:14:00', 14, 1, '2020-11-20 23:14:46', '2020-11-20 23:14:46'),
+(22, 22, 'Community Cleanup\r\n', 'A community cleanup brings volunteers\r\ntogether to clean, repair, and improve public\r\nspaces or other areas (such as vacant lots\r\nor abandoned properties) that have been\r\nneglected, vandalized, or misused. Cleanup\r\nprojects can involve all kinds of public\r\nspaces—parks, riverbanks, schoolyards,\r\nsidewalks, playing fields, and even parking\r\nlots, to name just a few.\r\nA group of students in Brooklyn, NY, restored\r\na children’s garden that had become overgrown\r\nand filled with trash and drug paraphernalia.\r\nWorking with older students, the city parks\r\ndepartment, and the Cooperative Extension\r\nService, the group members created a garden\r\nand became involved in the cycle of planting\r\nand harvesting. The garden is flourishing again\r\nbecause of their dedication.', 21, 'asdasd', '2020-11-16 00:00:00', '2020-11-17 00:00:00', 5, 1, '2020-11-21 07:36:20', '2020-11-21 07:36:20'),
+(24, 22, 'Community Cleanup 3', 'A community cleanup brings volunteers\r\ntogether to clean, repair, and improve public\r\nspaces or other areas (such as vacant lots\r\nor abandoned properties) that have been\r\nneglected, vandalized, or misused. Cleanup\r\nprojects can involve all kinds of public\r\nspaces—parks, riverbanks, schoolyards,\r\nsidewalks, playing fields, and even parking\r\nlots, to name just a few.\r\nA group of students in Brooklyn, NY, restored\r\na children’s garden that had become overgrown\r\nand filled with trash and drug paraphernalia.\r\nWorking with older students, the city parks\r\ndepartment, and the Cooperative Extension\r\nService, the group members created a garden\r\nand became involved in the cycle of planting\r\nand harvesting. The garden is flourishing again\r\nbecause of their dedication.', 22, 'asdasd', '2020-11-11 00:00:00', '2020-11-12 00:00:00', 12, 1, '2020-11-21 07:36:20', '2020-11-21 07:36:20'),
+(26, 51, 'Community Cleanup 5', 'A community cleanup brings volunteers\r\ntogether to clean, repair, and improve public\r\nspaces or other areas (such as vacant lots\r\nor abandoned properties) that have been\r\nneglected, vandalized, or misused. Cleanup\r\nprojects can involve all kinds of public\r\nspaces—parks, riverbanks, schoolyards,\r\nsidewalks, playing fields, and even parking\r\nlots, to name just a few.\r\nA group of students in Brooklyn, NY, restored\r\na children’s garden that had become overgrown\r\nand filled with trash and drug paraphernalia.\r\nWorking with older students, the city parks\r\ndepartment, and the Cooperative Extension\r\nService, the group members created a garden\r\nand became involved in the cycle of planting\r\nand harvesting. The garden is flourishing again\r\nbecause of their dedication.', 21, 'asdasd', '2020-11-23 00:00:00', '2020-11-24 00:00:00', 3, 1, '2020-11-21 07:36:20', '2020-11-21 07:36:20'),
+(27, 7, 'Community Cleanup 6', 'A community cleanup brings volunteers\r\ntogether to clean, repair, and improve public\r\nspaces or other areas (such as vacant lots\r\nor abandoned properties) that have been\r\nneglected, vandalized, or misused. Cleanup\r\nprojects can involve all kinds of public\r\nspaces—parks, riverbanks, schoolyards,\r\nsidewalks, playing fields, and even parking\r\nlots, to name just a few.\r\nA group of students in Brooklyn, NY, restored\r\na children’s garden that had become overgrown\r\nand filled with trash and drug paraphernalia.\r\nWorking with older students, the city parks\r\ndepartment, and the Cooperative Extension\r\nService, the group members created a garden\r\nand became involved in the cycle of planting\r\nand harvesting. The garden is flourishing again\r\nbecause of their dedication.', 21, 'asdasda', '2020-11-24 00:00:00', '2020-11-25 00:00:00', 2, 1, '2020-11-21 07:36:20', '2020-11-21 07:36:20'),
+(28, 55, 'Community Cleanup 6', 'A community cleanup brings volunteers\r\ntogether to clean, repair, and improve public\r\nspaces or other areas (such as vacant lots\r\nor abandoned properties) that have been\r\nneglected, vandalized, or misused. Cleanup\r\nprojects can involve all kinds of public\r\nspaces—parks, riverbanks, schoolyards,\r\nsidewalks, playing fields, and even parking\r\nlots, to name just a few.\r\nA group of students in Brooklyn, NY, restored\r\na children’s garden that had become overgrown\r\nand filled with trash and drug paraphernalia.\r\nWorking with older students, the city parks\r\ndepartment, and the Cooperative Extension\r\nService, the group members created a garden\r\nand became involved in the cycle of planting\r\nand harvesting. The garden is flourishing again\r\nbecause of their dedication.', 21, 'asdasd', '2020-11-26 00:00:00', '2020-11-27 00:00:00', 1, 1, '2020-11-21 07:36:20', '2020-11-21 07:36:20'),
+(29, 28, 'Community Cleanup 7', 'A community cleanup brings volunteers\r\ntogether to clean, repair, and improve public\r\nspaces or other areas (such as vacant lots\r\nor abandoned properties) that have been\r\nneglected, vandalized, or misused. Cleanup\r\nprojects can involve all kinds of public\r\nspaces—parks, riverbanks, schoolyards,\r\nsidewalks, playing fields, and even parking\r\nlots, to name just a few.\r\nA group of students in Brooklyn, NY, restored\r\na children’s garden that had become overgrown\r\nand filled with trash and drug paraphernalia.\r\nWorking with older students, the city parks\r\ndepartment, and the Cooperative Extension\r\nService, the group members created a garden\r\nand became involved in the cycle of planting\r\nand harvesting. The garden is flourishing again\r\nbecause of their dedication.', 21, 'asdasd', '2020-11-01 00:00:00', '2020-11-02 00:00:00', 10, 1, '2020-11-21 07:36:20', '2020-11-21 07:36:20'),
+(32, 55, 'Community Cleanup 4', 'A community cleanup brings volunteers\r\ntogether to clean, repair, and improve public\r\nspaces or other areas (such as vacant lots\r\nor abandoned properties) that have been\r\nneglected, vandalized, or misused. Cleanup\r\nprojects can involve all kinds of public\r\nspaces—parks, riverbanks, schoolyards,\r\nsidewalks, playing fields, and even parking\r\nlots, to name just a few.\r\nA group of students in Brooklyn, NY, restored\r\na children’s garden that had become overgrown\r\nand filled with trash and drug paraphernalia.\r\nWorking with older students, the city parks\r\ndepartment, and the Cooperative Extension\r\nService, the group members created a garden\r\nand became involved in the cycle of planting\r\nand harvesting. The garden is flourishing again\r\nbecause of their dedication.', 21, 'asdasd', '2020-10-01 15:48:00', '2020-10-02 15:48:00', 2, 1, '2020-11-21 07:42:38', '2020-11-20 23:49:09'),
+(33, 16, 'Community Cleanup 8', 'A community cleanup brings volunteers\r\ntogether to clean, repair, and improve public\r\nspaces or other areas (such as vacant lots\r\nor abandoned properties) that have been\r\nneglected, vandalized, or misused. Cleanup\r\nprojects can involve all kinds of public\r\nspaces—parks, riverbanks, schoolyards,\r\nsidewalks, playing fields, and even parking\r\nlots, to name just a few.\r\nA group of students in Brooklyn, NY, restored\r\na children’s garden that had become overgrown\r\nand filled with trash and drug paraphernalia.\r\nWorking with older students, the city parks\r\ndepartment, and the Cooperative Extension\r\nService, the group members created a garden\r\nand became involved in the cycle of planting\r\nand harvesting. The garden is flourishing again\r\nbecause of their dedication.', 22, 'sdasdasd', '2020-11-29 00:00:00', '2020-11-30 00:00:00', 13, 1, '2020-11-21 07:42:38', '2020-11-21 07:42:38'),
+(34, 28, 'Community Cleanup 9', 'A community cleanup brings volunteers\r\ntogether to clean, repair, and improve public\r\nspaces or other areas (such as vacant lots\r\nor abandoned properties) that have been\r\nneglected, vandalized, or misused. Cleanup\r\nprojects can involve all kinds of public\r\nspaces—parks, riverbanks, schoolyards,\r\nsidewalks, playing fields, and even parking\r\nlots, to name just a few.\r\nA group of students in Brooklyn, NY, restored\r\na children’s garden that had become overgrown\r\nand filled with trash and drug paraphernalia.\r\nWorking with older students, the city parks\r\ndepartment, and the Cooperative Extension\r\nService, the group members created a garden\r\nand became involved in the cycle of planting\r\nand harvesting. The garden is flourishing again\r\nbecause of their dedication.', 21, 'dasdasd', '2020-11-24 00:00:00', '2020-11-26 00:00:00', 12, 1, '2020-11-21 07:42:38', '2020-11-21 07:42:38');
 
 -- --------------------------------------------------------
 
@@ -206,11 +213,8 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`image_id`, `image_1`, `image_2`, `image_3`, `image_4`, `created_at`, `updated_at`) VALUES
-(15, 'Nmxhefc7lwhEMs6s.png', 'VzDoZen9OGWtTj6N.png', '28UjZfRiwyP968tc.png', '0iMSeujGRFui5AkS.png', '2020-10-26 20:45:23', '2020-10-26 20:45:23'),
-(16, '5WDWBkLcTp1apQKw.jpg', NULL, NULL, NULL, '2020-10-26 20:51:39', '2020-11-09 01:42:08'),
-(17, 'KqrR0hrY2E4ov73i.png', 'y3bc8HJPSMcPUJ8v.png', 'NeFQlBHrcmvoVw4V.png', 'ngkgnTJKgKCBU7FV.png', '2020-10-26 21:41:33', '2020-10-26 21:41:33'),
-(18, 'wW83rvdADw9EMQof.png', 'T1msFbcuqU7SZo86.png', 'ikQdx6OfPq2OUGow.png', 'xlBvnc08mXn49bua.png', '2020-10-26 22:32:22', '2020-10-26 23:28:04'),
-(19, 'cipyHVnrqNHQPiSq.png', 't6tXp3QbsxmbH6M8.png', 'D4lCdumKHThKD5QQ.png', 'eLWzV0vEHqqgZGz3.png', '2020-10-26 22:56:50', '2020-10-26 22:56:50');
+(21, 'fDrMNAtqKxZy7ZIS.png', 'PLCP3Wxb7i3aISAK.png', '2u4A2OmhevPqO2r4.png', 's9P9Q9O57kiHWWg3.png', '2020-11-20 23:14:46', '2020-11-20 23:49:08'),
+(22, 'VOk2ZPb93S9WdU8r.png', 'HjNzQ0zszn9kLn7c.png', 'Xa33u5DWO7et7BQ1.png', 'lkR3AchYWBpSaTdK.png', '2020-11-20 23:18:04', '2020-11-20 23:18:04');
 
 -- --------------------------------------------------------
 
@@ -402,13 +406,14 @@ CREATE TABLE `user_details` (
 
 INSERT INTO `user_details` (`user_detail_id`, `fname`, `lname`, `image`, `contact_no`, `address_id`, `age`, `gender`, `created_at`, `updated_at`) VALUES
 (1, 'Rj', 'Oliverio', 'user.png', '09123456789', 3, 21, 'Male', '2020-10-23 21:29:16', '2020-10-23 21:29:16'),
-(2, 'Aljann', 'Ondoy', 'user.png', '09123456789', 4, 21, 'Male', '2020-10-23 21:30:27', '2020-10-23 21:30:27'),
+(2, 'Aljann', 'Ondoy', '5-512.png', '09123456789', 4, 21, 'Male', '2020-10-23 21:30:27', '2020-11-20 23:49:08'),
 (3, 'tony', 'stark', 'user.png', '123456', 5, 50, 'Male', '2020-10-25 05:53:00', '2020-10-25 05:53:00'),
 (4, 'asdasd', 'asdasd', '106-512.png', '123123', 7, 45, 'Male', '2020-10-26 05:41:02', '2020-10-26 00:23:27'),
 (5, 'Hiruzen', 'Sarutobi', '106-512.png', '12345678', 18, 70, 'Male', '2020-10-26 08:34:36', '2020-10-26 08:34:36'),
 (10, 'asdasd', 'asdasd123', 'bike1.jpg', '123123', 30, 50, 'Male', '2020-10-27 04:51:40', '2020-11-09 01:42:08'),
 (12, 'Humera', 'Killme', 'user.png', '666', 33, 14, 'Female', '2020-11-08 22:46:51', '2020-11-08 22:46:51'),
-(13, 'Humera', 'Ardiente', 'user.png', '09123456789', 34, 21, 'Female', '2020-11-15 21:55:55', '2020-11-15 21:55:55');
+(13, 'Humera', 'Ardiente', 'user.png', '09123456789', 34, 21, 'Female', '2020-11-15 21:55:55', '2020-11-15 21:55:55'),
+(14, 'asdasd123', 'asdasd123', '5-512.png', '123123', 56, 70, 'Male', '2020-11-21 07:14:46', '2020-11-21 07:14:46');
 
 -- --------------------------------------------------------
 
@@ -558,13 +563,13 @@ ALTER TABLE `waste_collections`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `address_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `address_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `announcement_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `announcement_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `dumpsters`
@@ -576,7 +581,7 @@ ALTER TABLE `dumpsters`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `event_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -588,7 +593,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `image_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -630,7 +635,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `user_detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `waste_collections`
