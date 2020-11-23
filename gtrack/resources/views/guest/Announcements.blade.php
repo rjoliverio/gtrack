@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<div class="jumbotron text-center" id="anno" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/nature2.jpg')}}') fixed center center; background-size: cover;">
+<div class="jumbotron text-center" id="anno" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/img/nature2.jpg')}}') fixed center center; background-size: cover;">
         <div class="container head">
           <h1 class="site-heading">ANNOUNCEMENTS</h1>
           
@@ -75,7 +75,7 @@
 
 
     
-<section class="jumbotron text-center" id="anno1" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/nature2.jpg')}}') fixed center center; background-size: cover;">
+<section class="jumbotron text-center" id="anno1" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/img/nature2.jpg')}}') fixed center center; background-size: cover;">
         
 </section>
   <!-- <div class="container" id="posts">

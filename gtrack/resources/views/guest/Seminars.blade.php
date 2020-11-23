@@ -12,7 +12,7 @@
 @section('content')
 
     <!-- Jumbotron Header -->
-    <header class="jumbotron mb-4 headsem" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/nature4.jpg')}}') fixed center center; background-size: cover;">
+    <header class="jumbotron mb-4 headsem" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/img/nature4.jpg')}}') fixed center center; background-size: cover;">
       <h1 class="display-3">EVENTS</h1>
 </header>
 <div class="container">
@@ -142,7 +142,7 @@
 </div>
 <hr>
     <!-- Page Features -->
-    <div class="row text-center">
+    <div class="row">
     @foreach($arr2 as $row)
 <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
@@ -226,7 +226,7 @@
   
   
   <!-- /.container -->
-  <section class="jumbotron text-center mt-5" id="anno1" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/nature4.jpg')}}') fixed center center; background-size: cover;">
+  <section class="jumbotron text-center mt-5" id="anno1" style="background: linear-gradient(rgba(52, 220, 147, 0.7), rgba(52, 220, 147, 0.1)),url('{{asset('storage/images/img/nature4.jpg')}}') fixed center center; background-size: cover;">
         
 </section>
         

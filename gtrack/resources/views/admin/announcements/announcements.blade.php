@@ -143,10 +143,11 @@ GTrack | Announcements
                                     <img class="img-responsive img-fluid bike-images" alt=""
                                         src="/storage/images/uploads/{{$row->image->image_4}}" width="50" />
                                 </a>
-                              
-                                
-                            </div>
+                              </div>
+                                @else
+                                <img src="/storage/images/img/noimage.png" class="images-display" height="450" width="450" alt="Responsive image">
                             @endif
+                          
                             <hr>
                             <div>
                                 <div>

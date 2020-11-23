@@ -114,7 +114,11 @@ class AdminAnnouncementController extends Controller
             mkdir(public_path('/storage/images/uploads'), 0777);
 
         }
-        if($request->hasFile('images')){
+        $announcement = Announcement::find($aid);
+            
+        $announcement->title = $request->input("title");
+        $announcement->content = $request->input("content");
+        if($request->images!=null){
             $images = Collection::wrap($request->file('images'));
             $original=[];
             $ctr=0;
@@ -145,7 +149,10 @@ class AdminAnnouncementController extends Controller
                 $image->image_4 =$original[3];
                 $image->save();
             }
+            $announcement->image_id = $image->image_id;
         
+        }else{
+            $announcement->image_id = null;
         }
         //     $image=DB::table('images')
         // ->where('image_id', $announcement->image_id)  // find your user by their email
@@ -160,11 +167,8 @@ class AdminAnnouncementController extends Controller
         // ->update(array('title' => $request->input("title"),
         // 'content' => $request->input("content")));
 
-            $announcement = Announcement::find($aid);
+           
             
-            $announcement->title = $request->input("title");
-            $announcement->content = $request->input("content");
-            $announcement->image_id = $image->image_id;
             $announcement->save();
 
         toast('Announcement successfully updated','success');

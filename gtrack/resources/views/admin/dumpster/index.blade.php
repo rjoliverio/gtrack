@@ -159,7 +159,7 @@ GTrack | Dumpsters
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+           
             @foreach($dumpsters as $dumpster)
             <form action="/admin/dumpsters/{{ $dumpster->dumpster_id }}" method="POST">
                 @method('DELETE')
@@ -205,6 +205,6 @@ GTrack | Dumpsters
         </div>
     </div>
 </div>
-
+</div>
 
 @endsection
