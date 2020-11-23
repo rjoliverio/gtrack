@@ -37,7 +37,8 @@ class EventsController extends Controller
         $this->validate ($request, [
             'event' => 'required',
             'desc' => 'required',
-            'date' => 'required',
+            'DateTimeS' => 'required',
+            'DateTimeE' => 'required',
             'estreet' => 'required',
             'ebrgy' => 'required',
             'etown' => 'required',
@@ -139,7 +140,8 @@ class EventsController extends Controller
         $event->description = $request->desc;
         $event->image_id = $image->image_id;
         $event->participants = $request->participants;
-        $event->date = $request->date;
+        $event->start_date = $request->DateTimeS;
+        $event->end_date = $request->DateTimeE;
         $event->contact_person_id = $last_id_user;
         $event->status=1;
         $event->save();
@@ -155,7 +157,8 @@ class EventsController extends Controller
         $this->validate ($request, [
             'event' => 'required',
             'desc' => 'required',
-            'date' => 'required',
+            'DateTimeS' => 'required',
+            'DateTimeE' => 'required',
             'estreet' => 'required',
             'ebrgy' => 'required',
             'etown' => 'required',
@@ -274,7 +277,8 @@ class EventsController extends Controller
             
             $event->event_name = $request->input("event");
             $event->description = $request->input("desc");
-            $event->date = $request->input("date");
+            $event->start_date = $request->input("DateTimeS");
+            $event->end_date = $request->input("DateTimeE");
             $event->participants = $request->input("participants");
             $event->image_id = $image->image_id;
             $event->save();

@@ -70,7 +70,7 @@ class DumpstersController extends Controller
     {
         return view('admin.dumpsters.index',compact('dumpster_id','address_id'));
     }
-    public function update(Request $request,Dumpster $dumpter_id,Address $address_id)
+    public function update(Request $request,Dumpster $dumpster_id,Address $address_id)
     {
         $this->validate($request,
         [
@@ -86,7 +86,7 @@ class DumpstersController extends Controller
             'barangay'=>$request->barangay,
             'town' => $request->town,
         ]);
-        $dumpter_id->update([
+        $dumpster_id->update([
             'longitude' =>$request->longitude,
             'latitude' =>$request->latitude
         ]);
@@ -94,12 +94,12 @@ class DumpstersController extends Controller
         toast('Dumpster updated successfully','success');
         return redirect('admin/dumpsters');
     }
-    public function destroy(Request $request, Dumpster $dumpter_id)
+    public function destroy(Request $request, Dumpster $dumpster_id)
     {
         $user = Auth::user();
         if(Hash::check($request->input('password'),$user->password)){
-            $address = Address::find($dumpter_id->address_id);
-            $dumpter_id->delete();
+            $address = Address::find($dumpster_id->address_id);
+            $dumpster_id->delete();
             $address->delete();
             toast('Succesfully Deleted!','success');
         }else{

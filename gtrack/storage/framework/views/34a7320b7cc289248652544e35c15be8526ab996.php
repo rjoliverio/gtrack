@@ -4,9 +4,12 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <header class="masthead d-flex">
-      <video autoplay muted loop id="myVideo">
-        <source src="../storage/images/img/compostela_playback.mp4" type="video/mp4">
-      </video>
+      <div class="master-video">
+        <video autoplay muted loop id="myVideo">
+          <source src="../storage/images/img/compostela_playback.mp4" type="video/mp4">
+        </video>
+      </div>
+      
         <div class="container text-center my-auto">
         <h1 class="mb-1 app text-white header-title">GTrack</h1><hr class="bg-white">
         <h4 class="text-white ">
@@ -17,6 +20,17 @@
         </div>
         <div class="overlay"></div>
     </header>
+    <section class="content-section bg-primary text-white" id="swm">
+      <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+              <h2>Partnered by SWM Department of Barangay Compostela</h2>
+              <p class="lead mb-5" align="justify"> The primary goal of solid waste management is reducing and eliminating adverse impacts of waste materials on human health and the environment to support economic development and superior quality of life.</p>
+              <a class="btn btn-light btn-xl js-scroll-trigger" href="#about">What is GTrack?</a>
+            </div>
+         </div>
+      </div>
+  </section>
     <section class="content-section bg-light" id="about">
       <div class="container text-center">
         <div class="row">
@@ -78,55 +92,32 @@
   <section class="content-section" id="portfolio">
       <div class="container">
         <div class="content-section-heading text-center">
-          <h2 class="mb-5">Meet Our Team</h2>
+          <h2 class="mb5">Meet Our Team</h2>
         </div>
-        <div class="row no-gutters">
-          <div class="col-lg-6">
-            <a class="portfolio-item" href="#!">
-              <div class="caption">
-                <div class="caption-content">
-                  <div class="h2">Humera Ardiente</div>
-                  <i class="mb-0">Developer</i>
-                </div>
-              </div>
-              <img class="img-fluid" src=<?php echo e(asset('storage/images/img/humera.jpg')); ?> alt="">
-            </a>
-          </div>
-          <div class="col-lg-6">
-            <a class="portfolio-item" href="#!">
-              <div class="caption">
-                <div class="caption-content">
-                  <div class="h2">Cloyd Vincent Anis</div>
-                  <i class="mb-0">Developer</i>
-                </div>
-              </div>
-              <img class="img-fluid" src="/storage/images/img/anis.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-6">
-            <a class="portfolio-item" href="#!">
-              <div class="caption">
-                <div class="caption-content">
-                  <div class="h2">Rogelio John Oliverio</div>
-                  <i class="mb-0">Developer</i>
-                </div>
-              </div>
-              <img class="img-fluid" src="/storage/images/img/rj.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-6">
-            <a class="portfolio-item" href="#!">
-              <div class="caption">
-                <div class="caption-content">
-                  <div class="h2">Aljann Niño Ondoy</div>
-                  <i class="mb-0">Developer</i>
-                </div>
-              </div>
-              <img class="img-fluid" src="/storage/images/img/aljann.jpg" alt="">
-            </a>
-          </div>
+         <!--Grid row-->
+        <div class="row text-center">
+        
+            <div class="col-lg-3 col-md-6">
+                <h5 class="my-5 ">Humera Ardiente</h5>
+                <img class="border border-success rounded-circle" alt="100x100" src=<?php echo e(asset('storage/images/img/humera.jpg')); ?> data-holder-rendered="true">
+            </div>
+
+             <div class="col-lg-3 col-md-6">
+                <h5 class="my-5 ">Aljann Ondoy</h5>
+                <img class="border border-success rounded-circle" alt="100x100" src=<?php echo e(asset('storage/images/img/aljann.jpg')); ?> data-holder-rendered="true">
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+              <h5 class="my-5 ">Cloyd  Anis</h5>
+              <img class="border border-success rounded-circle" alt="100x100" src=<?php echo e(asset('storage/images/img/cloyd.jpg')); ?> data-holder-rendered="true">
+            </div>
+
+           <div class="col-lg-3 col-md-6">
+            <h5 class="my-5 ">Rj Oliverio</h5>
+            <img class="border border-success rounded-circle" alt="100x100" src=<?php echo e(asset('storage/images/img/rj.jpg')); ?> data-holder-rendered="true">
+           </div>
         </div>
-        </div>
+      </div>
 
 
 

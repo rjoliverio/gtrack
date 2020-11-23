@@ -36,7 +36,6 @@
         var trucks={!! $trucks !!};
         var event={!! $events !!};
         var events=[];
-
         schedules.forEach(function(item,index){
             date=new Date(item.schedule);
             day=date.getDay();
@@ -53,11 +52,20 @@
             events.push(obj);
         });
         event.forEach(function(item,index){
-            date=new Date(item.date);
-            day=date.getDate();
+            sdate=new Date(item.start_date);
+            edate=new Date(item.end_date);
+            var year=sdate.getFullYear();
+            var month=sdate.getMonth()+1 //getMonth is zero based;
+            var day=sdate.getDate();
+            sdate=year+"-"+month+"-"+day;
+            year=edate.getFullYear();
+            month=edate.getMonth()+1 //getMonth is zero based;
+            day=edate.getDate()+1;
+            edate=year+"-"+month+"-"+day;
             var obj={title:item.event_name,
                     allDay:true,
-                    start:date,
+                    start:sdate,
+                    end:edate,
                     description:"Description: "+ item.description+"\n"+"Participants: "+item.participants,
                     color: 'purple',
                 };

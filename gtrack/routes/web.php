@@ -33,6 +33,7 @@ Route::group([
     'middleware' => ['auth','verified','admin']
 ],function  () {
     Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/dashboard/pdf', 'DashboardController@export');
     Route::get('/reports', 'ReportsController@index');
     Route::get('/reports/show/{id}', 'ReportsController@show');
     Route::post('/reports/resolve/{id}', 'ReportsController@resolve');
@@ -62,9 +63,9 @@ Route::group([
     Route::get('/dumpsters','DumpstersController@index');
     Route::get('/dumpsters/create','DumpstersController@create');
     Route::post('/dumpsters/store','DumpstersController@store');
-    Route::get('/dumpsters/edit/{dumpter_id}/{address_id}','DumpstersController@edit');
-    Route::patch('/dumpsters/{dumpter_id}/{address_id}','DumpstersController@update');
-    Route::delete('/dumpsters/{dumpter_id}','DumpstersController@destroy');
+    Route::get('/dumpsters/edit/{dumpster_id}/{address_id}','DumpstersController@edit');
+    Route::patch('/dumpsters/{dumpster_id}/{address_id}','DumpstersController@update');
+    Route::delete('/dumpsters/{dumpster_id}','DumpstersController@destroy');
     Route::get('/schedules/assignments', 'SchedulesController@truckindex');
     Route::get('/schedules/assignments/create/{id}', 'SchedulesController@truckcreate');
     Route::post('/schedules/assignments/store', 'SchedulesController@truckstore');

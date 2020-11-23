@@ -97,7 +97,7 @@
                 {{ Form::open(array('url' => '/admin/schedules/store', 'method' => 'POST')) }}
                 {{-- <form action="/admin/employees/store" method="POST"> --}}
                     <div class="form-group row">
-                        <label for="garbage_type" class="col-md-4 col-form-label text-md-right">{{ __('Employee Type') }}</label>
+                        <label for="garbage_type" class="col-md-4 col-form-label text-md-right">{{ __('Garbage Type') }}</label>
                         <div class="col-md-6">
                             <select id="garbage_type" class="custom-select form-control @error('garbage+type') is-invalid @enderror" name="garbage_type" required autocomplete="garbage_type" autofocus>
                                 <option selected disabled>-Select Garbage Type-</option>
