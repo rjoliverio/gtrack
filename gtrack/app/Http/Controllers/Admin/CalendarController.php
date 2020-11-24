@@ -14,7 +14,7 @@ class CalendarController extends Controller
     {
         $trucks = TruckAssignment::where('active', 1)->get();
         $schedules=Schedule::all();
-        $events=Event::where('status', 1)->get();
+        $events=Event::where('status', 1)->get(); 
         return view('admin.schedules.calendar', compact('trucks','schedules','events'));
     }
 }
