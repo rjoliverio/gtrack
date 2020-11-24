@@ -47,7 +47,7 @@ class ContactController extends Controller
         // $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
 
         $firebase = (new Factory)
-            ->withServiceAccount(__DIR__.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
+        ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
         // $data = [
         //     'email' => $request->email,
         //     'subject' => $request->subject
