@@ -26,7 +26,7 @@ class SchedulesController extends Controller
     
     public function truckindex()
     {
-        $assignment = TruckAssignment::where('active', 1)->orderBy('schedule_id','asc')->get();
+        $assignment = TruckAssignment::orderBy('schedule_id','asc')->get();
         $schedules = Schedule::get();
         $trucks = Truck::get();
         return view('admin.schedules.assignments.index',compact('assignment','schedules', 'trucks'));
@@ -92,21 +92,21 @@ class SchedulesController extends Controller
         $assignment->schedule_id = $request->input('schedule_id');
         
         
-        $truck=Truck::find($assignment->truck_id);
-        $firebase = (new Factory)
-        ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
+        // $truck=Truck::find($assignment->truck_id);
+        // $firebase = (new Factory)
+        // ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
 
-        $database = $firebase->createDatabase();
-        $ref = $database->getReference("drivers");
-        $key=$ref->push()->getKey();
-        $ref->getChild($key)->set([
-            'active' => 0,
-            'driver_id' => $truck->user_id,
-            'latitude' => 0,
-            'longitude'=> 0,
-            'route'=>$assignment->route
-        ]);
-        $assignment->firebase_uid=$key;
+        // $database = $firebase->createDatabase();
+        // $ref = $database->getReference("drivers");
+        // $key=$ref->push()->getKey();
+        // $ref->getChild($key)->set([
+        //     'active' => 0,
+        //     'driver_id' => $truck->user_id,
+        //     'latitude' => 0,
+        //     'longitude'=> 0,
+        //     'route'=>$assignment->route
+        // ]);
+        // $assignment->firebase_uid=$key;
         $assignment->save();
         toast('Truck Assignment added successfully','success');
         return redirect('/admin/schedules/assignments');
@@ -167,37 +167,36 @@ class SchedulesController extends Controller
 
     public function update(Request $request, $schedule_id)
     {
-        $this->validate($request, [
-            'schedule' => 'required',
-            'garbage_type' => 'required',
-        ]);
-
         // Update Event
         $schedule = Schedule::find($schedule_id);
-        $schedule->schedule = $request->input('schedule');
-        $schedule->garbage_type = $request->input('garbage_type');
-        $schedule->admin_id = auth()->user()->user_id;
+
+        if($request->input('scheduletime') !== NULL){
+            $schedule->schedule = $request->input('scheduletime');
+        }if($request->input('garbage_type') !== NULL){
+            $schedule->garbage_type = $request->input('garbage_type');
+        } 
 
         $schedule->save();
-
         toast('Schedule updated successfully','success');
         return redirect('/admin/schedules');
     }
     
     public function truckupdate(Request $request, $assignment_id)
     {
-        $this->validate($request, [
-            'truck_id' => 'required',
-            'route' => 'required',
-            'schedule_id' => 'required'
-        ]);
-        $assignment = Schedule::find($assignment_id);
-        $assignment->truck_id = $request->input('truck_id');
-        $assignment->route = $request->input('route');
-        $assignment->schedule_id = $request->input('schedule_id');
+        // Update Event
+        $assignment = TruckAssignment::find($assignment_id);
+
+        if($request->input('schedule_id') !== NULL){
+            $assignment->schedule_id = $request->input('schedule_id');
+        }if($request->input('truck_id') !== NULL){
+            $assignment->truck_id = $request->input('truck_id');
+        }if($request->input('route') !== NULL){
+            $assignment->route = $request->input('route');
+        }if($request->input('active') !== NULL){
+            $assignment->active = $request->input('active');
+        }
         
         $assignment->save();
-
         toast('Truck Assignment updated successfully','success');
         return redirect('/admin/schedules/assignments');
     }
@@ -210,13 +209,17 @@ class SchedulesController extends Controller
      */
     public function destroy($id)
     {
-        $schedule = Schedule::whereschedule_id($id);
+        $schedule = Schedule::find($id);
+        $assignment = TruckAssignment::find($id, 'schedule_id');
 
         if(auth()->user()->user_type !== 'Admin'){
             toast('Unauthorized Page','error');
             return redirect('/admin/schedules');
         }
         if($schedule !== NULL){
+            if($assignment !== NULL){
+                $assignment->delete();
+            }
             $schedule->delete();
             toast('Schedule deleted successfully','success');
         }else{
@@ -227,7 +230,7 @@ class SchedulesController extends Controller
     
     public function truckdestroy($id)
     {
-        $assignment = TruckAssignment::whereassignment_id($id);
+        $assignment = TruckAssignment::find($id);
 
         if(auth()->user()->user_type !== 'Admin'){
             toast('Unauthorized Page','error');
