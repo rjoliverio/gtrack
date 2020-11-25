@@ -89,6 +89,7 @@
                                                 
       <img src="/storage/images/uploads/{{$row->image->image_1}}" class="images-display" width="450" alt="Responsive image">
       <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
+      @if($row->image->image_2!=null)
         <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
             href="/storage/images/uploads/{{$row->image->image_2}}">
             <img class="img-fluid bike-images " alt="" src="/storage/images/uploads/{{$row->image->image_2}}" width="50"/>
@@ -103,6 +104,9 @@
             <img class="img-responsive img-fluid bike-images" alt=""
                 src="/storage/images/uploads/{{$row->image->image_4}}" width="50"/>
         </a>
+        @else
+          <h6><i>No other images available</i></h6>
+        @endif
     </div>
       <hr>
       <div>
@@ -115,14 +119,16 @@
                                               <p>{{$row->description}}</p>
                                               </div>
                                               <div class="text-left mb-3 border border-secondary rounded-lg p-3 ">
-                                              <div class="row">
-                                              <h4><b>Other Details:</b></h4>
-                                              </div>
+                                              
+                                              <h4><b>Event Details:</b></h4>
+                                              
                                               <p><i>Start Date:</i> {{$row->start_date}}</p>
                                               <p><i>End Date:</i> {{$row->end_date}}</p>
                                               
-        <p><i>Who:</i> {{$row->participants}}</p>
-        <p><i>Contact Person:</i> {{$row->userdetail->fname}} {{$row->userdetail->lname}}, {{$row->userdetail->contact_no}}</p>
+        <p><i>Participants:</i> {{$row->participants}}</p>
+        <h4><b>Contact Details:</b></h4>
+        <p><i>Contact Person:</i> {{ucfirst($row->userdetail->fname)}} {{ucfirst($row->userdetail->lname)}}</p> 
+        <p><i>Contact No.:</i> {{$row->userdetail->contact_no}}</p>
                                               </div>
         
         </div>
@@ -168,6 +174,7 @@
                                                 
       <img src="/storage/images/uploads/{{$row->image->image_1}}" class="images-display" width="450" alt="Responsive image">
       <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
+      @if($row->image->image_2!=null)
         <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
             href="/storage/images/uploads/{{$row->image->image_2}}">
             <img class="img-fluid bike-images " alt="" src="/storage/images/uploads/{{$row->image->image_2}}" width="50"/>
@@ -182,6 +189,9 @@
             <img class="img-responsive img-fluid bike-images" alt=""
                 src="/storage/images/uploads/{{$row->image->image_4}}" width="50"/>
         </a>
+        @else
+          <h6><i>No other images available</i></h6>
+        @endif
     </div>
       <hr>
       <div>
@@ -194,13 +204,15 @@
                                               <p>{{$row->description}}</p>
                                               </div>
                                               <div class="text-left mb-3 border border-secondary rounded-lg p-3 ">
-                                              <div class="row">
-                                              <h4><b>Other Details:</b></h4>
-                                              </div>
+                                              
+                                              <h4><b>Event Details:</b></h4>
+                                             
                                               <p><i>Start Date:</i> {{ $row->start_date}}</p>
                                               <p><i>End Date:</i> {{$row->end_date}}</p>
-        <p><i>Who:</i> {{$row->participants}}</p>
-        <p><i>Contact Person:</i> {{$row->userdetail->fname}} {{$row->userdetail->lname}}, {{$row->userdetail->contact_no}}</p>
+        <p><i>Participants:</i> {{$row->participants}}</p>
+        <h4><b>Contact Details:</b></h4>
+        <p><i>Contact Person:</i> {{ucfirst($row->userdetail->fname)}} {{ucfirst($row->userdetail->lname)}}</p> 
+        <p><i>Contact No.:</i> {{$row->userdetail->contact_no}}</p>
                                               </div>
         
         </div>

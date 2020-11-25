@@ -119,7 +119,9 @@ GTrack | Events
 
                             <img src="/storage/images/uploads/{{$row->image->image_1}}" class="images-display"
                                 width="450" alt="Responsive image">
+                                
                             <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
+                            @if($row->image->image_2!=null)
                                 <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
                                     href="/storage/images/uploads/{{$row->image->image_2}}">
                                     <img class="img-fluid bike-images " alt=""
@@ -135,6 +137,9 @@ GTrack | Events
                                     <img class="img-responsive img-fluid bike-images" alt=""
                                         src="/storage/images/uploads/{{$row->image->image_4}}" width="50" />
                                 </a>
+                                @else
+                                <h6><i>No other images available</i></h6>
+                                @endif
                             </div>
                             <hr>
                             <div>
@@ -148,13 +153,16 @@ GTrack | Events
                                     </div>
                                     <div class="text-left mb-3 border border-secondary rounded-lg p-3 ">
                                         <div class="row">
-                                            <h4><b>Other Details:</b></h4>
+                                            <h4><b>Event Details:</b></h4>
                                         </div>
                                         <p><i>Start Date:</i> {{$row->start_date}}</p>
                                         <p><i>End Date:</i> {{$row->end_date}}</p>
-                                        <p><i>Who:</i> {{$row->participants}}</p>
-                                        <p><i>Contact Person:</i> {{$row->userdetail->fname}}
-                                            {{$row->userdetail->lname}}, {{$row->userdetail->contact_no}}</p>
+                                        <p><i>Participants:</i> {{$row->participants}}</p>
+                                        <div class="row">
+                                            <h4><b>Contact Details:</b></h4>
+                                        </div>
+        <p><i>Contact Person:</i> {{ucfirst($row->userdetail->fname)}} {{ucfirst($row->userdetail->lname)}}</p> 
+        <p><i>Contact No.:</i> {{$row->userdetail->contact_no}}</p>
                                     </div>
 
                                 </div>
@@ -289,88 +297,19 @@ GTrack | Events
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Contact Person First Name</label>
-                                    <input type="text" class="form-control @error('cpfname') is-invalid @enderror"  name="cpfname" value="{{ $row->userdetail->fname }}"  autocomplete="cpfname" autofocus placeholder="Contact Person First Name">
-                                    @error('cpfname')
+                                <label>Contact Person</label>
+                    <select id="user_name" class="custom-select form-control @error('user_name') is-invalid @enderror" name="user_name" autocomplete="user_name" autofocus required>
+                            <option selected disabled hidden>Choose Contact Person</option>
+                            @foreach($user as $us)
+                            <option value="{{$us->userdetail->user_detail_id}}">{{ ucfirst($us->userdetail->fname)}} {{ucfirst($us->userdetail->lname)}}</option>
+                            @endforeach
+                `</select>
+                @error('participants')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Person Last Name</label>
-                                    <input type="text" class="form-control @error('cplname') is-invalid @enderror"  name="cplname" value="{{ $row->userdetail->lname }}"  autocomplete="cplname" autofocus placeholder="Contact Person Last Name">
-                                    @error('cplname')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Person Image</label>
-                                    <input type="file" class="form-control" name="cpimage" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Person Contact Number</label>
-                                    <input type="text" class="form-control @error('cpconno') is-invalid @enderror"  name="cpconno" value="{{ $row->userdetail->contact_no }}"  autocomplete="cpconno" autofocus placeholder="Contact Person Contact Number">
-                                    @error('cpconno')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Person Address - Street</label>
-                                    <input type="text" class="form-control @error('cpstreet') is-invalid @enderror"  name="cpstreet" value="{{ $row->userdetail->address->street }}"  autocomplete="cpstreet" autofocus placeholder="Contact Person Address - Street">
-                                    @error('cpstreet')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Person Address - Barangay</label>
-                                    <input type="text" class="form-control @error('cpbrgy') is-invalid @enderror"  name="cpbrgy" value="{{ $row->userdetail->address->barangay }}"  autocomplete="cpbrgy" autofocus placeholder="Contact Person Address - Barangay">
-                                    @error('cpbrgy')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Person Address - Town</label>
-                                    <input type="text" class="form-control @error('cptown') is-invalid @enderror"  name="cptown" value="{{ $row->userdetail->address->town }}"  autocomplete="cptown" autofocus placeholder="Contact Person Address - Town">
-                                    @error('cptown')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Person Address - Postal Code</label>
-                                    <input type="text" class="form-control @error('cppost') is-invalid @enderror"  name="cppost" value="{{ $row->userdetail->address->postal_code }}"  autocomplete="cppost" autofocus placeholder="Contact Person Address - Postal Code">
-                                    @error('cppost')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Person Age</label>
-                                    <input type="text" class="form-control @error('cpage') is-invalid @enderror"  name="cpage" value="{{ $row->userdetail->age }}"  autocomplete="cpage" autofocus placeholder="Contact Person Age">
-                                    @error('cpage')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Person Gender</label><br><br>
-                                    <input type="radio" name="gender" value="Male"
-                                        required>&nbsp<label>Male</label>&nbsp&nbsp
-                                    <input type="radio" name="gender" value="Female" required>&nbsp<label>Female</label>
-                                </div>
-
+                    </div>
 
 
                             </div>
@@ -462,48 +401,14 @@ GTrack | Events
                         <input type="text" class="form-control" name="participants" required>
                     </div>
                     <div class="form-group">
-                        <label>Contact Person First Name</label>
-                        <input type="text" class="form-control" name="cpfname" required>
+                    <label>Contact Person</label>
+                    <select id="user_name" class="custom-select form-control" name="user_name" autocomplete="user_name" autofocus required>
+                            <option selected disabled hidden>Choose Contact Person</option>
+                            @foreach($user as $us)
+                            <option value="{{$us->userdetail->user_detail_id}}">{{ ucfirst($us->userdetail->fname)}} {{ucfirst($us->userdetail->lname)}}</option>
+                            @endforeach
+                `</select>
                     </div>
-                    <div class="form-group">
-                        <label>Contact Person Last Name</label>
-                        <input type="text" class="form-control" name="cplname" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Contact Person Image</label>
-                        <input type="file" class="form-control" name="cpimage" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Contact Person Contact Number</label>
-                        <input type="number" class="form-control" name="cpconno" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Contact Person Address - Street</label>
-                        <input type="text" class="form-control" name="cpstreet" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Contact Person Address - Barangay</label>
-                        <input type="text" class="form-control" name="cpbrgy" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Contact Person Address - Town</label>
-                        <input type="text" class="form-control" name="cptown" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Contact Person Address - Postal Code</label>
-                        <input type="number" class="form-control" name="cppost" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Contact Person Age</label>
-                        <input type="number" class="form-control" name="cpage" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Contact Person Gender</label><br><br>
-                        <input type="radio" name="gender" value="Male" required>&nbsp<label>Male</label>&nbsp&nbsp
-                        <input type="radio" name="gender" value="Female" required>&nbsp<label>Female</label>
-                    </div>
-
-
 
 
                 </div>
