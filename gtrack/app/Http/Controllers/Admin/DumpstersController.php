@@ -48,8 +48,7 @@ class DumpstersController extends Controller
         $dumpster->address_id = $address->address_id;
         $dumpster->latitude = $request->input('latitude');
         $dumpster->longitude = $request->input('longitude');
-        $dumpster->save();
-
+        
         $firebase = (new Factory)
         ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
 
@@ -62,7 +61,8 @@ class DumpstersController extends Controller
             'latitude' => $dumpster->latitude,
             'longitude'=> $dumpster->longitude
         ]);
-
+        $dumpster->firebase_uid=$key;
+        $dumpster->save();
         toast('Dumpster Created Successfully!','success');
         return redirect('admin/dumpsters');
     }
@@ -90,7 +90,17 @@ class DumpstersController extends Controller
             'longitude' =>$request->longitude,
             'latitude' =>$request->latitude
         ]);
+        $firebase = (new Factory)
+        ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
 
+        $database = $firebase->createDatabase();
+        $ref = $database->getReference("dumpsters");
+        $ref->getChild($dumpster_id->firebase_uid)->set([
+            'dumpster_id' => $dumpster_id->dumpster_id,
+            'landmark' => $address_id->street,
+            'latitude' => $dumpster_id->latitude,
+            'longitude'=> $dumpster_id->longitude
+        ]);
         toast('Dumpster updated successfully','success');
         return redirect('admin/dumpsters');
     }
@@ -99,6 +109,11 @@ class DumpstersController extends Controller
         $user = Auth::user();
         if(Hash::check($request->input('password'),$user->password)){
             $address = Address::find($dumpster_id->address_id);
+            $firebase = (new Factory)
+            ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
+
+            $database = $firebase->createDatabase();
+            $database->getReference("dumpsters/".$dumpster_id->firebase_uid)->remove();
             $dumpster_id->delete();
             $address->delete();
             toast('Succesfully Deleted!','success');

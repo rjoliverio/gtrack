@@ -92,21 +92,21 @@ class SchedulesController extends Controller
         $assignment->schedule_id = $request->input('schedule_id');
         
         
-        // $truck=Truck::find($assignment->truck_id);
-        // $firebase = (new Factory)
-        // ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
+        $truck=Truck::find($assignment->truck_id);
+        $firebase = (new Factory)
+        ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
 
-        // $database = $firebase->createDatabase();
-        // $ref = $database->getReference("drivers");
-        // $key=$ref->push()->getKey();
-        // $ref->getChild($key)->set([
-        //     'active' => 0,
-        //     'driver_id' => $truck->user_id,
-        //     'latitude' => 0,
-        //     'longitude'=> 0,
-        //     'route'=>$assignment->route
-        // ]);
-        // $assignment->firebase_uid=$key;
+        $database = $firebase->createDatabase();
+        $ref = $database->getReference("drivers");
+        $key=$ref->push()->getKey();
+        $ref->getChild($key)->set([
+            'active' => 0,
+            'driver_id' => $truck->user_id,
+            'latitude' => 0,
+            'longitude'=> 0,
+            'route'=>$assignment->route
+        ]);
+        $assignment->firebase_uid=$key;
         $assignment->save();
         toast('Truck Assignment added successfully','success');
         return redirect('/admin/schedules/assignments');
@@ -184,8 +184,9 @@ class SchedulesController extends Controller
     public function truckupdate(Request $request, $assignment_id)
     {
         // Update Event
+        
         $assignment = TruckAssignment::find($assignment_id);
-
+        
         if($request->input('schedule_id') !== NULL){
             $assignment->schedule_id = $request->input('schedule_id');
         }if($request->input('truck_id') !== NULL){
@@ -195,7 +196,20 @@ class SchedulesController extends Controller
         }if($request->input('active') !== NULL){
             $assignment->active = $request->input('active');
         }
-        
+        $truck=Truck::find($assignment->truck_id);
+        $firebase = (new Factory)
+        ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
+
+        $database = $firebase->createDatabase();
+        $ref = $database->getReference("drivers");
+        $ref->getChild($assignment->firebase_uid)->set([
+            'active' => 0,
+            'driver_id' => $truck->user_id,
+            'latitude' => 0,
+            'longitude'=> 0,
+            'route'=>$assignment->route
+        ]);
+
         $assignment->save();
         toast('Truck Assignment updated successfully','success');
         return redirect('/admin/schedules/assignments');
@@ -232,6 +246,13 @@ class SchedulesController extends Controller
     {
         $assignment = TruckAssignment::find($id);
 
+        $firebase = (new Factory)
+        ->withServiceAccount(app_path().'\Http\Controllers'.'\mapsample-51a36-firebase-adminsdk-5c38e-cf6600b7d0.json');
+
+        $database = $firebase->createDatabase();
+        $database->getReference("drivers/".$assignment->firebase_uid)->remove();
+
+        
         if(auth()->user()->user_type !== 'Admin'){
             toast('Unauthorized Page','error');
             return redirect('/admin/schedules/assignments');
