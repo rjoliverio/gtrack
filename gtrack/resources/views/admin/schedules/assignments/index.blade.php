@@ -60,8 +60,7 @@
                         @endif
                     </tr>
 {{-- ============= DELETE TRUCK ASSIGNMENTS MODAL =============== --}}
-<div class="modal fade" id="delete{{$assignment->assignment_id}}" tabindex="-1" role="dialog" aria-labelledby="assignmentdestroyer" aria-hidden="true">
-    {{-- <form action="admin/schedules/assignments/destroy/{{$assignment->id}}" method="DELETE"> --}}
+<div class="modal fade" id="delete{{$assignment->assignment_id}}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
     {{Form::open(array('url' => ['/admin/schedules/assignments/destroy', $assignment->assignment_id], 'method' => 'DELETE')) }}
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -78,18 +77,16 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 @csrf
                 {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-                {{-- <button type="submit" class="btn btn-danger">Confirm</button> --}}
             </div>
         </div>
     </div>
     {{Form::close()}}
-    {{-- </form> --}}
 </div>
 {{-- ============= EDIT TRUCK ASSIGNMENT DETAILS MODAL =============== --}}
-<div id="edit{{$assignment->assignment_id}}" class="modal fade mt-6">
+<div id="edit{{$assignment->assignment_id}}" class="modal fade mt-6"  tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            {{ Form::open(array('url' => '/admin/schedules/assignments/',$assignment->schedule->schedule_id, 'method' => 'POST')) }}
+            {{ Form::open(array('url' => ['/admin/schedules/assignments/update', $assignment->assignment_id], 'method' => 'PATCH')) }}
             <div class="modal-header">
                 <h4 class="modal-title">Edit Assignment</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -98,7 +95,7 @@
                 <div class="form-group row">
                     <label for="schedule_id" class="col-md-4 col-form-label text-md-right">{{ __('Schedule Id') }}</label>
                     <div class="col-md-6">
-                        <select id="schedule_id" class="custom-select form-control @error('schedule+id') is-invalid @enderror" name="schedule_id" required autocomplete="schedule_id" autofocus>
+                        <select id="schedule_id" class="custom-select form-control @error('schedule+id') is-invalid @enderror" name="schedule_id" autocomplete="schedule_id" autofocus>
                             <option selected disabled>{{$assignment->schedule->schedule_id}}</option>
                             @foreach($schedules as $id){
                                 <option value={{$id->schedule_id}} : {{$id->schedule_id}}>{{$id->schedule}}</option>
@@ -115,7 +112,7 @@
                 <div class="form-group row">
                     <label for="truck_id" class="col-md-4 col-form-label text-md-right">{{ __('Truck Id') }}</label>
                     <div class="col-md-6">
-                        <select id="truck_id" class="custom-select form-control @error('truck+id') is-invalid @enderror" name="truck_id" required autocomplete="truck_id" autofocus>
+                        <select id="truck_id" class="custom-select form-control @error('truck+id') is-invalid @enderror" name="truck_id" autocomplete="truck_id" autofocus>
                             <option selected disabled>{{$assignment->truck->plate_no}}</option>
                             @foreach($trucks as $id){
                             <option value={{$id->truck_id}}>{{$id->truck_id}} : {{$id->plate_no}}</option>
@@ -132,7 +129,7 @@
                 <div class="form-group row">
                     <label for="route" class="col-md-4 col-form-label text-md-right">{{ __('Route') }}</label>
                     <div class="col-md-6">
-                        <textarea id="route" rows="4" class="form-control @error('route') is-invalid @enderror" name="route" value="{{ old('route') }}" required autocomplete="route" autofocus placeholder="{{$assignment->route}}"></textarea>
+                        <textarea id="route" rows="4" class="form-control @error('route') is-invalid @enderror" name="route" value="{{ old('route') }}"  autocomplete="route" autofocus placeholder="{{$assignment->route}}"></textarea>
                         @error('route')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -140,18 +137,32 @@
                         @enderror
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                {{Form::submit('Create', ['class' => 'btn btn-primary'])}}
-                {{-- <input type="submit" name="Create" class="btn btn-success" value="Create"> --}}
-            </div>
+                <div class="form-group row">
+            <label for="active" class="col-md-4 col-form-label text-md-right">{{ __('Active') }}</label>
+                    <div class="col-md-6">
+                        <select id="active" class="custom-select form-control @error('active') is-invalid @enderror" name="active" autocomplete="active" autofocus>
+                            <option selected disabled hidden>{{$assignment->active}}</option>
+                            <option value='1'>1</option>
+                            <option value='0'>0</option>
+                        </select>
+                        @error('active')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    {{Form::submit('Update', ['class' => 'btn btn-primary'])}}
+                </div>
             {{Form::close()}}
+            </div>
         </div>
     </div>
 </div>
 {{-- ============= SHOW TRUCK ASSIGNMENT DETAILS MODAL =============== --}}
-<div id="show{{$assignment->assignment_id}}" class="modal fade">
+<div id="show{{$assignment->assignment_id}}" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="show" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -287,16 +298,12 @@
                 <div class="modal-body">
                     {{ Form::open(array('url' => '/admin/schedules/assignments/store' , 'method' => 'POST')) }}
                         <div class="form-group row">
-                            {{-- {{Form::label('schedule_id', 'Schedule Id', ['class' => 'col-md-4 col-form-label text-md-right', 'placeholder' => 'Title' ])}}
-                            <div class="col-md-6">
-                                {{Form::select('schedule_id', $schedules->schedule_id, ['class' => 'custom-select form-control', 'placeholder' => 'Title' ])}}
-                            </div> --}}
                             <label for="schedule_id" class="col-md-4 col-form-label text-md-right">{{ __('Schedule Id') }}</label>
                             <div class="col-md-6">
                                 <select id="schedule_id" class="custom-select form-control @error('schedule+id') is-invalid @enderror" name="schedule_id" required autocomplete="schedule_id" autofocus>
                                     <option selected disabled hidden>-Select Schedule Id-</option>
                                     @foreach($schedules as $id){
-                                        <option value={{$id->schedule_id}} : {{$id->schedule_id}}>{{$id->schedule}}</option>
+                                        <option value={{$id->schedule_id}}>{{$id->schedule_id}} : {{$id->schedule}}</option>
                                     }
                                     @endforeach
                                 </select>
@@ -339,7 +346,6 @@
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                             @csrf
                             {{Form::submit('Create', ['class' => 'btn btn-primary'])}}
-                            {{-- <input type="submit" name="Create" class="btn btn-success" value="Create"> --}}
                         </div>
                     {{Form::close()}}
                 </div>

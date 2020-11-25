@@ -26,7 +26,8 @@ class Schedule extends Model
     {
         return $this->hasOne(User::class,'user_id','admin_id');
     }
-    public function assignments(){
+    public function assignments()
+    {
         return $this->hasMany(TruckAssignment::class,'schedule_id','schedule_id');
     }
 }

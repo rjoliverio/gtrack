@@ -248,11 +248,11 @@ var dump_popups=[];
                             'line-width': 8
                         }
                         });
-                    }else{
+                }else{
                         markers[idSnapshot.val().driver_id].setLngLat([0, 0]);
                         markers[idSnapshot.val().driver_id].remove();
                         map.removeLayer('route'+idSnapshot.val().driver_id);
-                    }
+                }
             });
         });     
     });

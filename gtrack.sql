@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2020 at 12:28 PM
+-- Generation Time: Nov 25, 2020 at 04:24 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -89,9 +89,9 @@ INSERT INTO `addresses` (`address_id`, `street`, `barangay`, `town`, `postal_cod
 (51, 'asd', 'asdf', 'asdf', '6003', '2020-11-16 01:48:15', '2020-11-16 01:48:15'),
 (52, 've', 'dfv', 'dfv', '6003', '2020-11-16 01:49:38', '2020-11-16 01:49:38'),
 (53, 'sdfasd', 'fasdf', 'asdf', '6003', '2020-11-16 02:02:07', '2020-11-16 02:02:07'),
-(54, 'Rotunda', 'Cogon', 'Compostela', '6003', '2020-11-16 02:03:04', '2020-11-16 02:03:04'),
 (55, 'rotunda', 'poblacion', 'compostela', '6003', '2020-11-21 07:39:44', '2020-11-21 07:39:44'),
-(56, 'Rotunda', 'Poblacion', 'Compostela', '6003', '2020-11-21 07:39:44', '2020-11-21 07:39:44');
+(56, 'Rotunda', 'Poblacion', 'Compostela', '6003', '2020-11-21 07:39:44', '2020-11-21 07:39:44'),
+(57, 'Rotunda', 'Poblacion', 'Compostela', '6003', '2020-11-24 19:21:43', '2020-11-24 19:21:43');
 
 -- --------------------------------------------------------
 
@@ -133,6 +133,7 @@ CREATE TABLE `dumpsters` (
   `address_id` bigint(20) UNSIGNED NOT NULL,
   `latitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `longitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firebase_uid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -141,8 +142,8 @@ CREATE TABLE `dumpsters` (
 -- Dumping data for table `dumpsters`
 --
 
-INSERT INTO `dumpsters` (`dumpster_id`, `address_id`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
-(21, 54, '10.4587', '124.0001', '2020-11-16 02:03:04', '2020-11-16 02:03:04');
+INSERT INTO `dumpsters` (`dumpster_id`, `address_id`, `latitude`, `longitude`, `firebase_uid`, `created_at`, `updated_at`) VALUES
+(22, 57, '10.4587', '124.0001', '-MMxPxrTI_2KvFrpMJtb', '2020-11-24 19:21:44', '2020-11-24 19:21:44');
 
 -- --------------------------------------------------------
 
@@ -303,7 +304,7 @@ CREATE TABLE `schedules` (
 --
 
 INSERT INTO `schedules` (`schedule_id`, `admin_id`, `schedule`, `garbage_type`, `created_at`, `updated_at`) VALUES
-(4, 1, '2020-11-11 10:52:00', 'Nonbiodegradable', '2020-11-10 18:52:11', '2020-11-10 18:52:11');
+(4, 1, '2020-11-25 10:32:00', 'Biodegradable', '2020-11-10 18:52:11', '2020-11-24 18:33:19');
 
 -- --------------------------------------------------------
 
@@ -349,7 +350,7 @@ CREATE TABLE `truck_assignments` (
 --
 
 INSERT INTO `truck_assignments` (`assignment_id`, `schedule_id`, `truck_id`, `route`, `firebase_uid`, `created_at`, `updated_at`, `active`) VALUES
-(8, 4, 1, 'Poblacion', '-MMFm4uMVvzNRnRHGoqJ', '2020-11-16 03:19:53', '2020-11-16 03:19:53', 1);
+(11, 4, 1, 'Poblacion-Rotunda', '-MMxPp-PU2uFM6htuKF5', '2020-11-24 19:21:08', '2020-11-24 19:21:08', 1);
 
 -- --------------------------------------------------------
 
@@ -375,7 +376,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_detail_id`, `email`, `user_type`, `email_verified_at`, `password`, `remember_token`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 'rjoliverio18@gmail.com', 'Admin', '2020-11-15 17:26:37', '$2y$10$LFWK0HyzuydwKE.1EYKjy.PCIIg5dEZwYlw/vLYeb56RdyXTR8L32', 'OMLhJie8w6ByBRR26U5bCnuSqYsPqdUDkOWoSpF4kOzRQfJHQG4CxxANnnLg', 1, '2020-10-23 21:29:16', '2020-11-15 21:52:24'),
+(1, 1, 'rjoliverio18@gmail.com', 'Admin', '2020-11-15 17:26:37', '$2y$10$LFWK0HyzuydwKE.1EYKjy.PCIIg5dEZwYlw/vLYeb56RdyXTR8L32', 'hnOA3n3O2vxIBWOfrEvFURYsZHb9OoTHuowXxhf5kFeoTvuZ2hbX6r8qyqUV', 1, '2020-10-23 21:29:16', '2020-11-15 21:52:24'),
 (2, 2, 'aljann3ondoy@gmail.com', 'Driver', '2020-11-15 17:34:14', '$2y$10$zdtIujGagNNgkkSSK7t0quFPjojH.aMO6UOemH997Ojmr3nEVyXEu', NULL, 1, '2020-10-23 21:30:27', '2020-11-15 19:56:30'),
 (3, 3, 'tonystark@yahoo.com', 'Admin', '2020-11-16 00:05:51', '$2y$10$uQohBaAi8q.7nJl4MoKDQ.BuAAjuFrJKS/QdgJzLqZoBuBjKJDBWi', NULL, 1, '2020-10-25 05:53:02', '2020-11-16 00:05:51'),
 (4, 12, 'hu@me.com', 'Admin', NULL, '$2y$10$kd5Izc.oZ5RwY5jOVRa0eumktiatg9KtKKejtdHkgTpiwFzzFtvEC', NULL, 1, '2020-11-08 22:46:51', '2020-11-08 22:46:51'),
@@ -531,8 +532,8 @@ ALTER TABLE `trucks`
 --
 ALTER TABLE `truck_assignments`
   ADD PRIMARY KEY (`assignment_id`),
-  ADD KEY `truck_assignments_truck_id_foreign` (`truck_id`),
-  ADD KEY `schedule_id` (`schedule_id`) USING BTREE;
+  ADD KEY `schedule_id` (`schedule_id`) USING BTREE,
+  ADD KEY `truck_assignments_truck_id_foreign` (`truck_id`) USING BTREE;
 
 --
 -- Indexes for table `users`
@@ -563,7 +564,7 @@ ALTER TABLE `waste_collections`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `address_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `address_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `announcements`
@@ -575,7 +576,7 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `dumpsters`
 --
 ALTER TABLE `dumpsters`
-  MODIFY `dumpster_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `dumpster_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -611,7 +612,7 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `schedule_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `schedule_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `trucks`
@@ -623,7 +624,7 @@ ALTER TABLE `trucks`
 -- AUTO_INCREMENT for table `truck_assignments`
 --
 ALTER TABLE `truck_assignments`
-  MODIFY `assignment_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `assignment_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -6,7 +6,7 @@
 @section('css')
     <link href={{asset('css/reports-show.css')}} rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-    <link href='{{asset('css/calendar-main.css')}}' rel='stylesheet' />
+    <link href='{{asset('css/calendar-main.css')}}' rel='stylesheet'/>
     <style>
         #calendar {
           max-width: 1100px;
@@ -25,10 +25,10 @@
 </div>
 @endsection
 @section('scripts')
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src={{asset('js/gallery-view.js')}}></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src='{{asset('js/calendar-main.js')}}'></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -36,6 +36,7 @@
         var trucks={!! $trucks !!};
         var event={!! $events !!};
         var events=[];
+
         schedules.forEach(function(item,index){
             date=new Date(item.schedule);
             day=date.getDay();
