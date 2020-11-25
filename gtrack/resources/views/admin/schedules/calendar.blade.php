@@ -6,7 +6,7 @@
 @section('css')
     <link href={{asset('css/reports-show.css')}} rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-    <link href='{{asset('css/calendar-main.css')}}' rel='stylesheet' />
+    <link href='{{asset('css/calendar-main.css')}}' rel='stylesheet'/>
     <style>
         #calendar {
           max-width: 1100px;
@@ -25,10 +25,10 @@
 </div>
 @endsection
 @section('scripts')
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src={{asset('js/gallery-view.js')}}></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src='{{asset('js/calendar-main.js')}}'></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -36,6 +36,7 @@
         var trucks={!! $trucks !!};
         var event={!! $events !!};
         var events=[];
+
         schedules.forEach(function(item,index){
             date=new Date(item.schedule);
             day=date.getDay();
@@ -52,20 +53,11 @@
             events.push(obj);
         });
         event.forEach(function(item,index){
-            sdate=new Date(item.start_date);
-            edate=new Date(item.end_date);
-            var year=sdate.getFullYear();
-            var month=sdate.getMonth()+1 //getMonth is zero based;
-            var day=sdate.getDate();
-            sdate=year+"-"+month+"-"+day;
-            year=edate.getFullYear();
-            month=edate.getMonth()+1 //getMonth is zero based;
-            day=edate.getDate()+1;
-            edate=year+"-"+month+"-"+day;
+            date=new Date(item.date);
+            day=date.getDate();
             var obj={title:item.event_name,
                     allDay:true,
-                    start:sdate,
-                    end:edate,
+                    start:date,
                     description:"Description: "+ item.description+"\n"+"Participants: "+item.participants,
                     color: 'purple',
                 };

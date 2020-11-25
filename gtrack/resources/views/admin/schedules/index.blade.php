@@ -50,42 +50,87 @@
                     <td>{{$schedule->created_at}}</td>
                     @if(Auth::user()->user_type == "Admin")
                         <td><a href="/admin/schedules/calendar"><i class="fas fa-eye pr-3" title="View"></i></a>
-                            <a href="#editSchedule{{$schedule->schedule_id}}"><i class="fas fa-pencil-alt pr-3" data-toggle="modal" data-target="#editSchedule" title="Edit"></i></a>
-                            <a href="#deleteSchedule{{$schedule->schedule_id}}"><i class="fas fa-ban" data-toggle="modal" data-target="#deleteSchedule"
-                            title="Delete"></i></a>
+                            <a href="#editSchedule{{$schedule->schedule_id}}" data-toggle="modal"><i class="fas fa-pencil-alt pr-3" title="Edit"></i></a>
+                            <a href="#deleteSchedule{{$schedule->schedule_id}}" data-toggle="modal"><i class="fas fa-ban" title="Delete"></i></a>
                         </td>
                     @endif
                 </tr>
-                <div class="modal fade" id="deleteSchedule" tabindex="-1" role="dialog" aria-labelledby="deleteSchedule" aria-hidden="true">
-                    {{Form::open(array('url' => ['/admin/schedules/destroy', $schedule->schedule_id], 'method' => 'DELETE')) }}
-                    {{-- <form action="schedules/destroy/{{$schedule->schedule_id}}" method="DELETE"> --}}
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deleteSchedulelabel">Alert </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p class="p-3">Are you sure you want to delete Schedule?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                @csrf
-                                {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-                                {{-- <button type="submit" class="btn btn-danger">Confirm</button> --}}
-                            </div>
-                        </div>
+{{-- ============= DELETE SCHEDULE DETAILS MODAL =============== --}}
+<div class="modal fade" id="deleteSchedule{{$schedule->schedule_id}}" tabindex="-1" role="dialog" aria-labelledby="deleteSchedule" aria-hidden="true">
+    {{Form::open(array('url' => ['/admin/schedules/destroy', $schedule->schedule_id], 'method' => 'DELETE')) }}
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteSchedulelabel">Alert </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="p-3">Are you sure you want to delete Schedule?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                @csrf
+                {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+            </div>
+        </div>
+    </div>
+    {{Form::close()}}
+</div>
+{{-- ============= EDIT SCHEDULE DETAILS MODAL =============== --}}
+<div id="editSchedule{{$schedule->schedule_id}}" class="modal fade mt-5"  tabindex="-1" role="dialog" aria-labelledby="editSchedule" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            {{ Form::open(array('url' => ['/admin/schedules/update', $schedule->schedule_id], 'method' => 'PATCH')) }}
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Schedule</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="garbage_type" class="col-md-4 col-form-label text-md-right">{{ __('Garbage Type') }}</label>
+                    <div class="col-md-6">
+                        <select id="garbage_type" class="custom-select form-control @error('garbage+type') is-invalid @enderror" name="garbage_type" autocomplete="garbage_type" autofocus>
+                            <option selected disabled hidden>{{$schedule->garbage_type}}</option>
+                            <option value="Biodegradable">Biodegradable</option>
+                            <option value="Nonbiodegradable">Nonbiodegradable</option>
+                        </select>
+                        @error('garbage_type')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    {{-- </form> --}}
-                    {{Form::close()}}
                 </div>
+                <div class="form-group row">
+                    <label for="scheduletime" class="col-md-4 col-form-label text-md-right">{{ __('DateTime') }}</label>
+                    <div class="col-md-6">
+                        <input id="scheduletime" type="datetime-local" class="form-control @error('DateTime') is-invalid @enderror" name="scheduletime" autocomplete="scheduletime" autofocus>
+                        @error('DateTime')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                {{Form::submit('Update', ['class' => 'btn btn-primary'])}}
+            </div>
+            {{Form::close()}}
+            </form>
+        </div>
+    </div>
+</div>
+{{-- ============= END OF EDIT SCHEDULE DETAILS MODAL =============== --}}
             @endforeach
             </tbody>
         </table>
     </div>
 </div>
+{{-- ============= CREATE SCHEDULE DETAILS MODAL =============== --}}
 <div id="createSchedule" class="modal fade mt-5">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -95,7 +140,6 @@
             </div>
             <div class="modal-body">
                 {{ Form::open(array('url' => '/admin/schedules/store', 'method' => 'POST')) }}
-                {{-- <form action="/admin/employees/store" method="POST"> --}}
                     <div class="form-group row">
                         <label for="garbage_type" class="col-md-4 col-form-label text-md-right">{{ __('Garbage Type') }}</label>
                         <div class="col-md-6">
@@ -104,8 +148,6 @@
                                 <option value="Nonbiodegradable">Biodegradable</option>
                                 <option value="Nonbiodegradable">Nonbiodegradable</option>
                             </select>
-                            {{-- {{Form::label('garbage_type', 'Garbage Type')}}
-                            {{Form::select('garbage_type', $schedule->garbage_type, ['class' => 'form-control', 'placeholder' => 'Garbage Type' ])}} --}}
                             @error('garbage_type')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -117,8 +159,6 @@
                         <label for="schedule" class="col-md-4 col-form-label text-md-right">{{ __('DateTime') }}</label>
                         <div class="col-md-6">
                             <input id="schedule" type="datetime-local" class="form-control @error('DateTime') is-invalid @enderror" name="schedule" value="{{ old('DateTime') }}" required autocomplete="DateTime" autofocus>
-                            {{-- {{Form::label('schedule', 'DateTime')}}
-                            {{Form::DateTime('schedule', '', ['class' => 'form-control', 'placeholder' => 'DateTime' ])}} --}}
                             @error('DateTime')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -128,67 +168,14 @@
                     </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    {{-- <input type="submit" name="Create" class="btn btn-success" value="Create"> --}}
                     {{Form::submit('Create', ['class' => 'mb-2 mt-2 btn btn-primary'])}}
                 </div>
             {{ Form::close() }}
-            {{-- </form> --}}
             </div>
         </div>
     </div>
 </div>
-<div id="editSchedule" class="modal fade mt-5">
-    <div class="modal-dialog">
-        <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Schedule</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    {{ Form::open(array('url' => '/admin/schedules', 'method' => 'PATCH')) }}
-                    {{-- <form action="/admin/employees/store" method="POST"> --}}
-                        <div class="form-group row">
-                            <label for="garbage_type" class="col-md-4 col-form-label text-md-right">{{ __('Garbage Type') }}</label>
-                            <div class="col-md-6">
-                                <select id="garbage_type" class="custom-select form-control @error('garbage+type') is-invalid @enderror" name="garbage_type" required autocomplete="garbage_type" autofocus>
-                                    <option selected disabled>-Select Garbage Type-</option>
-                                    <option value="Nonbiodegradable">Biodegradable</option>
-                                    <option value="Nonbiodegradable">Nonbiodegradable</option>
-                                </select>
-                                {{-- {{Form::label('garbage_type', 'Garbage Type')}}
-                                {{Form::select('garbage_type', $schedule->garbage_type, ['class' => 'form-control', 'placeholder' => 'Garbage Type' ])}} --}}
-                                @error('garbage_type')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="schedule" class="col-md-4 col-form-label text-md-right">{{ __('DateTime') }}</label>
-                            <div class="col-md-6">
-                                <input id="schedule" type="datetime-local" class="form-control @error('DateTime') is-invalid @enderror" name="DateTIme" value="{{ old('DateTime') }}" required autocomplete="DateTime" autofocus>
-                                {{-- {{Form::label('schedule', 'DateTime')}}
-                                {{Form::DateTime('schedule', '', ['class' => 'form-control', 'placeholder' => 'DateTime' ])}} --}}
-                                @error('DateTime')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" name="Create" class="btn btn-success" value="Create">
-                    {{-- {{Form::submit('Submit', ['class' => 'mb-2 mt-2 btn btn-primary'])}} --}}
-                </div>
-            {{-- {{ Form::close() }} --}}
-            </form>
-        </div>
-    </div>
-</div>
+{{-- ============= END OF CREATE SCHEDULE DETAILS MODAL =============== --}}
 @endsection
 
 @section('scripts')
