@@ -18,6 +18,7 @@
     </style>
   </head>
   <body>
+  <center><img src="./storage/images/gtrack-logo-2.png" width="160"/></center>
   <center><h1>Solid Waste Management Department</h1></center>
   <center><i><h3>Barangay Poblacion, Compostela, Cebu</h3></i></center>
   <center><h1>Waste Collection Report</h1></center>

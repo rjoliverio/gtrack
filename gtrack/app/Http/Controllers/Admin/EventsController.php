@@ -148,7 +148,7 @@ class EventsController extends Controller
 
 
 
-        toast('Announcement added successfully','success');
+        toast('Event added successfully','success');
 
         return redirect('/admin/events');
     }
