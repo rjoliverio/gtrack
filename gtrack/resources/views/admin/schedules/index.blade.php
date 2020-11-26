@@ -30,11 +30,11 @@
         <table class="table table-striped fixed">
             <thead class="thead-dark">
                 <tr>
-                    <th>Id</th>
+                    <th>No.</th>
                     <th>Schedule</th>
                     <th width="5px">Biodegradable</th>
                     <th width="5px">Nonbiodegradable</th>
-                    <th>Admin id</th>
+                    <th>Admin</th>
                     <th>Date Created</th>
                     <th>Actions</th>
                 </tr>
@@ -42,11 +42,11 @@
             <tbody>
             @foreach($schedule as $schedule)
                 <tr>
-                    <td class="text-center">{{$schedule->schedule_id}}</td>
+                    <td class="text-center">{{$count++}}</td>
                     <td>{{$schedule->schedule}}</td>
                     <td class="text-center">{{$schedule->garbage_type == 'Biodegradable'?'✔':'❌'}}</td>
                     <td class="text-center">{{$schedule->garbage_type == 'Nonbiodegradable'?'✔':'❌'}}</td>
-                    <td class="text-center">{{$schedule->admin_id}}</td>
+                    <td>{{$schedule->user->userdetail->lname}}, {{$schedule->user->userdetail->fname}}</td>
                     <td>{{$schedule->created_at}}</td>
                     @if(Auth::user()->user_type == "Admin")
                         <td><a href="/admin/schedules/calendar"><i class="fas fa-eye pr-3" title="View"></i></a>

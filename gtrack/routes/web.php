@@ -30,8 +30,8 @@ Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
     'namespace' => 'Admin',
-    'middleware' => ['auth','admin']
-    // 'middleware' => ['auth','verified','admin']
+    // 'middleware' => ['auth','admin']
+    'middleware' => ['auth','verified','admin']
 ],function  () {
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('/dashboard/pdf', 'DashboardController@export');
@@ -87,8 +87,8 @@ Route::group([
     'prefix' => 'driver',
     'as' => 'driver.',
     'namespace' => 'Driver',
-    'middleware' => ['auth','driver']
-    // 'middleware' => ['auth','verified','driver']
+    // 'middleware' => ['auth','driver']
+    'middleware' => ['auth','verified','driver']
 ],function  () {
     Route::get('/schedule', 'ScheduleController@index');
     Route::get('/calendar', 'CalendarController@index');
@@ -100,8 +100,8 @@ Route::group([
     Route::post('/weight/input', 'WeightController@input');
     Route::get('/tracker', 'TrackerController@index');
 });
-// Auth::routes(['verify'=>true]);
-Auth::routes();
+Auth::routes(['verify'=>true]);
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
