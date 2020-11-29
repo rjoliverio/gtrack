@@ -64,6 +64,8 @@
 </div>
 <hr>
 <div class="row">
+
+
 @foreach($arr as $row)
 <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
@@ -126,9 +128,10 @@
                                               <p><i>End Date:</i> {{$row->end_date}}</p>
                                               
         <p><i>Participants:</i> {{$row->participants}}</p>
+        <p><i>Venue:</i> {{ucfirst($row->address->street)}}, {{ucfirst($row->address->barangay)}}, {{ucfirst($row->address->town)}}, {{$row->address->postal_code}} </p>
         <h4><b>Contact Details:</b></h4>
         <p><i>Contact Person:</i> {{ucfirst($row->userdetail->fname)}} {{ucfirst($row->userdetail->lname)}}</p> 
-        <p><i>Contact No.:</i> {{$row->userdetail->contact_no}}</p>
+        <p><i>Contact No:</i> {{$row->userdetail->contact_no}}</p>
                                               </div>
         
         </div>
@@ -142,13 +145,17 @@
                                     </div>
                                 </div>
       @endforeach
+
+     
 </div>
+<br><br>
 <div class="row">
   <h5>All Events</h5>
 </div>
 <hr>
     <!-- Page Features -->
     <div class="row">
+    
     @foreach($arr2 as $row)
 <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
@@ -210,9 +217,10 @@
                                               <p><i>Start Date:</i> {{ $row->start_date}}</p>
                                               <p><i>End Date:</i> {{$row->end_date}}</p>
         <p><i>Participants:</i> {{$row->participants}}</p>
+        <p><i>Venue:</i> {{ucfirst($row->address->street)}}, {{ucfirst($row->address->barangay)}}, {{ucfirst($row->address->town)}}, {{$row->address->postal_code}}  </p>
         <h4><b>Contact Details:</b></h4>
         <p><i>Contact Person:</i> {{ucfirst($row->userdetail->fname)}} {{ucfirst($row->userdetail->lname)}}</p> 
-        <p><i>Contact No.:</i> {{$row->userdetail->contact_no}}</p>
+        <p><i>Contact No:</i> {{$row->userdetail->contact_no}}</p>
                                               </div>
         
         </div>
@@ -227,7 +235,6 @@
                                 </div>
       @endforeach
 
-    
     </div>
     
     <!-- /.row -->

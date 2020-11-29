@@ -96,13 +96,29 @@ GTrack | Events
                             method="POST" enctype="multipart/form-data">
                             {{csrf_field()}}
                             <div class="modal-header">
-                                <h2 class="modal-title">Delete this?</h2>
-                                <button type="button" class="close" data-dismiss="modal"
-                                    aria-hidden="true">&times;</button>
+                            <h3>Confirm Password</h3>
                             </div>
+                            <div class="modal-body">
+                            <div class="form-group row">
+                                    <label for="password"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Confirm Using Your Password') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="password" type="password"
+                                            class="form-control @error('password') is-invalid @enderror" name="password"
+                                            required autocomplete="new-password">
+
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                </div>
                             <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="No">
-                                <input type="submit" name="saveNew" class="btn btn-info" value="Yes">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                <input type="submit" name="saveNew" class="btn btn-info" value="Confirm">
                             </div>
                         </form>
                     </div>
@@ -158,11 +174,12 @@ GTrack | Events
                                         <p><i>Start Date:</i> {{$row->start_date}}</p>
                                         <p><i>End Date:</i> {{$row->end_date}}</p>
                                         <p><i>Participants:</i> {{$row->participants}}</p>
+                                        <p><i>Venue:</i> {{ucfirst($row->address->street)}}, {{ucfirst($row->address->barangay)}}, {{ucfirst($row->address->town)}}, {{$row->address->postal_code}} </p>
                                         <div class="row">
                                             <h4><b>Contact Details:</b></h4>
                                         </div>
         <p><i>Contact Person:</i> {{ucfirst($row->userdetail->fname)}} {{ucfirst($row->userdetail->lname)}}</p> 
-        <p><i>Contact No.:</i> {{$row->userdetail->contact_no}}</p>
+        <p><i>Contact No:</i> {{$row->userdetail->contact_no}}</p>
                                     </div>
 
                                 </div>

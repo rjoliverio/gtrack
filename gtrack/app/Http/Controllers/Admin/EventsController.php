@@ -11,6 +11,7 @@ use App\Models\User;
 use Exporter;
 use DB;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -272,13 +273,18 @@ class EventsController extends Controller
         return redirect('/admin/events');
         
     }
-    public function delete($id,$aid,$bid)
+    public function delete(Request $request,$id,$aid)
     {
-        $line=Image::whereimage_id($id)->delete();
-        // return dd($line);
-        // $bikes=UserDetail::whereuser_detail_id($bid)->delete();
-        $event=Address::whereaddress_id($aid)->delete();
-          toast('1 Event Deleted','error');
+        $user=Auth::user();
+        if(Hash::check($request->input('password'),$user->password)){
+            $line=Image::whereimage_id($id)->delete();
+            // return dd($line);
+            // $bikes=UserDetail::whereuser_detail_id($bid)->delete();
+            $event=Address::whereaddress_id($aid)->delete();
+            toast('Event Successfully Deleted','success');
+        }else{
+            toast('Failed to Delete. Incorrect Password','error'); 
+        }
           return redirect('/admin/events');
 
     }
