@@ -20,8 +20,9 @@ class SchedulesController extends Controller
      */
     public function index()
     {
-        $schedules = Schedule::orderBy('schedule','desc')->get();
-        return view('admin.schedules.index')->with('schedule', $schedules);
+        $schedule = Schedule::orderBy('schedule','desc')->get();
+        $count = 1;
+        return view('admin.schedules.index',compact('schedule','count'));
     }
     
     public function truckindex()
@@ -29,7 +30,8 @@ class SchedulesController extends Controller
         $assignment = TruckAssignment::orderBy('schedule_id','asc')->get();
         $schedules = Schedule::get();
         $trucks = Truck::get();
-        return view('admin.schedules.assignments.index',compact('assignment','schedules', 'trucks'));
+        $count = 1;
+        return view('admin.schedules.assignments.index',compact('assignment','schedules', 'trucks', 'count'));
     }
     
     /**

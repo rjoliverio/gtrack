@@ -7,9 +7,11 @@ use App\Models\UserDetail;
 use App\Models\Address;
 use App\Models\Image;
 use App\Models\WasteCollection;
+use App\Models\User;
 use Exporter;
 use DB;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -24,9 +26,10 @@ class EventsController extends Controller
     public function index()
     {
         $row=Event::all();
-      
+        $users=User::whereuser_type('Admin')->get();
         return view('admin.events.events',[
-            'row' => $row
+            'row' => $row,
+            'user'=>$users
 
         ]);
        
@@ -44,16 +47,6 @@ class EventsController extends Controller
             'etown' => 'required',
             'epost' => 'required',
             'participants' => 'required',
-            'cpfname' => 'required',
-            'cplname' => 'required',
-            'cpimage' => 'required',
-            'cpconno' => 'required',
-            'cpstreet' => 'required',
-            'cpbrgy' => 'required',
-            'cptown' => 'required',
-            'cppost' => 'required',
-            'cpage' => 'required',
-            'gender' => 'required',
             'images' => 'min:1|max:4|required',
             'images.*'=>'mimes:jpeg,png,jpg'
             
@@ -69,6 +62,7 @@ class EventsController extends Controller
         mkdir(public_path('/storage/images/uploads'), 0777);
 
     }
+    $user=Auth::user();
   $images = Collection::wrap($request->file('images'));
   $original=[];
   $ctr=0;
@@ -101,37 +95,37 @@ class EventsController extends Controller
 
     $last_id = DB::table('addresses')
      ->insertGetId($data);
-     $data = array(
-        'street'=>$request->cpstreet,
-        'barangay'=>$request->cpbrgy,
-        'town'=>$request->cptown,
-        'postal_code'=>$request->cppost
+    //  $data = array(
+    //     'street'=>$request->cpstreet,
+    //     'barangay'=>$request->cpbrgy,
+    //     'town'=>$request->cptown,
+    //     'postal_code'=>$request->cppost
         
-    );
+    // );
 
-    $last_id_contact = DB::table('addresses')
-     ->insertGetId($data);
-     if($file = $request->hasFile('cpimage')) {
-        $file = $request->file('cpimage') ;
-        $fileName = $file->getClientOriginalName() ;
-        $destinationPath = public_path().'/storage/images/uploads' ;
-        $file->move($destinationPath,$fileName);
-        $data = array(
-            'fname'=>$request->cpfname,
-            'lname'=>$request->cplname,
-            'image'=>$fileName ,
-            'contact_no'=>$request->cpconno,
-            'address_id'=>$last_id_contact,
-            'age'=>$request->cpage,
-            'gender'=>$request->gender
+    // $last_id_contact = DB::table('addresses')
+    //  ->insertGetId($data);
+    //  if($file = $request->hasFile('cpimage')) {
+    //     $file = $request->file('cpimage') ;
+    //     $fileName = $file->getClientOriginalName() ;
+    //     $destinationPath = public_path().'/storage/images/uploads' ;
+    //     $file->move($destinationPath,$fileName);
+    //     $data = array(
+    //         'fname'=>$request->cpfname,
+    //         'lname'=>$request->cplname,
+    //         'image'=>$fileName ,
+    //         'contact_no'=>$request->cpconno,
+    //         'address_id'=>$last_id_contact,
+    //         'age'=>$request->cpage,
+    //         'gender'=>$request->gender
             
-        );
-    }
+    //     );
+    // }
 
     
 
-    $last_id_user = DB::table('user_details')
-     ->insertGetId($data);
+    // $last_id_user = DB::table('user_details')
+    //  ->insertGetId($data);
      
         
         $event = new Event();
@@ -142,13 +136,13 @@ class EventsController extends Controller
         $event->participants = $request->participants;
         $event->start_date = $request->DateTimeS;
         $event->end_date = $request->DateTimeE;
-        $event->contact_person_id = $last_id_user;
+        $event->contact_person_id = $request->user_name;
         $event->status=1;
         $event->save();
 
 
 
-        toast('Announcement added successfully','success');
+        toast('Event added successfully','success');
 
         return redirect('/admin/events');
     }
@@ -164,16 +158,6 @@ class EventsController extends Controller
             'etown' => 'required',
             'epost' => 'required',
             'participants' => 'required',
-            'cpfname' => 'required',
-            'cplname' => 'required',
-            'cpimage' => 'required',
-            'cpconno' => 'required',
-            'cpstreet' => 'required',
-            'cpbrgy' => 'required',
-            'cptown' => 'required',
-            'cppost' => 'required',
-            'cpage' => 'required',
-            'gender' => 'required',
             'images' => 'min:1|max:4|required',
             'images.*'=>'mimes:jpeg,png,jpg'
             
@@ -190,6 +174,7 @@ class EventsController extends Controller
             mkdir(public_path('/storage/images/uploads'), 0777);
 
         }
+        $user=Auth::user();
         if($request->hasFile('images')){
             $images = Collection::wrap($request->file('images'));
             $original=[];
@@ -234,33 +219,33 @@ class EventsController extends Controller
         $add->town = $request->input("etown");
         $add->postal_code = $request->input("epost");
         $add->save();
-        $add = Address::find($did);
+        // $add = Address::find($did);
             
-        $add->street = $request->input("cpstreet");
-        $add->barangay = $request->input("cpbrgy");
-        $add->town = $request->input("cptown");
-        $add->postal_code = $request->input("cppost");
-        $add->save();
-        $use = UserDetail::find($cid);
-        $use->fill($request->except('cpimage'));
+        // $add->street = $request->input("cpstreet");
+        // $add->barangay = $request->input("cpbrgy");
+        // $add->town = $request->input("cptown");
+        // $add->postal_code = $request->input("cppost");
+        // $add->save();
+        // $use = UserDetail::find($cid);
+        // $use->fill($request->except('cpimage'));
             
-        $use->fname = $request->input("cpfname");
-        $use->lname = $request->input("cplname");
+        // $use->fname = $request->input("cpfname");
+        // $use->lname = $request->input("cplname");
         
        
        
-        $use->contact_no = $request->input("cpconno");
-        $use->age = $request->input("cpage");
-        $use->gender = $request->input("gender");
-        if($file = $request->hasFile('cpimage')) {
-            $file = $request->file('cpimage') ;
-            $fileName = $file->getClientOriginalName() ;
-            $destinationPath = public_path().'/storage/images/uploads' ;
-            $file->move($destinationPath,$fileName);
-            $use->image = $fileName ;
-        }
+        // $use->contact_no = $request->input("cpconno");
+        // $use->age = $request->input("cpage");
+        // $use->gender = $request->input("gender");
+        // if($file = $request->hasFile('cpimage')) {
+        //     $file = $request->file('cpimage') ;
+        //     $fileName = $file->getClientOriginalName() ;
+        //     $destinationPath = public_path().'/storage/images/uploads' ;
+        //     $file->move($destinationPath,$fileName);
+        //     $use->image = $fileName ;
+        // }
 
-        $use->save();
+        // $use->save();
         // $data = array(
         //     'fname'=>$request->cpfname,
         //     'lname'=>$request->cplname,
@@ -280,6 +265,7 @@ class EventsController extends Controller
             $event->start_date = $request->input("DateTimeS");
             $event->end_date = $request->input("DateTimeE");
             $event->participants = $request->input("participants");
+            $event->contact_person_id=$request->user_name;
             $event->image_id = $image->image_id;
             $event->save();
 
@@ -287,13 +273,18 @@ class EventsController extends Controller
         return redirect('/admin/events');
         
     }
-    public function delete($id,$aid,$bid)
+    public function delete(Request $request,$id,$aid)
     {
-        $line=Image::whereimage_id($id)->delete();
-        // return dd($line);
-        $bikes=UserDetail::whereuser_detail_id($bid)->delete();
-        $event=Address::whereaddress_id($aid)->delete();
-          toast('1 Event Deleted','error');
+        $user=Auth::user();
+        if(Hash::check($request->input('password'),$user->password)){
+            $line=Image::whereimage_id($id)->delete();
+            // return dd($line);
+            // $bikes=UserDetail::whereuser_detail_id($bid)->delete();
+            $event=Address::whereaddress_id($aid)->delete();
+            toast('Event Successfully Deleted','success');
+        }else{
+            toast('Failed to Delete. Incorrect Password','error'); 
+        }
           return redirect('/admin/events');
 
     }

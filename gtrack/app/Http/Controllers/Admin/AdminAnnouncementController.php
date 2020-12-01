@@ -7,6 +7,7 @@ use App\Models\Image;
 use Exporter;
 use DB;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -175,16 +176,21 @@ class AdminAnnouncementController extends Controller
         return redirect('/admin/announcements');
         
     }
-    public function delete($aid)
+    public function delete(Request $request,$aid)
     {
-        $ann=Announcement::find($aid);
+        $user=Auth::user();
+        if(Hash::check($request->input('password'),$user->password)){
+            $ann=Announcement::find($aid);
         $image = Image::find($ann->image_id);
         if($image==null){
             $ann->delete();
         }else{
             $image->delete();
         }
-          toast('1 Announcement Deleted','error');
+          toast('Announcement Successfully Deleted','success');
+        }else{
+            toast('Failed to Delete. Incorrect Password','error'); 
+        }
           return redirect('/admin/announcements');
 
     }

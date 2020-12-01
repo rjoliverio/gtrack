@@ -31,21 +31,21 @@
         <table class="table table-striped table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>Id</th>
-                    <th>Schedule id</th>
+                    <th>No.</th>
+                    <th>Schedule</th>
                     <th>Truck</th>
                     <th>Driver</th>
                     <th>Route</th>
                     <th>Date Created</th>
-                    <th>Active</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($assignment as $assignment)
                     <tr>
-                        <td class="text-center">{{$assignment->assignment_id}}</td>
-                        <td class="text-center">{{$assignment->schedule_id}}</td>
+                        <td class="text-center">{{$count++}}</td>
+                        <td class="text-center">{{$assignment->schedule->schedule}}</td>
                         <td class="text-center">{{$assignment->truck->plate_no}}</td>
                         <td class="text-center">{{$assignment->truck->user->userdetail->lname.', '.$assignment->truck->user->userdetail->fname}}</td>
                         <td>{{$assignment->route}}</td>
@@ -93,12 +93,12 @@
             </div>
             <div class="modal-body">
                 <div class="form-group row">
-                    <label for="schedule_id" class="col-md-4 col-form-label text-md-right">{{ __('Schedule Id') }}</label>
+                    <label for="schedule_id" class="col-md-4 col-form-label text-md-right">{{ __('Schedule') }}</label>
                     <div class="col-md-6">
                         <select id="schedule_id" class="custom-select form-control @error('schedule+id') is-invalid @enderror" name="schedule_id" autocomplete="schedule_id" autofocus>
-                            <option selected disabled>{{$assignment->schedule->schedule_id}}</option>
+                            <option selected disabled hidden>{{$assignment->schedule->schedule}}</option>
                             @foreach($schedules as $id){
-                                <option value={{$id->schedule_id}} : {{$id->schedule_id}}>{{$id->schedule}}</option>
+                                <option value={{$id->schedule_id}}>{{$id->schedule}}</option>
                             }
                             @endforeach
                         </select>
@@ -113,9 +113,9 @@
                     <label for="truck_id" class="col-md-4 col-form-label text-md-right">{{ __('Truck Id') }}</label>
                     <div class="col-md-6">
                         <select id="truck_id" class="custom-select form-control @error('truck+id') is-invalid @enderror" name="truck_id" autocomplete="truck_id" autofocus>
-                            <option selected disabled>{{$assignment->truck->plate_no}}</option>
+                            <option selected disabled hidden>{{$assignment->truck->plate_no}}</option>
                             @foreach($trucks as $id){
-                            <option value={{$id->truck_id}}>{{$id->truck_id}} : {{$id->plate_no}}</option>
+                            <option value={{$id->truck_id}}>{{$id->plate_no}}</option>
                             }
                             @endforeach
                         </select>
@@ -298,10 +298,10 @@
                 <div class="modal-body">
                     {{ Form::open(array('url' => '/admin/schedules/assignments/store' , 'method' => 'POST')) }}
                         <div class="form-group row">
-                            <label for="schedule_id" class="col-md-4 col-form-label text-md-right">{{ __('Schedule Id') }}</label>
+                            <label for="schedule_id" class="col-md-4 col-form-label text-md-right">{{ __('Schedule') }}</label>
                             <div class="col-md-6">
                                 <select id="schedule_id" class="custom-select form-control @error('schedule+id') is-invalid @enderror" name="schedule_id" required autocomplete="schedule_id" autofocus>
-                                    <option selected disabled hidden>-Select Schedule Id-</option>
+                                    <option selected disabled hidden>-Select Schedule-</option>
                                     @foreach($schedules as $id){
                                         <option value={{$id->schedule_id}}>{{$id->schedule_id}} : {{$id->schedule}}</option>
                                     }
@@ -315,10 +315,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="truck_id" class="col-md-4 col-form-label text-md-right">{{ __('Truck Id') }}</label>
+                            <label for="truck_id" class="col-md-4 col-form-label text-md-right">{{ __('Truck') }}</label>
                             <div class="col-md-6">
                                 <select id="truck_id" class="custom-select form-control @error('truck+id') is-invalid @enderror" name="truck_id" required autocomplete="truck_id" autofocus>
-                                    <option selected disabled hidden>-Select Truck Id-</option>
+                                    <option selected disabled hidden>-Select Truck-</option>
                                     @foreach($trucks as $id){
                                     <option value={{$id->truck_id}}>{{$id->truck_id}} : {{$id->plate_no}}</option>
                                     }

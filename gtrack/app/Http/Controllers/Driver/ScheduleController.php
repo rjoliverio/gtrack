@@ -14,6 +14,8 @@ class ScheduleController extends Controller
     {
         $assignments = TruckAssignment::where('active', 1)->orderBy('schedule_id','asc')->get();
         $schedules = Schedule::orderBy('schedule','desc')->get();
-        return view('driver.schedule.schedule',compact('assignments','schedules'));
+        $count = 1;
+        $count1 = 1;
+        return view('driver.schedule.schedule',compact('assignments','schedules', 'count', 'count1'));
     }
 }

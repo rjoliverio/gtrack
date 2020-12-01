@@ -64,6 +64,8 @@
 </div>
 <hr>
 <div class="row">
+
+
 @foreach($arr as $row)
 <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
@@ -89,6 +91,7 @@
                                                 
       <img src="/storage/images/uploads/{{$row->image->image_1}}" class="images-display" width="450" alt="Responsive image">
       <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
+      @if($row->image->image_2!=null)
         <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
             href="/storage/images/uploads/{{$row->image->image_2}}">
             <img class="img-fluid bike-images " alt="" src="/storage/images/uploads/{{$row->image->image_2}}" width="50"/>
@@ -103,6 +106,9 @@
             <img class="img-responsive img-fluid bike-images" alt=""
                 src="/storage/images/uploads/{{$row->image->image_4}}" width="50"/>
         </a>
+        @else
+          <h6><i>No other images available</i></h6>
+        @endif
     </div>
       <hr>
       <div>
@@ -115,14 +121,17 @@
                                               <p>{{$row->description}}</p>
                                               </div>
                                               <div class="text-left mb-3 border border-secondary rounded-lg p-3 ">
-                                              <div class="row">
-                                              <h4><b>Other Details:</b></h4>
-                                              </div>
+                                              
+                                              <h4><b>Event Details:</b></h4>
+                                              
                                               <p><i>Start Date:</i> {{$row->start_date}}</p>
                                               <p><i>End Date:</i> {{$row->end_date}}</p>
                                               
-        <p><i>Who:</i> {{$row->participants}}</p>
-        <p><i>Contact Person:</i> {{$row->userdetail->fname}} {{$row->userdetail->lname}}, {{$row->userdetail->contact_no}}</p>
+        <p><i>Participants:</i> {{$row->participants}}</p>
+        <p><i>Venue:</i> {{ucfirst($row->address->street)}}, {{ucfirst($row->address->barangay)}}, {{ucfirst($row->address->town)}}, {{$row->address->postal_code}} </p>
+        <h4><b>Contact Details:</b></h4>
+        <p><i>Contact Person:</i> {{ucfirst($row->userdetail->fname)}} {{ucfirst($row->userdetail->lname)}}</p> 
+        <p><i>Contact No:</i> {{$row->userdetail->contact_no}}</p>
                                               </div>
         
         </div>
@@ -136,13 +145,17 @@
                                     </div>
                                 </div>
       @endforeach
+
+     
 </div>
+<br><br>
 <div class="row">
   <h5>All Events</h5>
 </div>
 <hr>
     <!-- Page Features -->
     <div class="row">
+    
     @foreach($arr2 as $row)
 <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
@@ -168,6 +181,7 @@
                                                 
       <img src="/storage/images/uploads/{{$row->image->image_1}}" class="images-display" width="450" alt="Responsive image">
       <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
+      @if($row->image->image_2!=null)
         <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
             href="/storage/images/uploads/{{$row->image->image_2}}">
             <img class="img-fluid bike-images " alt="" src="/storage/images/uploads/{{$row->image->image_2}}" width="50"/>
@@ -182,6 +196,9 @@
             <img class="img-responsive img-fluid bike-images" alt=""
                 src="/storage/images/uploads/{{$row->image->image_4}}" width="50"/>
         </a>
+        @else
+          <h6><i>No other images available</i></h6>
+        @endif
     </div>
       <hr>
       <div>
@@ -194,13 +211,16 @@
                                               <p>{{$row->description}}</p>
                                               </div>
                                               <div class="text-left mb-3 border border-secondary rounded-lg p-3 ">
-                                              <div class="row">
-                                              <h4><b>Other Details:</b></h4>
-                                              </div>
+                                              
+                                              <h4><b>Event Details:</b></h4>
+                                             
                                               <p><i>Start Date:</i> {{ $row->start_date}}</p>
                                               <p><i>End Date:</i> {{$row->end_date}}</p>
-        <p><i>Who:</i> {{$row->participants}}</p>
-        <p><i>Contact Person:</i> {{$row->userdetail->fname}} {{$row->userdetail->lname}}, {{$row->userdetail->contact_no}}</p>
+        <p><i>Participants:</i> {{$row->participants}}</p>
+        <p><i>Venue:</i> {{ucfirst($row->address->street)}}, {{ucfirst($row->address->barangay)}}, {{ucfirst($row->address->town)}}, {{$row->address->postal_code}}  </p>
+        <h4><b>Contact Details:</b></h4>
+        <p><i>Contact Person:</i> {{ucfirst($row->userdetail->fname)}} {{ucfirst($row->userdetail->lname)}}</p> 
+        <p><i>Contact No:</i> {{$row->userdetail->contact_no}}</p>
                                               </div>
         
         </div>
@@ -215,7 +235,6 @@
                                 </div>
       @endforeach
 
-    
     </div>
     
     <!-- /.row -->

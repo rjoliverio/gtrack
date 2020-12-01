@@ -16,6 +16,9 @@ class ReportsController extends Controller
     public function show($id)
     {
         $report=Report::find($id);
+        if($report==null){
+            return redirect('/admin/reports');
+        }
         return view('admin.reports.show',compact('report'));
     }
     public function resolve($id)

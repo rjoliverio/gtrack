@@ -30,11 +30,11 @@
             <table class="table table-striped fixed">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Id</th>
+                        <th>No.</th>
                         <th>Schedule</th>
                         <th width="5px">Biodegradable</th>
                         <th width="5px">Nonbiodegradable</th>
-                        <th>Admin id</th>
+                        <th>Admin</th>
                         <th>Date Created</th>
                         <th>Actions</th>
                     </tr>
@@ -42,11 +42,11 @@
                 <tbody>
                 @foreach($schedules as $schedules)
                     <tr>
-                        <td class="text-center">{{$schedules->schedule_id}}</td>
+                        <td class="text-center">{{$count++}}</td>
                         <td>{{$schedules->schedule}}</td>
                         <td class="text-center">{{$schedules->garbage_type == 'Biodegradable'?'✔':'❌'}}</td>
                         <td class="text-center">{{$schedules->garbage_type == 'Nonbiodegradable'?'✔;':'❌'}}</td>
-                        <td class="text-center">{{$schedules->admin_id}}</td>
+                        <td>{{$schedules->user->userdetail->lname}}, {{$schedules->user->userdetail->fname}}</td>
                         <td>{{$schedules->created_at}}</td>
                         @if(Auth::user()->user_type == "Driver")
                             <td><a href="/driver/calendar"><i class="fas fa-eye pr-3" title="View"></i></a>
@@ -73,21 +73,21 @@
             <table class="table table-striped table-hover">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Id</th>
-                        <th>Schedule id</th>
+                        <th>No.</th>
+                        <th>Schedule</th>
                         <th>Truck</th>
                         <th>Driver</th>
                         <th>Route</th>
                         <th>Date Created</th>
-                        <th>Active</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($assignments as $assignments)
                         <tr>
-                            <td class="text-center">{{$assignments->assignment_id}}</td>
-                            <td class="text-center">{{$assignments->schedule_id}}</td>
+                            <td class="text-center">{{$count1++}}</td>
+                            <td class="text-center">{{$assignments->schedule->schedule}}</td>
                             <td class="text-center">{{$assignments->truck->plate_no}}</td>
                             <td class="text-center">{{$assignments->truck->user->userdetail->lname.', '.$assignments->truck->user->userdetail->fname}}</td>
                             <td>{{$assignments->route}}</td>
