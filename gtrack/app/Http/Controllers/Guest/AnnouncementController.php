@@ -12,7 +12,7 @@ class AnnouncementController extends Controller
     //
     public function index()
     {
-        $ann=Announcement::simplePaginate(5);
+        $ann=Announcement::orderBy('created_at', 'DESC')->simplePaginate(5);
         return view('guest.announcements',compact('ann'));
     }
 }

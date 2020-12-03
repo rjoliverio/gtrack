@@ -24,7 +24,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="first-slide" src="/storage/images/img/event1.jpg" alt="First slide">
+            <img class="first-slide" src="/storage/images/img/event2.jpg" alt="First slide">
             <div class="container">
               <div class="carousel-caption">
                 <h1>Welcome to Events</h1>
@@ -33,7 +33,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="second-slide" src="/storage/images/img/event2.jpg" alt="Second slide">
+            <img class="second-slide" src="/storage/images/img/event1.jpg" alt="Second slide">
             <div class="container">
               <div class="carousel-caption text-left">
                 <h1><i>Help Nature...</i></h1>
@@ -64,6 +64,8 @@
 </div>
 <hr>
 <div class="row">
+
+
 <?php $__currentLoopData = $arr; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
@@ -73,11 +75,11 @@
             <p class="card-text"><?php echo e(\Illuminate\Support\Str::limit($row->description,100)); ?></p>
           </div>
           <div class="card-footer">
-            <a href="#showCont<?php echo e($row->event_id); ?>" class="btn btn-primary" data-toggle="modal">Find Out More!</a>
+            <a href="#showConti<?php echo e($row->event_id); ?>" class="btn btn-primary" data-toggle="modal">Find Out More!</a>
           </div>
         </div>
       </div>
-      <div id="showCont<?php echo e($row->event_id); ?>" class="modal fade">
+      <div id="showConti<?php echo e($row->event_id); ?>" class="modal fade">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                       
@@ -89,6 +91,7 @@
                                                 
       <img src="/storage/images/uploads/<?php echo e($row->image->image_1); ?>" class="images-display" width="450" alt="Responsive image">
       <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
+      <?php if($row->image->image_2!=null): ?>
         <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
             href="/storage/images/uploads/<?php echo e($row->image->image_2); ?>">
             <img class="img-fluid bike-images " alt="" src="/storage/images/uploads/<?php echo e($row->image->image_2); ?>" width="50"/>
@@ -103,6 +106,9 @@
             <img class="img-responsive img-fluid bike-images" alt=""
                 src="/storage/images/uploads/<?php echo e($row->image->image_4); ?>" width="50"/>
         </a>
+        <?php else: ?>
+          <h6><i>No other images available</i></h6>
+        <?php endif; ?>
     </div>
       <hr>
       <div>
@@ -115,14 +121,17 @@
                                               <p><?php echo e($row->description); ?></p>
                                               </div>
                                               <div class="text-left mb-3 border border-secondary rounded-lg p-3 ">
-                                              <div class="row">
-                                              <h4><b>Other Details:</b></h4>
-                                              </div>
-                                              <p><i>Start Date:</i> <?php echo e($row->start_date); ?></p>
-                                              <p><i>End Date:</i> <?php echo e($row->end_date); ?></p>
                                               
-        <p><i>Who:</i> <?php echo e($row->participants); ?></p>
-        <p><i>Contact Person:</i> <?php echo e($row->userdetail->fname); ?> <?php echo e($row->userdetail->lname); ?>, <?php echo e($row->userdetail->contact_no); ?></p>
+                                              <h4><b>Event Details:</b></h4>
+                                              
+                                              <p><i>Start Date:</i> <?php echo e(Carbon\Carbon::parse($row->start_date)->format('F d, Y g:i A')); ?></p>
+                                              <p><i>End Date:</i> <?php echo e(Carbon\Carbon::parse($row->end_date)->format('F d, Y g:i A')); ?></p>
+                                              
+        <p><i>Participants:</i> <?php echo e($row->participants); ?></p>
+        <p><i>Venue:</i> <?php echo e(ucfirst($row->address->street)); ?>, <?php echo e(ucfirst($row->address->barangay)); ?>, <?php echo e(ucfirst($row->address->town)); ?>, <?php echo e($row->address->postal_code); ?> </p>
+        <h4><b>Contact Details:</b></h4>
+        <p><i>Contact Person:</i> <?php echo e(ucfirst($row->userdetail->fname)); ?> <?php echo e(ucfirst($row->userdetail->lname)); ?></p> 
+        <p><i>Contact No:</i> <?php echo e($row->userdetail->contact_no); ?></p>
                                               </div>
         
         </div>
@@ -136,13 +145,17 @@
                                     </div>
                                 </div>
       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+     
 </div>
+<br><br>
 <div class="row">
   <h5>All Events</h5>
 </div>
 <hr>
     <!-- Page Features -->
     <div class="row">
+    
     <?php $__currentLoopData = $arr2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
@@ -152,7 +165,7 @@
             <p class="card-text"><?php echo e(\Illuminate\Support\Str::limit($row->description,100)); ?></p>
           </div>
           <div class="card-footer">
-            <a href="#showCont<?php echo e($row->event_id); ?>" class="btn btn-primary" data-toggle="modal">Find Out More!</a>
+          <a href="#showCont<?php echo e($row->event_id); ?>" class="btn btn-primary" data-toggle="modal"><?php if(Carbon\Carbon::parse($row->end_date)->format('F d, Y') <= Carbon\Carbon::now()->format('F d, Y')): ?> Event Concluded <?php else: ?> Find out more! <?php endif; ?> </a>
           </div>
         </div>
       </div>
@@ -168,6 +181,7 @@
                                                 
       <img src="/storage/images/uploads/<?php echo e($row->image->image_1); ?>" class="images-display" width="450" alt="Responsive image">
       <div class="text-center mb-3 border border-secondary rounded-lg p-3 ">
+      <?php if($row->image->image_2!=null): ?>
         <a class="thumbnail fancybox text-center text-decoration-none" rel="ligthbox"
             href="/storage/images/uploads/<?php echo e($row->image->image_2); ?>">
             <img class="img-fluid bike-images " alt="" src="/storage/images/uploads/<?php echo e($row->image->image_2); ?>" width="50"/>
@@ -182,6 +196,9 @@
             <img class="img-responsive img-fluid bike-images" alt=""
                 src="/storage/images/uploads/<?php echo e($row->image->image_4); ?>" width="50"/>
         </a>
+        <?php else: ?>
+          <h6><i>No other images available</i></h6>
+        <?php endif; ?>
     </div>
       <hr>
       <div>
@@ -194,13 +211,16 @@
                                               <p><?php echo e($row->description); ?></p>
                                               </div>
                                               <div class="text-left mb-3 border border-secondary rounded-lg p-3 ">
-                                              <div class="row">
-                                              <h4><b>Other Details:</b></h4>
-                                              </div>
-                                              <p><i>Start Date:</i> <?php echo e($row->start_date); ?></p>
-                                              <p><i>End Date:</i> <?php echo e($row->end_date); ?></p>
-        <p><i>Who:</i> <?php echo e($row->participants); ?></p>
-        <p><i>Contact Person:</i> <?php echo e($row->userdetail->fname); ?> <?php echo e($row->userdetail->lname); ?>, <?php echo e($row->userdetail->contact_no); ?></p>
+                                              
+                                              <h4><b>Event Details:</b></h4>
+                                             
+                                              <p><i>Start Date:</i> <?php echo e(Carbon\Carbon::parse($row->start_date)->format('F d, Y g:i A')); ?></p>
+                                              <p><i>End Date:</i> <?php echo e(Carbon\Carbon::parse($row->end_date)->format('F d, Y g:i A')); ?></p>
+        <p><i>Participants:</i> <?php echo e($row->participants); ?></p>
+        <p><i>Venue:</i> <?php echo e(ucfirst($row->address->street)); ?>, <?php echo e(ucfirst($row->address->barangay)); ?>, <?php echo e(ucfirst($row->address->town)); ?>, <?php echo e($row->address->postal_code); ?>  </p>
+        <h4><b>Contact Details:</b></h4>
+        <p><i>Contact Person:</i> <?php echo e(ucfirst($row->userdetail->fname)); ?> <?php echo e(ucfirst($row->userdetail->lname)); ?></p> 
+        <p><i>Contact No:</i> <?php echo e($row->userdetail->contact_no); ?></p>
                                               </div>
         
         </div>
@@ -215,7 +235,6 @@
                                 </div>
       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-    
     </div>
     
     <!-- /.row -->

@@ -270,7 +270,7 @@ img::-moz-selection {
 
 
 .btn:not(.login) {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 800;
   padding: 15px 25px;
   letter-spacing: 1px;

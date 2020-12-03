@@ -18,7 +18,7 @@
 
       <div class="album py-5 bg-light">
         <div class="container">
-        @foreach($ann as $row)
+        @forelse($ann as $row)
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="post-preview speech-bubble">
@@ -58,12 +58,19 @@
    @endif
           <p class="post-meta">Posted by
             <a href="#">{{$row->user->userdetail->fname}} {{$row->user->userdetail->lname}}</a>
-            on {{$row->created_at}}</p>
+            on {{Carbon\Carbon::parse($row->created_at)->format('F d, Y g:i A')}}</p>
         </div>
             </div>
             </div>
             <hr>
-            @endforeach
+            @empty
+              <div class="jumbotron jumbotron-fluid shadow">
+                <div class="container">
+                  <h1 class="display-4">No announcement yet</h1>
+                  <p class="lead">Announcements will be posted soon.</p>
+                </div>
+              </div>
+            @endforelse
             
             </div>
             <div class="d-flex justify-content-center">

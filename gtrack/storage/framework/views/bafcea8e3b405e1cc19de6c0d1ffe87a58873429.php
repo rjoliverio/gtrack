@@ -24,7 +24,7 @@
                 <h3 class="label"><i class="icon-phone"></i>&nbsp;Call:</h3>
                 <p>+1 5589 55488 555</p>
                 <div class="row maprow">
-                <iframe src="https://www.google.com/maps/d/embed?mid=1yFQDBNLFVyMuO1yrPJCWnnixVA9HmCGg" class="contact-map"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d481.5082771455725!2d124.0124866104508!3d10.454073514242154!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a9bb73bdc2f1ab%3A0x5a777942d545699b!2sCompostela%20Municipal%20Hall!5e1!3m2!1sen!2sph!4v1606189116533!5m2!1sen!2sph" width="600" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
                 </div>
                                   

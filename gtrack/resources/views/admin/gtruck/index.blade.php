@@ -47,7 +47,7 @@
                         <td>{{$truck->active?'Active':'Under Maintenance'}}</td>
                         @if(Auth::user()->user_type=="Admin")
                         <td> 
-                        <a href="#"><i class="fas fa-ban" data-toggle="modal" data-target="#exampleModal"
+                        <a href="#"><i class="fas fa-ban" data-toggle="modal" data-target="#exampleModal{{$truck->truck_id}}"
                         title="Disable"></i></a>
                         </td>
                         @endif
@@ -56,9 +56,10 @@
                     @endforeach
                 </tbody>
             </table>
+            @foreach($trucks as $truck)
                     <form action="/admin/gtrucks/maintenance/{{ $truck->truck_id }}" method="POST">
             
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal{{$truck->truck_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -91,9 +92,9 @@
                               </div>
                             </div>
                           </div>
-                        
+                        </div>
                         </form>
-                 
+                        @endforeach
 </div>
 </div>
 </div>
@@ -129,14 +130,14 @@
                         @if(Auth::user()->user_type=="Admin")
                         @endif
                         <td> 
-                            <a href="#"><i class="fas fa-wrench" data-toggle="modal" data-target="#Modal"
+                            <a href="#"><i class="fas fa-wrench" data-toggle="modal" data-target="#Modal{{ $inactive->truck_id }}"
                             title="Repair"></i></a>
                             </td>
 
                     </tr>
                     <form action="/admin/gtrucks/repair/{{ $inactive->truck_id }}" method="POST">
       
-                        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="Modal{{ $inactive->truck_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -178,7 +179,7 @@
 </div>
 </div> 
 
-
+@endsection
 @section('scripts')
 <script>
     document.getElementById("defaultOpen").click();
@@ -203,5 +204,4 @@
 
 
  </script>
-@endsection
 @endsection

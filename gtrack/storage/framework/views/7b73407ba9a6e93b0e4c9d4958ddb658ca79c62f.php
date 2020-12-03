@@ -18,7 +18,7 @@
 
       <div class="album py-5 bg-light">
         <div class="container">
-        <?php $__currentLoopData = $ann; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php $__empty_1 = true; $__currentLoopData = $ann; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="post-preview speech-bubble">
@@ -60,12 +60,19 @@
    <?php endif; ?>
           <p class="post-meta">Posted by
             <a href="#"><?php echo e($row->user->userdetail->fname); ?> <?php echo e($row->user->userdetail->lname); ?></a>
-            on <?php echo e($row->created_at); ?></p>
+            on <?php echo e(Carbon\Carbon::parse($row->created_at)->format('F d, Y g:i A')); ?></p>
         </div>
             </div>
             </div>
             <hr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+              <div class="jumbotron jumbotron-fluid shadow">
+                <div class="container">
+                  <h1 class="display-4">No announcement yet</h1>
+                  <p class="lead">Announcements will be posted soon.</p>
+                </div>
+              </div>
+            <?php endif; ?>
             
             </div>
             <div class="d-flex justify-content-center">

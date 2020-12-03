@@ -48,7 +48,7 @@ GTrack | Dumpsters
                             <td>
                                 <a href="#myModal{{ $dumpster->dumpster_id }}" data-toggle="modal"><i class="fas fa-edit"
                                         data-toggle="tooltip" title="Edit"></i></a>
-                                <a href="#"><i class="fas fa-trash" data-toggle="modal" data-target="#exampleModal"
+                                <a href="#"><i class="fas fa-trash" data-toggle="modal" data-target="#exampleModal{{ $dumpster->dumpster_id }}"
                                         title="Delete"></i></a>
                             </td>
                             </td>
@@ -164,7 +164,7 @@ GTrack | Dumpsters
             <form action="/admin/dumpsters/{{ $dumpster->dumpster_id }}" method="POST">
                 @method('DELETE')
                 @csrf
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                <div class="modal fade" id="exampleModal{{ $dumpster->dumpster_id }}" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -178,7 +178,7 @@ GTrack | Dumpsters
 
                                 <div class="form-group row">
                                     <label for="password"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Confirmm Using Your Password') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Confirm Using Your Password') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="password" type="password"

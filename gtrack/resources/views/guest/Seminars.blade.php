@@ -24,7 +24,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="first-slide" src="/storage/images/img/event1.jpg" alt="First slide">
+            <img class="first-slide" src="/storage/images/img/event2.jpg" alt="First slide">
             <div class="container">
               <div class="carousel-caption">
                 <h1>Welcome to Events</h1>
@@ -33,7 +33,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="second-slide" src="/storage/images/img/event2.jpg" alt="Second slide">
+            <img class="second-slide" src="/storage/images/img/event1.jpg" alt="Second slide">
             <div class="container">
               <div class="carousel-caption text-left">
                 <h1><i>Help Nature...</i></h1>
@@ -75,11 +75,11 @@
             <p class="card-text">{{\Illuminate\Support\Str::limit($row->description,100)}}</p>
           </div>
           <div class="card-footer">
-            <a href="#showCont{{$row->event_id}}" class="btn btn-primary" data-toggle="modal">Find Out More!</a>
+            <a href="#showConti{{$row->event_id}}" class="btn btn-primary" data-toggle="modal">Find Out More!</a>
           </div>
         </div>
       </div>
-      <div id="showCont{{$row->event_id}}" class="modal fade">
+      <div id="showConti{{$row->event_id}}" class="modal fade">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                       
@@ -124,8 +124,8 @@
                                               
                                               <h4><b>Event Details:</b></h4>
                                               
-                                              <p><i>Start Date:</i> {{$row->start_date}}</p>
-                                              <p><i>End Date:</i> {{$row->end_date}}</p>
+                                              <p><i>Start Date:</i> {{Carbon\Carbon::parse($row->start_date)->format('F d, Y g:i A')}}</p>
+                                              <p><i>End Date:</i> {{Carbon\Carbon::parse($row->end_date)->format('F d, Y g:i A')}}</p>
                                               
         <p><i>Participants:</i> {{$row->participants}}</p>
         <p><i>Venue:</i> {{ucfirst($row->address->street)}}, {{ucfirst($row->address->barangay)}}, {{ucfirst($row->address->town)}}, {{$row->address->postal_code}} </p>
@@ -165,7 +165,7 @@
             <p class="card-text">{{\Illuminate\Support\Str::limit($row->description,100)}}</p>
           </div>
           <div class="card-footer">
-            <a href="#showCont{{$row->event_id}}" class="btn btn-primary" data-toggle="modal">Find Out More!</a>
+          <a href="#showCont{{$row->event_id}}" class="btn btn-primary" data-toggle="modal">@if(Carbon\Carbon::parse($row->end_date)->format('F d, Y') <= Carbon\Carbon::now()->format('F d, Y')) Event Concluded @else Find out more! @endif </a>
           </div>
         </div>
       </div>
@@ -214,8 +214,8 @@
                                               
                                               <h4><b>Event Details:</b></h4>
                                              
-                                              <p><i>Start Date:</i> {{ $row->start_date}}</p>
-                                              <p><i>End Date:</i> {{$row->end_date}}</p>
+                                              <p><i>Start Date:</i> {{ Carbon\Carbon::parse($row->start_date)->format('F d, Y g:i A')}}</p>
+                                              <p><i>End Date:</i> {{Carbon\Carbon::parse($row->end_date)->format('F d, Y g:i A')}}</p>
         <p><i>Participants:</i> {{$row->participants}}</p>
         <p><i>Venue:</i> {{ucfirst($row->address->street)}}, {{ucfirst($row->address->barangay)}}, {{ucfirst($row->address->town)}}, {{$row->address->postal_code}}  </p>
         <h4><b>Contact Details:</b></h4>

@@ -40,7 +40,7 @@ GTrack | Trucks
                     </select>
                      </div>
                      @csrf
-                    <button type="submit" class="btn btn-primary ml-3 mt-3">Add New Garbage Truck</button>
+                    <button type="submit" class="btn btn-primary btn-block">Add New Garbage Truck</button>
                 </form>
             </div>
         </div>

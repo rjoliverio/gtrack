@@ -17,7 +17,7 @@ class SeminarController extends Controller
         // for(;$ctr<3;$ctr++){
         //     $arrup[$ctr]=$totalton[$ctr];
         // }
-        $event=Event::wherestatus(1)->where('start_date','>',now())->orderBy('start_date', 'ASC')->simplePaginate(8);
+        $event=Event::wherestatus(1)->orderBy('start_date', 'DESC')->simplePaginate(8);
         // $event = \DB::select('SELECT * FROM events ORDER BY DATE(created_at) DESC');
     
         return view('guest.seminars',[

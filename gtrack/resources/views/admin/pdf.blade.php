@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Dashboard Summary</title>
     <script src="http://www.chartjs.org/dist/2.7.3/Chart.bundle.js"></script>
 <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <style>

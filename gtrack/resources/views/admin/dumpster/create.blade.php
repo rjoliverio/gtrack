@@ -90,9 +90,9 @@ GTrack | Dumpsters
                         </div>
                     </div>   
                    
-                     </div>
                      @csrf
-                    <button type="submit" class="btn btn-primary ml-3 mt-3">Add New Dumpster</button>
+                    <button type="submit" class="btn btn-primary btn-block ">Add New Dumpster</button>
+                </div>
                 </form>
             </div>
         </div>

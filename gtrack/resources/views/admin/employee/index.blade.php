@@ -63,7 +63,7 @@ GTrack | Employees
                             <td>
                                 <a href="/admin/employees/show/{{$driver->user_id}}"> <i class="fas fa-eye"
                                         title="View"> </i></a>
-                                <a href="#"><i class="fas fa-ban" data-toggle="modal" data-target="#exampleModal"
+                                <a href="#"><i class="fas fa-ban" data-toggle="modal" data-target="#exampleModal{{$driver->user_id}}"
                                         title="Disable"></i></a>
                             </td>
                             @endif
@@ -72,9 +72,10 @@ GTrack | Employees
                         @endforeach
                     </tbody>
                 </table>
+                @foreach($drivers as $driver)
                 <form action="/admin/employees/disable/{{ $driver->user_id }}" method="POST">
                     <!--Second Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="exampleModal{{$driver->user_id}}" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -88,7 +89,7 @@ GTrack | Employees
 
                                     <div class="form-group row">
                                         <label for="password"
-                                            class="col-md-4 col-form-label text-md-right">{{ __('Confirmm Using Your Password') }}</label>
+                                            class="col-md-4 col-form-label text-md-right">{{ __('Confirm Using Your Password') }}</label>
 
                                         <div class="col-md-6">
                                             <input id="password" type="password"
@@ -113,7 +114,7 @@ GTrack | Employees
                     </div>
 
                 </form>
-
+                @endforeach
             </div>
         </div>
     </div>
@@ -161,8 +162,8 @@ GTrack | Employees
                             <td>{{$admin->userdetail->gender}}</td>
                             <td>{{$admin->created_at}}</td>
                             <td>{{$admin->active?'Active':'Inactive'}}</td>
-                            @if(Auth::user()->user_type=="Admin")
-                            @endif
+                            {{-- @if(Auth::user()->user_type=="Admin")
+                            @endif --}}
 
                         </tr>
                         @endforeach
@@ -212,18 +213,18 @@ GTrack | Employees
                             <td>{{$inactive->userdetail->gender}}</td>
                             <td>{{$inactive->created_at}}</td>
                             <td>{{$inactive->active ?'Active':'Inactive'}}</td>
-                            @if(Auth::user()->user_type=="Admin")
-                            @endif
+                            {{-- @if(Auth::user()->user_type=="Admin")
+                            @endif --}}
                             <td>
                                 <a href="/admin/employees/show/{{$inactive->user_id}}"> <i class="fas fa-eye"
                                         title="View"> </i></a>
-                                <a href="#"><i class="fas fa-key" data-toggle="modal" data-target="#Modal"
+                                <a href="#"><i class="fas fa-key" data-toggle="modal" data-target="#Modal{{$inactive->user_id}}"
                                         title="Reactivate"></i></a>
                             </td>
 
                         </tr>
                         <form action="/admin/employees/reactivate/{{ $inactive->user_id }}" method="POST">
-                            <div class="modal fade" id="Modal" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="Modal{{$inactive->user_id}}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -238,7 +239,7 @@ GTrack | Employees
 
                                             <div class="form-group row">
                                                 <label for="password"
-                                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirmm Using Your Password') }}</label>
+                                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Using Your Password') }}</label>
 
                                                 <div class="col-md-6">
                                                     <input id="rpassword" type="password"

@@ -55,14 +55,14 @@
         event.forEach(function(item,index){
             sdate=new Date(item.start_date);
             edate=new Date(item.end_date);
-            var year=sdate.getFullYear();
-            var month=sdate.getMonth()+1 //getMonth is zero based;
-            var day=sdate.getDate();
-            sdate=year+"-"+month+"-"+day;
-            year=edate.getFullYear();
-            month=edate.getMonth()+1 //getMonth is zero based;
-            day=edate.getDate()+1;
-            edate=year+"-"+month+"-"+day;
+            // var year=sdate.getFullYear();
+            // var month=sdate.getMonth()+1 //getMonth is zero based;
+            // var day=sdate.getDate();
+            // sdate=year+"-"+month+"-"+day;
+            // year=edate.getFullYear();
+            // month=edate.getMonth()+1 //getMonth is zero based;
+            // day=edate.getDate()+1;
+            // edate=year+"-"+month+"-"+day;
             var obj={title:item.event_name,
                     allDay:true,
                     start:sdate,
